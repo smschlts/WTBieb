@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public interface BoekInterface extends CrudRepository<Boek, Long> {
+public interface BoekRepository extends CrudRepository<Boek, Long> {
 
 
 }
