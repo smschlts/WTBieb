@@ -84,12 +84,12 @@ public class Boek {
     private String omslag;
     private String omschrijving;
 
-    public Boek(long wtId, String isbn, String titel, String auteur, boolean status, String categorie, String omslag, String omschrijving) {
+    public Boek(long wtId, String isbn, String titel, String auteur, String categorie, String omslag, String omschrijving) {
         this.wtId = wtId;
         this.isbn = isbn;
         this.titel = titel;
         this.auteur = auteur;
-        this.status = status;
+        this.status = true;
         this.categorie = categorie;
         this.omslag = omslag;
         this.omschrijving = omschrijving;
