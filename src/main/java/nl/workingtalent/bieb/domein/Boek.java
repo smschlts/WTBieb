@@ -15,6 +15,24 @@ public class Boek {
     private String isbn;
     private String titel;
     private String auteur;
+    private boolean status;
+    private String categorie;
+    private String omslag;
+    private String omschrijving;
+
+    public Boek() {
+    }
+
+    public Boek(long wtId, String isbn, String titel, String auteur, String categorie, String omslag, String omschrijving) {
+        this.wtId = wtId;
+        this.isbn = isbn;
+        this.titel = titel;
+        this.auteur = auteur;
+        this.status = true;
+        this.categorie = categorie;
+        this.omslag = omslag;
+        this.omschrijving = omschrijving;
+    }
 
     public long getId() {
         return id;
@@ -78,21 +96,4 @@ public class Boek {
     public void setOmschrijving(String omschrijving) {
         this.omschrijving = omschrijving;
     }
-
-    private boolean status;
-    private String categorie;
-    private String omslag;
-    private String omschrijving;
-
-    public Boek(long wtId, String isbn, String titel, String auteur, String categorie, String omslag, String omschrijving) {
-        this.wtId = wtId;
-        this.isbn = isbn;
-        this.titel = titel;
-        this.auteur = auteur;
-        this.status = true;
-        this.categorie = categorie;
-        this.omslag = omslag;
-        this.omschrijving = omschrijving;
-    }
-
 }
