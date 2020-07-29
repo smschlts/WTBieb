@@ -16,6 +16,8 @@ public class Account {
     private String email;
     private String wachtwoord;
 
+    public Account() {
+    }
 
     public Account(String naam, String email, String wachtwoord) {
         this.naam = naam;
