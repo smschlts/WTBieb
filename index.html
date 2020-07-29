@@ -1,30 +1,33 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Bibliotheek WT</title>
-    </head>
-    
-    <body>
-        <h1>Boek toevoegen</h1>
-        <form method=POST>
-            <label for="ftitel">Titel: </label>
-            <input type="text" id="ftitel"><br>
-            <label for="fauteur">Auteur: </label>
-            <input type="text" id="fauteur"><br>
-            <label for="fisbn">ISBN: </label>
-            <input type="text" id="fisbn"><br>
-            <label for="fcategorie">Categorie: </label>
-            <input type="text" id="fcategorie"><br>
-            <label for="fomschrijving">Omschrijving: </label>
-            <input type="text" id="fomschrijving"><br>
-            <input type="submit" value="Toevoegen" onclick=apicallBoekToevoegen()></input>
-        </form>
-    </body>
+
+<head>
+    <title>Bibliotheek WT</title>
+    <meta charset="UTF-8">
+
+</head>
+
+<body>
+    <h1>Boek toevoegen</h1>
+    <form onsubmit="return apicallBoekToevoegen();">
+        <label for="ftitel">Titel: </label>
+        <input type="text" id="ftitel"><br>
+        <label for="fauteur">Auteur: </label>
+        <input type="text" id="fauteur"><br>
+        <label for="fisbn">ISBN: </label>
+        <input type="text" id="fisbn"><br>
+        <label for="fcategorie">Categorie: </label>
+        <input type="text" id="fcategorie"><br>
+        <label for="fomschrijving">Omschrijving: </label>
+        <input type="text" id="fomschrijving"><br>
+        <input type="submit" value="Toevoegen"></input>
+    </form>
+</body>
+
 </html>
 
 <script>
-
-    function apicallBoekToevoegen(){
+    function apicallBoekToevoegen() {
 
         var xhr = new XMLHttpRequest();
         // xhr.onreadystatechange = function(){
@@ -39,9 +42,10 @@
         boek.categorie = document.getElementById("fcategorie").value;
         boek.omschrijving = document.getElementById("fomschrijving").value;
         var boekJSON = JSON.stringify(boek);
-        xhr.open("POST","http://localhost:8082/boeken",true);   // asynchroon
-        xhr.setRequestHeader("Content-Type","application/json");
+        xhr.open("POST", "http://localhost:8082/boeken", true); // asynchroon
+        xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send(boekJSON);
-    }
 
+        return false;
+    }
 </script>
