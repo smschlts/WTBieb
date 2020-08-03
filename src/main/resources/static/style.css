@@ -10,3 +10,8 @@
 .float-right {
     float: right;
 }
+
+
+table, th, td {
+    border: 1px solid black;
+}

@@ -46,3 +46,4 @@ public class BoekEndpoint {
         return boekService.updateBoek(id, nieuwBoek);
     }
 }
+
