@@ -24,4 +24,6 @@ public class BoekEndpoint {
         return boekService.opslaan(nieuwBoek);
     }
 
+    Resource
 }
+
