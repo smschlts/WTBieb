@@ -1,85 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
     <title>Account</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js" defer></script>
 </head>
-<body>
-    <div style="display: flex;">
-        <div style="flex: 50%">
-            <img src=""></img>
+<body onload="accountOphalen(3)">
+    <div class="flex-container">
+        <div class="flex-item">
+            <img src="https://freeiconshop.com/wp-content/uploads/edd/person-solid.png">
         </div>
-        <div style="flex: 50%">
-            
+        <div class="flex-item">
+            <h1>Account aanpassen</h1>
             <form>
-                <label for="naam">Voornaam Achternaam</label>
+                <label for="naam">Naam: </label>
                 <input type="text" id="naam"><br>
-                <label for="emailadres">emailadres</label>
+                <label for="emailadres">E-mailadres: </label>
                 <input type="text" id="emailadres"><br>
             </form>
         </div>
     </div>
-    <div style="flex-direction: row">
-        <button onclick="accountToevoegen();">Toevoegen</button>
-        <button onclick="accountAanpassen(3);">Bewerken</button>
-        <button onclick="accountVerwijderen(3);">Verwijderen</button>
-        <button style="float: right;">Terug</button>
+    <div>
+        <button onclick="accountToevoegen()">Toevoegen</button>
+        <button onclick="accountAanpassen(3)">Bewerken</button>
+        <button onclick="accountVerwijderen(3)">Verwijderen</button>
+        <button class="float-right">Terug</button>
     </div>
 </body>
 </html>
-
-<script>
-    function accountToevoegen() {
-        var xhr = new XMLHttpRequest();
-        var account = {};
-        account.naam = document.getElementById("naam").value;
-        account.email = document.getElementById("emailadres").value;
-        var accountJSON = JSON.stringify(account);
-        xhr.open("POST", "http://localhost:8082/accounts", true);
-        xhr.setRequestHeader("Content-Type", "application/json");
-        xhr.send(accountJSON);
-    }
-
-    function accountOphalen(accountID) {
-        var xhr = new XMLHttpRequest();
-
-        xhr.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                var account = JSON.parse(this.responseText);
-
-                document.getElementById("naam").value = account.naam;
-                document.getElementById("emailadres").value = account.email;
-                // document.getElementById("account-avatar").value = account.avatar;
-            }
-        };
-
-        xhr.open("GET", "http://localhost:8082/accounts/" + accountID, true);
-        xhr.send();
-    }
-
-    function accountAanpassen(accountID) {
-
-        var xhr = new XMLHttpRequest();
-
-        var account = {};
-        account.naam = document.getElementById("naam").value;
-        account.email = document.getElementById("emailadres").value;
-        var accountJSON = JSON.stringify(account);
-
-        console.log(accountJSON);
-
-        xhr.open("PUT", "http://localhost:8082/accounts/" + accountID, true);
-        xhr.setRequestHeader("Content-Type", "application/json");
-        xhr.send(accountJSON);
-    }
-
-    function accountVerwijderen(accountID) {
-
-        var xhr = new XMLHttpRequest();
-
-        xhr.open("DELETE", "http://localhost:8082/accounts/" + accountID, true);
-        xhr.send();
-    }
-
-    window.onload = accountOphalen(4);
-</script>
