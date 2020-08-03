@@ -3,10 +3,9 @@ package nl.workingtalent.bieb.rest;
 import nl.workingtalent.bieb.controller.BoekService;
 import nl.workingtalent.bieb.domein.Boek;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class BoekEndpoint {
@@ -14,9 +13,13 @@ public class BoekEndpoint {
     BoekService boekService;
 
     @GetMapping("/boeken")
-    public String boeken() {
-        System.out.println("Hij doet het");
-        return "Test";
+    public List<Boek> boekenAlles() {
+        return boekService.ophalenAlleBoeken();
+    }
+
+    @GetMapping("/boeken/{id}")
+    public Boek boekenEen(@PathVariable Long id) {
+        return boekService.ophalenBoek(id);
     }
 
     @PostMapping("/boeken")
@@ -24,6 +27,15 @@ public class BoekEndpoint {
         return boekService.opslaan(nieuwBoek);
     }
 
-    Resource
+    @DeleteMapping("/boeken/{id}")
+    public void boekenWeg(@PathVariable Long id) {
+        boekService.verwijderBoek(id);
+    }
+
+    @PutMapping("/boeken/{id}")
+    public Boek updateBoek(@PathVariable Long id, @RequestBody Boek nieuwBoek) {
+        return boekService.updateBoek(id, nieuwBoek);
+    }
+
 }
 

@@ -2,18 +2,40 @@ package nl.workingtalent.bieb.rest;
 
 
 import nl.workingtalent.bieb.controller.UitleningService;
+import nl.workingtalent.bieb.domein.Boek;
+import nl.workingtalent.bieb.domein.Uitlening;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class UitleningEndpoint {
     @Autowired
     UitleningService uitleningService;
 
-    @GetMapping("/uitlening")
-    public String uitlening() {
-        System.out.println("Hij doet het");
-        return "Test";
+    @GetMapping("/uitleningen")
+    public List<Uitlening> uitleningenAlles() {
+        return uitleningService.ophalenAlleUitleningen();
+    }
+
+    @GetMapping("/uitleningen/{id}")
+    public Uitlening uitleningEen(@PathVariable Long id) {
+        return uitleningService.ophalenUitlening(id);
+    }
+
+    @PostMapping("/uitleningen")
+    public Uitlening nieuweUitlening(@RequestBody Uitlening nieuweUitlening) {
+        return uitleningService.opslaan(nieuweUitlening);
+    }
+
+    @DeleteMapping("/uitleningen/{id}")
+    public void uitleningWeg(@PathVariable Long id) {
+        uitleningService.verwijderUitlening(id);
+    }
+
+    @PutMapping("/uitleningen/{id}")
+    public Uitlening updateUitlening(@PathVariable Long id, @RequestBody Uitlening nieuweUitlening) {
+        return uitleningService.updateUitlening(id, nieuweUitlening);
     }
 }
