@@ -1,40 +1,44 @@
 package nl.workingtalent.bieb.domein;
 
-import javax.persistence.*;
-import java.util.Date;
+import com.sun.istack.NotNull;
 
-// TODO Account koppelen
+import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "uitleningen")
 public class Uitlening {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private Date uitleenDatum;
-    private Date inleverDatum;
+    @NotNull
+    private LocalDateTime uitleenDatum;
+    private LocalDateTime inleverDatum;
 
+    @NotNull
     @ManyToOne
     private Boek boek;
 
+    @NotNull
     @ManyToOne
     private Account account;
 
     public Uitlening() {
     }
 
-    public Uitlening(Date uitleenDatum, Date inleverDatum, Boek boek, Account account) {
+    public Uitlening(LocalDateTime uitleenDatum, LocalDateTime inleverDatum, Boek boek, Account account) {
         this.uitleenDatum = uitleenDatum;
         this.inleverDatum = inleverDatum;
         this.boek = boek;
         this.account = account;
     }
 
-    public Uitlening(Date uitleenDatum, Date inleverDatum) {
+    public Uitlening(LocalDateTime uitleenDatum, LocalDateTime inleverDatum) {
         this.uitleenDatum = uitleenDatum;
         this.inleverDatum = inleverDatum;
     }
 
-    public Uitlening(Date uitleenDatum) {
+    public Uitlening(LocalDateTime uitleenDatum) {
         this.uitleenDatum = uitleenDatum;}
 
 
@@ -46,19 +50,19 @@ public class Uitlening {
         this.id = id;
     }
 
-    public Date getUitleenDatum() {
+    public LocalDateTime getUitleenDatum() {
         return uitleenDatum;
     }
 
-    public void setUitleenDatum(Date uitleenDatum) {
+    public void setUitleenDatum(LocalDateTime uitleenDatum) {
         this.uitleenDatum = uitleenDatum;
     }
 
-    public Date getInleverDatum() {
+    public LocalDateTime getInleverDatum() {
         return inleverDatum;
     }
 
-    public void setInleverDatum(Date inleverDatum) {
+    public void setInleverDatum(LocalDateTime inleverDatum) {
         this.inleverDatum = inleverDatum;
     }
 

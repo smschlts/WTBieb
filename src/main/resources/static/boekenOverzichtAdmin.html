@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Bibliotheek WT | Boeken overzicht admin</title>
+    <meta charset="UTF-8">
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+        </style>
+</head>
+        <body>
+            <div id="uitkomst">
+            </div>
+
+            <table>
+                
+                <tr>
+                    <th>titel</th>
+                </tr>
+                <tr>
+                    <td id="titel">
+                    </td>
+                </tr>
+            </table>
+        </body>
+
+
+</html>
+
+
+
+<script>
+    /*
+function apicall(){
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function(){
+            var antwoord = JSON.parse(this.responseText);
+            document.getElementById("uitkomst").innerHTML = antwoord.id;
+        }
+        xhr.open("GET","http://localhost:8082/boeken",true);   // asynchroon
+        xhr.send();
+    }
+    */
+    function apicall2(){
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function(){
+            if(this.readyState == 4){
+                var antwoord = JSON.parse(this.responseText);
+                for(var x = 0 ; x < antwoord.length; x++){
+                document.getElementById("titel").innerHTML += antwoord[x].titel+"<br>";
+            }
+        }
+    }
+        xhr.open("GET","http://localhost:8082/boeken",true);   // asynchroon
+        xhr.send();
+     
+    }
+    window.onload=apicall2();
+
+
+
+
+
+        
+
+/*
+// Get player's mastery stats from LoL API
+function boekenOverzicht(id, titel, auteur) {
+  return new Promise(resolve => {
+    var masteryStats = "/api/" + region + "/" + summonerName // custom API proxy with server-side request handling
+    //var masteryStats = "https://euw1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/{encryptedSummonerId}?api={apiKey}"  // direct connection to RIOT API
+    $.getJSON(masteryStats, function(masteryList) {
+      for (var x in masteryList) {
+        var championId = masteryList[x].championId;
+        var championName = getChampionName(nameList, championId);
+        var championLevel = masteryList[x].championLevel;
+        var championPoints = masteryList[x].championPoints;
+        var pointsToNextLevel = masteryList[x].championPointsUntilNextLevel;
+        var chestGranted = masteryList[x].chestGranted;
+        var chestImage;
+        if (chestGranted) {
+          chestImage = "<img src='images/hextech-chest.png' width='25px'></img>";
+        } else {
+          chestImage = "<img src='images/hextech-chest-silhouette.png' width='25px'></img>";
+        }
+        $(championsList).append(
+          "<tr id='" + championId + "'>" + 
+          "<td>" + championName + "</td>" +
+          "<td>" + championLevel + "</td>" +
+          "<td>" + championPoints + "</td>" +
+          "<td>" + pointsToNextLevel + "</td>" +
+          "<td data-chest-value='" + chestGranted + "'>" + chestImage + "</td>" +
+          "</tr>"
+          )
+      }
+      resolve({masteryList});
+    })
+  })
+}
+
+// Get the latest version of the JSON file that contains information
+function getLatestVersion(region) {
+  return new Promise(resolve => {
+    var versionsUrl = "https://ddragon.leagueoflegends.com/realms/" + region + ".json";
+    $.getJSON(versionsUrl, function(file) {
+      var versionNumber = file.n.champion.slice(0,13);
+      resolve({versionNumber});
+    })
+  })
+}
+*/
+
+</script>
