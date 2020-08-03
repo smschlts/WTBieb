@@ -2,7 +2,6 @@ package nl.workingtalent.bieb.controller;
 
 
 import nl.workingtalent.bieb.domein.Account;
-import nl.workingtalent.bieb.domein.Boek;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,8 +13,6 @@ import java.util.List;
 public class AccountService {
     @Autowired
     AccountRepository accountRepository;
-
-    //Hier komen alle methodes die met de database te maken hebben.
 
     public Account opslaan(Account nieuwAccount) {
         System.out.println("Account opslaan");
@@ -37,7 +34,6 @@ public class AccountService {
         accountRepository.deleteById(id);
     }
 
-    //TODO ???
     public Account updateAccount(long id, Account nieuwAccount) {
         System.out.println("Update account " + id);
         Account bestaandAccount = accountRepository.findById(id).orElse(null);

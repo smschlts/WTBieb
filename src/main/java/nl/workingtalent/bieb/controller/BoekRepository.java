@@ -4,9 +4,7 @@ import nl.workingtalent.bieb.domein.Boek;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
 
-
 @Component
 public interface BoekRepository extends CrudRepository<Boek, Long> {
-
 
 }
