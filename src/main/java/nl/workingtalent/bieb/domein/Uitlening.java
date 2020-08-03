@@ -6,6 +6,7 @@ import java.util.Date;
 // TODO Account koppelen
 
 @Entity
+@Table(name = "uitleningen")
 public class Uitlening {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
