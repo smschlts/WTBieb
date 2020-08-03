@@ -1,5 +1,7 @@
 package nl.workingtalent.bieb.domein;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -11,12 +13,15 @@ public class Uitlening {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @NotNull
     private LocalDateTime uitleenDatum;
     private LocalDateTime inleverDatum;
 
+    @NotNull
     @ManyToOne
     private Boek boek;
 
+    @NotNull
     @ManyToOne
     private Account account;
 

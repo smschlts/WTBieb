@@ -1,5 +1,7 @@
 package nl.workingtalent.bieb.domein;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 
 @Entity
@@ -7,12 +9,14 @@ import javax.persistence.*;
 public class Boek {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
     private long id;
     private long wtId;
+    @NotNull
     private String isbn;
+    @NotNull
     private String titel;
     private String auteur;
+    @NotNull
     private boolean status;
     private String categorie;
     private String omslag;
