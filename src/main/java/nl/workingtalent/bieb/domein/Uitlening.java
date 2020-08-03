@@ -1,7 +1,5 @@
 package nl.workingtalent.bieb.domein;
 
-import com.sun.xml.bind.v2.TODO;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -53,4 +51,5 @@ public class Uitlening {
     public void setInleverDatum(Date inleverDatum) {
         this.inleverDatum = inleverDatum;
     }
+
 }
