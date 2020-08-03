@@ -112,3 +112,40 @@ function accountVerwijderen(accountID) {
     xhr.open("DELETE", "http://localhost:8082/accounts/" + accountID, true);
     xhr.send();
 }
+
+// boekenOverzichtAdmin.html
+function boekenOverzichtAdmin(){
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function(){
+        if(this.readyState == 4){
+            var antwoord = JSON.parse(this.responseText);
+            for(var x = 0 ; x < antwoord.length; x++){
+              var idOverzicht = antwoord[x].id;
+              var auteurOverzicht = antwoord[x].auteur;
+              var categorieOverzicht = antwoord[x].categorie;
+              var isbnOverzicht = antwoord[x].isbn;
+              var omschrijvingOverzicht = antwoord[x].omschrijving;
+              var omslagOverzicht = antwoord[x].omslag;
+              var statusOverzicht = antwoord[x].status;
+              var titelOverzicht = antwoord[x].titel;
+              var wtidOverzicht = antwoord[x].wtid;
+
+              $(boekenOverzicht).append(
+                    "<tr id='" + idOverzicht + "'>" +
+                    "<td>" + auteurOverzicht + "</td>" +
+                    "<td>" + categorieOverzicht + "</td>" +
+                    "<td>" + isbnOverzicht + "</td>" +
+                    "<td>" + omschrijvingOverzicht + "</td>" +
+                    "<td>" + omslagOverzicht + "</td>" +
+                    "<td>" + statusOverzicht + "</td>" +
+                    "<td>" + titelOverzicht + "</td>" +
+                    "<td>" + wtidOverzicht + "</td>" +
+                    "</tr>"
+                    )
+            }
+        }
+    }
+    xhr.open("GET","http://localhost:8082/boeken",true);   // asynchroon
+    xhr.send();
+}
+
