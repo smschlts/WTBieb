@@ -1,52 +1,26 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="nl">
 <head>
     <title>Bibliotheek WT</title>
     <meta charset="UTF-8">
-
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js" defer></script>
 </head>
-
 <body>
 
     <h1>Boek toevoegen</h1>
-    <form onsubmit="return apicallBoekToevoegen();">
-        <label for="ftitel">Titel: </label>
-        <input type="text" id="ftitel"><br>
-        <label for="fauteur">Auteur: </label>
-        <input type="text" id="fauteur"><br>
-        <label for="fisbn">ISBN: </label>
-        <input type="text" id="fisbn"><br>
-        <label for="fcategorie">Categorie: </label>
-        <input type="text" id="fcategorie"><br>
-        <label for="fomschrijving">Omschrijving: </label>
-        <input type="text" id="fomschrijving"><br>
+    <form onsubmit="return boekToevoegen()">
+        <label for="boektitel">Titel: </label>
+        <input type="text" id="boektitel"><br>
+        <label for="boekauteur">Auteur: </label>
+        <input type="text" id="boekauteur"><br>
+        <label for="boekisbn">ISBN: </label>
+        <input type="text" id="boekisbn"><br>
+        <label for="boekcategorie">Categorie: </label>
+        <input type="text" id="boekcategorie"><br>
+        <label for="boekomschrijving">Omschrijving: </label>
+        <input type="text" id="boekomschrijving"><br>
         <input type="submit" value="Toevoegen"></input>
     </form>
 </body>
-
 </html>
-
-<script>
-    function apicallBoekToevoegen() {
-
-        var xhr = new XMLHttpRequest();
-        // xhr.onreadystatechange = function(){
-        //     if(this.readyState == 4){
-        //         console.log("het is gelukt");
-        //     }
-        // }
-        var boek = {};
-        boek.titel = document.getElementById("ftitel").value;
-        boek.auteur = document.getElementById("fauteur").value;
-        boek.isbn = document.getElementById("fisbn").value;
-        boek.categorie = document.getElementById("fcategorie").value;
-        boek.omschrijving = document.getElementById("fomschrijving").value;
-        var boekJSON = JSON.stringify(boek);
-        xhr.open("POST", "http://localhost:8082/boeken", true); // asynchroon
-        xhr.setRequestHeader("Content-Type", "application/json");
-        xhr.send(boekJSON);
-
-        return false;
-    }
-</script>
