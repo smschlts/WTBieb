@@ -1,6 +1,5 @@
 package nl.workingtalent.bieb.rest;
 
-
 import nl.workingtalent.bieb.controller.AccountService;
 import nl.workingtalent.bieb.domein.Account;
 import org.springframework.beans.factory.annotation.Autowired;

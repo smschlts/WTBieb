@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Transactional
@@ -34,7 +33,6 @@ public class BoekService {
           boekRepository.deleteById(id);
      }
 
-     //TODO ???
      public Boek updateBoek(long id, Boek nieuwBoek) {
           System.out.println("Update boek " + id);
           Boek bestaandBoek = boekRepository.findById(id).orElse(null);
@@ -54,6 +52,4 @@ public class BoekService {
                return boekRepository.save(nieuwBoek);
           }
      }
-
-
 }

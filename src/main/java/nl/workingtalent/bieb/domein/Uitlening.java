@@ -5,8 +5,6 @@ import com.sun.istack.NotNull;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-// TODO Account koppelen
-
 @Entity
 @Table(name = "uitleningen")
 public class Uitlening {

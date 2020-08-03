@@ -1,6 +1,5 @@
 package nl.workingtalent.bieb.domein;
 
-
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
@@ -8,7 +7,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "accounts")
 public class Account {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;

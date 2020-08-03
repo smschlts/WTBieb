@@ -36,5 +36,4 @@ public class BoekEndpoint {
     public Boek updateBoek(@PathVariable Long id, @RequestBody Boek nieuwBoek) {
         return boekService.updateBoek(id, nieuwBoek);
     }
-
 }
