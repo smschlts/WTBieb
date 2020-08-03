@@ -13,8 +13,17 @@ public class BoekEndpoint {
     BoekService boekService;
 
     @GetMapping("/boeken")
-    public List<Boek> boekenAlles() {
-        return boekService.ophalenAlleBoeken();
+    public List<Boek> boekenAlles(@RequestParam(required = false) String titel) {
+        if (titel == null) {
+            return boekService.ophalenAlleBoeken();
+        } else {
+            return boekService.ophalenAlleBoekenMetTitel(titel);
+        }
+    }
+
+    @GetMapping("/boeken/beschikbaar")
+    public List<Boek> boekenBeschikbaar() {
+        return boekService.ophalenAlleBoekenMetStatus(true);
     }
 
     @GetMapping("/boeken/{id}")
