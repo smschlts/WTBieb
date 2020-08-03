@@ -13,6 +13,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @SpringBootApplication
@@ -46,7 +49,7 @@ public class BiebApplication {
 			accountRepository.save(ac1);
 			accountRepository.save(ac2);
 
-			Uitlening ul1 = new Uitlening(new Date(2020, 10, 5), new Date(2020, 10, 5), b2, ac2);
+			Uitlening ul1 = new Uitlening(LocalDateTime.of(2019, 7, 19, 15, 05, 30), LocalDateTime.of(2019, 7, 19, 15, 05, 30), b2, ac2);
 			uitleningRepository.save(ul1);
 		};
 
