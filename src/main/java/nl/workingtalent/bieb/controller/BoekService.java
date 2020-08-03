@@ -23,6 +23,15 @@ public class BoekService {
           return (List<Boek>) boekRepository.findAll();
      }
 
+     public List<Boek> ophalenAlleBoekenMetTitel(String titel) {
+          System.out.println("Alle boeken ophalen met in de titel: " + titel);
+          return (List<Boek>) boekRepository.findByTitelContaining(titel);
+     }
+
+     public List<Boek> ophalenAlleBoekenMetStatus(boolean status) {
+          return (List<Boek>) boekRepository.findByStatus(status);
+     }
+
      public Boek ophalenBoek(long id) {
           System.out.println("Haal boek " + id + " op");
           return boekRepository.findById(id).orElse(null);
