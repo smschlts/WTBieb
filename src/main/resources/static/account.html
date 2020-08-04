@@ -2,33 +2,33 @@
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
-    <title>Account</title>
+    <title>Bibliotheek WT | Accountgegevens</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="script.js" defer></script>
 </head>
 <body onload="accountOphalen(3)">
     <div>
+        <button class="float-right">Log out</button>
         <button class="float-right" onclick="document.location = 'index.html'">Home</button>
-        <button class="float-right" >Log out</button>
     </div>
     <div class="flex-container">
         <div class="flex-item">
             <img src="https://freeiconshop.com/wp-content/uploads/edd/person-solid.png">
         </div>
         <div class="flex-item">
-            <h1>Account aanpassen</h1>
-            <form>
-                <label for="naam">Naam: </label>
-                <input type="text" id="naam"><br>
-                <label for="emailadres">E-mailadres: </label>
-                <input type="text" id="emailadres"><br>
-            </form>
+            <h1>Accountgegevens</h1>
+            <table>
+                <tr>
+                    <td id="naam">Naam</td>
+                </tr>
+                <tr>
+                    <td id="emailadres">E-mail</td>
+                </tr>
+            </table>
         </div>
     </div>
     <div>
-        <button onclick="accountToevoegen()">Toevoegen</button>
-        <button onclick="accountAanpassen(3)">Bewerken</button>
-        <button onclick="accountVerwijderen(3)">Verwijderen</button>
+        <button onclick="document.location = 'account-aanpassen.html'">Bewerken</button>
         <button class="float-right" onclick="history.back()">Terug</button>
     </div>
 </body>
