@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-    <title>Bibliotheek WT</title>
     <meta charset="UTF-8">
+    <title>Bibliotheek WT | Boek toevoegen</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="script.js" defer></script>
 </head>
@@ -12,7 +12,8 @@
         <button class="float-right" onclick="document.location = 'index.html'">Home</button>
     </div>
     <h1>Boek toevoegen</h1>
-    <form onsubmit="return boekToevoegen()">
+    <div>
+    <form onsubmit="boekToevoegen()">
         <label for="boektitel">Titel: </label>
         <input type="text" id="boektitel"><br>
         <label for="boekauteur">Auteur: </label>
@@ -25,8 +26,9 @@
         <input type="text" id="boekomschrijving"><br>
         <input type="submit" value="Toevoegen"></input>
     </form>
+    </div>
     <div>
-        <button class="float-right" onclick="document.location = 'boekenOverzichtAdmin.html'">Overzicht</button>
+        <button class="float-right" onclick="document.location = 'boeken-overzicht-admin.html'">Overzicht</button>
         <button class="float-right" onclick="history.back()">Terug</button>
     </div>
 </body>
