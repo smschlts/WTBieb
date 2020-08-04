@@ -11,6 +11,7 @@ function boekToevoegen() {
     xhr.open("POST", "http://localhost:8082/boeken", true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(boekJSON);
+    return false;
 }
 
 // boek.html
@@ -78,7 +79,7 @@ function accountToevoegen() {
     xhr.open("POST", "http://localhost:8082/accounts", true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(accountJSON);
-    return false
+    return false;
 }
 
 function accountOphalen(accountID) {
