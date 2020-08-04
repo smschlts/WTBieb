@@ -9,6 +9,7 @@
 <body>
     <div>
         <button class="float-right">Log out</button>
+        <button class="float-right" onclick="document.location = 'index.html'">Home</button>
     </div>
     <h1>Boek toevoegen</h1>
     <form onsubmit="return boekToevoegen()">
@@ -24,5 +25,9 @@
         <input type="text" id="boekomschrijving"><br>
         <input type="submit" value="Toevoegen"></input>
     </form>
+    <div>
+        <button class="float-right" onclick="document.location = 'boekenOverzichtAdmin.html'">Overzicht</button>
+        <button class="float-right" onclick="history.back()">Terug</button>
+    </div>
 </body>
 </html>
