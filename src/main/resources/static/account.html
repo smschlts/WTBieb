@@ -7,6 +7,10 @@
     <script src="script.js" defer></script>
 </head>
 <body onload="accountOphalen(3)">
+    <div>
+        <button class="float-right" onclick="document.location = 'index.html'">Home</button>
+        <button class="float-right" >Log out</button>
+    </div>
     <div class="flex-container">
         <div class="flex-item">
             <img src="https://freeiconshop.com/wp-content/uploads/edd/person-solid.png">
@@ -25,7 +29,7 @@
         <button onclick="accountToevoegen()">Toevoegen</button>
         <button onclick="accountAanpassen(3)">Bewerken</button>
         <button onclick="accountVerwijderen(3)">Verwijderen</button>
-        <button class="float-right">Terug</button>
+        <button class="float-right" onclick="history.back()">Terug</button>
     </div>
 </body>
 </html>
