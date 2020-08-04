@@ -131,7 +131,7 @@ function boekenOverzichtAdmin(){
               var wtidOverzicht = antwoord[x].wtid;
 
               $(boekenOverzicht).append(
-                    "<tr id='" + idOverzicht + "'>" +
+                    "<tr id='" + idOverzicht + "' onclick=\"window.location='/boek.html?id="+idOverzicht+"';\">" +
                     "<td>" + auteurOverzicht + "</td>" +
                     "<td>" + categorieOverzicht + "</td>" +
                     "<td>" + isbnOverzicht + "</td>" +
