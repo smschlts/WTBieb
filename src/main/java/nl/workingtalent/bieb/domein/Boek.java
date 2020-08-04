@@ -1,20 +1,22 @@
 package nl.workingtalent.bieb.domein;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.sun.istack.NotNull;
+
+import javax.persistence.*;
 
 @Entity
+@Table(name = "boeken")
 public class Boek {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
     private long id;
     private long wtId;
+    @NotNull
     private String isbn;
+    @NotNull
     private String titel;
     private String auteur;
+    @NotNull
     private boolean status;
     private String categorie;
     private String omslag;

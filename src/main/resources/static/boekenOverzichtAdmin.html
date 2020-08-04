@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Bibliotheek WT | Boeken overzicht admin</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="script.js" defer></script>
+</head>
+
+<body onload=boekenOverzichtAdmin();>
+    <div>
+        <button class="float-right">Log out</button>
+    </div>
+    <div>
+    <table>
+<!--                Zoekbalk-->
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Auteur</th>
+                <th>Categorie</th>
+                <th>ISBN</th>
+                <th>Omschrijving</th>
+                <th>Omslag</th>
+                <th>Status</th>
+                <th>Titel</th>
+                <th>WT-ID</th>
+            </tr>
+        </thead>
+        <tbody id="boekenOverzicht">
+<!--                    javascript-->
+        </tbody>
+    </table>
+    </div>
+    <div>
+        <button>Bewerken</button>
+        <button>Toewijzen</button>
+        <button class="float-right">Terug</button>
+    </div>
+</body>
+
+</html>

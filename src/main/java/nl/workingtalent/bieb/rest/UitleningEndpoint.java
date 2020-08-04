@@ -1,8 +1,6 @@
 package nl.workingtalent.bieb.rest;
 
-
 import nl.workingtalent.bieb.controller.UitleningService;
-import nl.workingtalent.bieb.domein.Boek;
 import nl.workingtalent.bieb.domein.Uitlening;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

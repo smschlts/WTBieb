@@ -33,7 +33,6 @@ public class UitleningService {
         uitleningRepository.deleteById(id);
     }
 
-    //TODO ???
     public Uitlening updateUitlening(long id, Uitlening nieuweUitlening) {
         System.out.println("Update Uitlening " + id);
         Uitlening bestaandeUitlening = uitleningRepository.findById(id).orElse(null);

@@ -1,0 +1,17 @@
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.flex-item {
+    flex: 50%;
+}
+
+.float-right {
+    float: right;
+}
+
+
+table, th, td {
+    border: 1px solid black;
+}

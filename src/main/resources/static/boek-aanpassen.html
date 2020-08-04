@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Boek aanpassen</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body onload="boekOphalenVoorFormulier(1)">
+    <div>
+        <button class="float-right">Log out</button>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item">
+            <img src="https://vignette.wikia.nocookie.net/harrypotter/images/3/3e/Harry_Potter_and_the_Sorcerer's_Stone_cover.jpg/">
+        </div>
+        <div class="flex-item">
+            <h1>Boek aanpassen</h1>
+            <form onsubmit="return boekAanpassen(1)">
+                <label for="boektitel">Titel: </label>
+                <input type="text" id="boektitel"><br>
+                <label for="boekauteur">Auteur: </label>
+                <input type="text" id="boekauteur"><br>
+                <label for="boekisbn">ISBN: </label>
+                <input type="text" id="boekisbn"><br>
+                <label for="boekcategorie">Categorie: </label>
+                <input type="text" id="boekcategorie"><br>
+                <label for="boekomschrijving">Omschrijving: </label>
+                <input type="text" id="boekomschrijving"><br>
+                <label for="boekworkingtalentid">Working Talent ID: </label>
+                <input type="text" id="boekworkingtalentid"><br>
+                <input type="submit" value="Opslaan"></input>
+            </form>
+        </div>
+    </div>
+    <div>
+        <button class="float-right">Terug</button>
+    </div>
+</body>
+</html>

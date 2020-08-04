@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Account</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body onload="accountOphalen(3)">
+    <div>
+        <button class="float-right">Log out</button>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item">
+            <img src="https://freeiconshop.com/wp-content/uploads/edd/person-solid.png">
+        </div>
+        <div class="flex-item">
+            <h1>Account aanpassen</h1>
+            <form>
+                <label for="naam">Naam: </label>
+                <input type="text" id="naam"><br>
+                <label for="emailadres">E-mailadres: </label>
+                <input type="text" id="emailadres"><br>
+            </form>
+        </div>
+    </div>
+    <div>
+        <button onclick="accountToevoegen()">Toevoegen</button>
+        <button onclick="accountAanpassen(3)">Bewerken</button>
+        <button onclick="accountVerwijderen(3)">Verwijderen</button>
+        <button class="float-right">Terug</button>
+    </div>
+</body>
+</html>
