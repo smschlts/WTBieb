@@ -9,9 +9,10 @@
     <script src="script.js" defer></script>
 </head>
 
-<body onload=boekenOverzichtAdmin();>
+<body onload="boekenOverzichtAdmin()">
     <div>
         <button class="float-right">Log out</button>
+        <button class="float-right" onclick="document.location = 'index.html'">Home</button>
     </div>
     <div>
     <table>
@@ -35,9 +36,10 @@
     </table>
     </div>
     <div>
-        <button>Bewerken</button>
+        <button onclick="document.location = 'boek-toevoegen.html'">Toevoegen</button>
+        <button onclick="document.location = 'boek-aanpassen.html'">Bewerken</button>
         <button>Toewijzen</button>
-        <button class="float-right">Terug</button>
+        <button class="float-right" onclick="history.back()">Terug</button>
     </div>
 </body>
 

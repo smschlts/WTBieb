@@ -1,28 +1,14 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-    <title>Bibliotheek WT</title>
     <meta charset="UTF-8">
+    <title>Bibliotheek WT</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="script.js" defer></script>
 </head>
 <body>
-    <div>
-        <button class="float-right">Log out</button>
-    </div>
-    <h1>Boek toevoegen</h1>
-    <form onsubmit="return boekToevoegen()">
-        <label for="boektitel">Titel: </label>
-        <input type="text" id="boektitel"><br>
-        <label for="boekauteur">Auteur: </label>
-        <input type="text" id="boekauteur"><br>
-        <label for="boekisbn">ISBN: </label>
-        <input type="text" id="boekisbn"><br>
-        <label for="boekcategorie">Categorie: </label>
-        <input type="text" id="boekcategorie"><br>
-        <label for="boekomschrijving">Omschrijving: </label>
-        <input type="text" id="boekomschrijving"><br>
-        <input type="submit" value="Toevoegen"></input>
-    </form>
+    <button onclick="document.location = 'boeken-overzicht-admin.html'">Boekenlijst</button>
+    <button onclick="document.location = 'account.html'">Accountbeheer</button>
+    <button>Uitleenoverzicht</button>
 </body>
 </html>

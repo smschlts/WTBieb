@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Bibliotheek WT | Accountgegevens toevoegen</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div>
+        <button class="float-right">Log out</button>
+        <button class="float-right" onclick="document.location = 'index.html'">Home</button>
+    </div>
+    <h1>Account toevoegen</h1>
+    <form onsubmit="return accountToevoegen()">
+        <label for="naam">Naam: </label>
+        <input type="text" id="naam"><br>
+        <label for="emailadres">E-mailadres: </label>
+        <input type="text" id="emailadres"><br>
+        <input type="radio" id="trainee" name="type-gebruiker" value="trainee">
+        <label for="trainee">Trainee</label><br>
+        <input type="radio" id="medewerker" name="type-gebruiker" value="medewerker">
+        <label for="medewerker">Medewerker</label><br>
+        <input type="submit" value="Toevoegen"></input>
+    </form>
+    <div>
+        <!-- <button class="float-right" onclick="document.location = 'account-overzicht-admin.html'">Overzicht</button> -->
+        <button class="float-right" onclick="history.back()">Terug</button>
+    </div>
+</body>
+</html>

@@ -1,6 +1,5 @@
-// index.html
+// boek-toevoegen.html
 function boekToevoegen() {
-
     var xhr = new XMLHttpRequest();
     var boek = {};
     boek.titel = document.getElementById("boektitel").value;
@@ -9,7 +8,7 @@ function boekToevoegen() {
     boek.categorie = document.getElementById("boekcategorie").value;
     boek.omschrijving = document.getElementById("boekomschrijving").value;
     var boekJSON = JSON.stringify(boek);
-    xhr.open("POST", "http://localhost:8082/boeken", true); // asynchroon
+    xhr.open("POST", "http://localhost:8082/boeken", true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(boekJSON);
     return false;
@@ -80,9 +79,25 @@ function accountToevoegen() {
     xhr.open("POST", "http://localhost:8082/accounts", true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(accountJSON);
+    return false;
 }
 
 function accountOphalen(accountID) {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var account = JSON.parse(this.responseText);
+            document.getElementById("naam").innerHTML = account.naam;
+            document.getElementById("emailadres").innerHTML = account.email;
+            // document.getElementById("avatar").value = account.avatar;
+        }
+    }
+    xhr.open("GET", "http://localhost:8082/accounts/" + accountID, true);
+    xhr.send();
+}
+
+// account-aanpassen.html
+function accountOphalenVoorFormulier(accountID) {
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -117,7 +132,7 @@ function accountVerwijderen(accountID) {
 function boekenOverzichtAdmin(){
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function(){
-        if(this.readyState == 4){
+        if(this.readyState == 4 && this.status == 200){
             var antwoord = JSON.parse(this.responseText);
             for(var x = 0 ; x < antwoord.length; x++){
               var idOverzicht = antwoord[x].id;
@@ -131,7 +146,7 @@ function boekenOverzichtAdmin(){
               var wtidOverzicht = antwoord[x].wtid;
 
               $(boekenOverzicht).append(
-                    "<tr>" +
+                    "<tr id='" + idOverzicht + "' onclick=\"window.location='/boek.html?id="+idOverzicht+"';\">" +
                     "<td>" + idOverzicht + "</td>" +
                     "<td>" + auteurOverzicht + "</td>" +
                     "<td>" + categorieOverzicht + "</td>" +
@@ -146,7 +161,6 @@ function boekenOverzichtAdmin(){
             }
         }
     }
-    xhr.open("GET","http://localhost:8082/boeken",true);   // asynchroon
+    xhr.open("GET","http://localhost:8082/boeken",true);
     xhr.send();
 }
-
