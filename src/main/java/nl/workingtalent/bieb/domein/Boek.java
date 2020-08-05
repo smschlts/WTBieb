@@ -1,8 +1,11 @@
 package nl.workingtalent.bieb.domein;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "boeken")
@@ -21,6 +24,14 @@ public class Boek {
     private String categorie;
     private String omslag;
     private String omschrijving;
+
+    @OneToMany(
+            mappedBy = "boek",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    @JsonIgnoreProperties("boek")
+    private List<Exemplaar> exemplaren = new ArrayList<>();
 
     public Boek() {
     }
@@ -97,5 +108,19 @@ public class Boek {
     }
     public void setOmschrijving(String omschrijving) {
         this.omschrijving = omschrijving;
+    }
+
+    public List<Exemplaar> getExemplaren() {
+        return exemplaren;
+    }
+
+    public void voegExemplaarToe(Exemplaar exemplaar) {
+        exemplaren.add(exemplaar);
+        exemplaar.setBoek(this);
+    }
+
+    public void verwijderExemplaar(Exemplaar exemplaar) {
+        exemplaren.remove(exemplaar);
+        exemplaar.setBoek(null);
     }
 }
