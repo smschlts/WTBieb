@@ -1,10 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Bibliotheek WT | Lening toevoegen</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-
+<div>
+    <button class="float-right">Log out</button>
+    <button class="float-right" onclick="document.location = 'index.html'">Home</button>
+</div>
+<h1>Lening toevoegen</h1>
+<div>
+    <form onsubmit="return leningToevoegen()">
+<!--        <label for="boektitel">Titel: </label>-->
+<!--        <input type="text" id="boektitel"><br>-->
+<!--        <label for="boekauteur">Auteur: </label>-->
+<!--        <input type="text" id="boekauteur"><br>-->
+<!--        <label for="boekisbn">ISBN: </label>-->
+<!--        <input type="text" id="boekisbn"><br>-->
+<!--        <label for="boekcategorie">Categorie: </label>-->
+<!--        <input type="text" id="boekcategorie"><br>-->
+<!--        <label for="boekomschrijving">Omschrijving: </label>-->
+<!--        <input type="text" id="boekomschrijving"><br>-->
+<!--        <input type="submit" value="Toevoegen"></input>-->
+    </form>
+</div>
+<div>
+    <button class="float-right" onclick="document.location = 'lening-overzicht-admin.html'">Overzicht</button>
+    <button class="float-right" onclick="history.back()">Terug</button>
+</div>
 </body>
 </html>
