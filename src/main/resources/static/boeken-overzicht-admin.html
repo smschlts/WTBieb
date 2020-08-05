@@ -16,10 +16,10 @@
     </div>
     <div>
     <table>
-<!--                Zoekbalk-->
+    <!--                Zoekbalk-->
+    <input type="search" id="boekInput" oninput="boekZoekenOverzicht()" placeholder="Voer titel in.."><br>
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Titel</th>
                 <th>Auteur</th>
                 <th>ISBN</th>
@@ -28,6 +28,8 @@
                 <th>Omslag</th>
                 <th>Status</th>
                 <th>Exemplaar</th>
+                <th>Bewerken</th>
+                <th>Verwijderen</th>
             </tr>
         </thead>
         <tbody id="boekenOverzicht">
@@ -37,7 +39,6 @@
     </div>
     <div>
         <button onclick="document.location = 'boek-toevoegen.html'">Toevoegen</button>
-        <button onclick="document.location = 'boek-aanpassen.html'">Bewerken</button>
         <button>Toewijzen</button>
     </div>
 </body>
