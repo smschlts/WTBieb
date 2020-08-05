@@ -15,7 +15,10 @@ function boekToevoegen() {
 }
 
 // boek.html
-function boekOphalen(boekID) {
+function boekOphalen() {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const boekID = urlParams.get('id');
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -82,7 +85,10 @@ function accountToevoegen() {
     return false;
 }
 
-function accountOphalen(accountID) {
+function accountOphalen() {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const accountID = urlParams.get('id');
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -123,12 +129,17 @@ function accountAanpassen(accountID) {
 }
 
 function accountVerwijderen(accountID) {
-    var xhr = new XMLHttpRequest();
+    bevestiging = confirmVerwijderen();
+    if (bevestiging == true) {
+        var xhr = new XMLHttpRequest();
     xhr.open("DELETE", "http://localhost:8082/accounts/" + accountID, true);
     xhr.send();
+    } else {
+        // pass
+    }
 }
 
-// boekenOverzichtAdmin.html
+// boeken-overzicht-admin.html
 function boekenOverzichtAdmin(){
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function(){
@@ -146,16 +157,17 @@ function boekenOverzichtAdmin(){
               var wtidOverzicht = antwoord[x].wtid;
 
               $(boekenOverzicht).append(
-                    "<tr id='" + idOverzicht + "' onclick=\"window.location='/boek.html?id="+idOverzicht+"';\">" +
-                    "<td>" + idOverzicht + "</td>" +
-                    "<td>" + titelOverzicht + "</td>" +
-                    "<td>" + auteurOverzicht + "</td>" +
-                    "<td>" + isbnOverzicht + "</td>" +
-                    "<td>" + categorieOverzicht + "</td>" +
-                    "<td>" + omschrijvingOverzicht + "</td>" +
-                    "<td>" + omslagOverzicht + "</td>" +
-                    "<td>" + statusOverzicht + "</td>" +
-                    "<td>" + wtidOverzicht + "</td>" +
+                    "<tr>" +
+                    "<td id='" + idOverzicht + "' onclick=\"window.location='boek.html?id="+idOverzicht+"';\">" + titelOverzicht + "</td>" +
+                    "<td id='" + idOverzicht + "' onclick=\"window.location='boek.html?id="+idOverzicht+"';\">" + auteurOverzicht + "</td>" +
+                    "<td id='" + idOverzicht + "' onclick=\"window.location='boek.html?id="+idOverzicht+"';\">" + isbnOverzicht + "</td>" +
+                    "<td id='" + idOverzicht + "' onclick=\"window.location='boek.html?id="+idOverzicht+"';\">" + categorieOverzicht + "</td>" +
+                    "<td id='" + idOverzicht + "' onclick=\"window.location='boek.html?id="+idOverzicht+"';\">" + omschrijvingOverzicht + "</td>" +
+                    "<td id='" + idOverzicht + "' onclick=\"window.location='boek.html?id="+idOverzicht+"';\">" + omslagOverzicht + "</td>" +
+                    "<td id='" + idOverzicht + "' onclick=\"window.location='boek.html?id="+idOverzicht+"';\">" + statusOverzicht + "</td>" +
+                    "<td id='" + idOverzicht + "' onclick=\"window.location='boek.html?id="+idOverzicht+"';\">" + wtidOverzicht + "</td>" +
+                    "<td>" + "<button onclick=\"document.location = 'boek-aanpassen.html?id="+idOverzicht+"'\">Bewerken</button>" + "</td>" +
+                    "<td>" + "<button onclick=\"boekVerwijderen("+idOverzicht+");window.location.reload()\">Verwijderen</button>" + "</td>" +
                     "</tr>"
                     )
             }
@@ -163,6 +175,23 @@ function boekenOverzichtAdmin(){
     }
     xhr.open("GET","http://localhost:8082/boeken",true);
     xhr.send();
+}
+
+function boekVerwijderen(boekID) {
+    bevestiging = confirmVerwijderen();
+    if (bevestiging == true) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("DELETE", "http://localhost:8082/boeken/" + boekID, true);
+        xhr.send();
+    } else {
+        // pass
+    }
+    
+}
+
+function confirmVerwijderen() {
+    var bevestiging = confirm("Item verwijderen?");
+    return bevestiging;
 }
 
 // accountOverzicht.html
@@ -178,11 +207,12 @@ function accountOverzichtAdmin(){
               var wachtwoordOverzicht = antwoord[x].wachtwoord;
 
               $(accountOverzicht).append(
-                    "<tr id='" + idOverzicht + "' onclick=\"window.location='/account.html?id="+idOverzicht+"';\">" +
-                    "<td>" + idOverzicht + "</td>" +
-                    "<td>" + naamOverzicht + "</td>" +
-                    "<td>" + emailOverzicht + "</td>" +
-                    "<td>" + wachtwoordOverzicht + "</td>" +
+                    "<tr id='" + idOverzicht + "'>" +
+                    "<td onclick=\"window.location='account.html?id="+idOverzicht+"';\">" + naamOverzicht + "</td>" +
+                    "<td onclick=\"window.location='account.html?id="+idOverzicht+"';\">" + emailOverzicht + "</td>" +
+                    "<td onclick=\"window.location='account.html?id="+idOverzicht+"';\">" + wachtwoordOverzicht + "</td>" +
+                    "<td>" + "<button onclick=\"document.location = 'account-aanpassen.html?id="+idOverzicht+"'\">Bewerken</button>" + "</td>" +
+                    "<td>" + "<button onclick=\"accountVerwijderen("+idOverzicht+");window.location.reload()\">Verwijderen</button>" + "</td>" +
                     "</tr>"
                     )
             }
@@ -192,7 +222,7 @@ function accountOverzichtAdmin(){
     xhr.send();
 }
 
-// uitleningOverzichtAdmin.html
+// uitlening-overzicht-admin.html
 function uitleenOverzichtAdmin(){
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function(){
@@ -217,7 +247,7 @@ function uitleenOverzichtAdmin(){
                     "<td>" + accountNaamOverzicht + "</td>" +
                     "<td>" + uitleningsDatumOverzicht + "</td>" +
                     "<td>" + inleverDatumOverzicht + "</td>" +
-                    "<td>" + "<button onclick=\"document.location = 'lening-aanpassen.html?id="+uitleningID+"'\">Aanpassen</button>" + "</td>" +
+                    "<td>" + "<button onclick=\"document.location = 'lening-aanpassen.html?id="+uitleningID+"'\">Bewerken</button>" + "</td>" +
                     "<td>" + "<button onclick=\"uitleningVerwijderen("+uitleningID+");window.location.reload()\">Verwijderen</button>" + "</td>" +
                     "</tr>"
                     )
@@ -229,9 +259,14 @@ function uitleenOverzichtAdmin(){
 }
 
 function uitleningVerwijderen(uitleningID) {
-    var xhr = new XMLHttpRequest();
+    bevestiging = confirmVerwijderen();
+    if (bevestiging == true) {
+        var xhr = new XMLHttpRequest();
     xhr.open("DELETE", "http://localhost:8082/uitleningen/" + uitleningID, true);
     xhr.send();
+    } else {
+        // pass
+    }
 }
 
 // lening-aanpassen.html
@@ -267,4 +302,89 @@ function leningAanpassen(leningID) {
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(leningJSON);
     return false;
+}
+// zoekfunctie in boeken-overzicht-admin.html
+function boekZoekenOverzicht() {
+    // Declare variables
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("boekInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("boekenOverzicht");
+    tr = table.getElementsByTagName("tr");
+  
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[0]; // tabel kolom id voor "titel"
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  }
+
+  // zoekfunctie in boeken-overzicht-admin.html
+function accountZoekenOverzicht() {
+    // Declare variables
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("accountInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("accountOverzicht");
+    tr = table.getElementsByTagName("tr");
+  
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[0]; // tabel kolom id voor "naam"
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  }
+
+  // boek zoeken in lening-toevoegen.html
+function boekenOverzichtLening(){
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            var antwoord = JSON.parse(this.responseText);
+            for(var x = 0 ; x < antwoord.length; x++){
+              var idOverzicht = antwoord[x].id;
+              var auteurOverzicht = antwoord[x].auteur;
+              var categorieOverzicht = antwoord[x].categorie;
+              var isbnOverzicht = antwoord[x].isbn;
+              var omschrijvingOverzicht = antwoord[x].omschrijving;
+              var omslagOverzicht = antwoord[x].omslag;
+              var statusOverzicht = antwoord[x].status;
+              var titelOverzicht = antwoord[x].titel;
+              var wtidOverzicht = antwoord[x].wtid;
+
+              $(boekenOverzicht).append(
+                    "<tr id='" + idOverzicht + "' onclick=\"boekVeldInvullen("+ titelOverzicht + ")\">" +
+                    "<td>" + titelOverzicht + "</td>" +
+                    "<td>" + auteurOverzicht + "</td>" +
+                    "<td>" + isbnOverzicht + "</td>" +
+                    "<td>" + categorieOverzicht + "</td>" +
+                    "<td>" + omschrijvingOverzicht + "</td>" +
+                    "<td>" + omslagOverzicht + "</td>" +
+                    "<td>" + statusOverzicht + "</td>" +
+                    "<td>" + wtidOverzicht + "</td>" +
+                    "</tr>"
+                    )
+            }
+        }
+    }
+    xhr.open("GET","http://localhost:8082/boeken",true);
+    xhr.send();
+}
+
+function boekVeldInvullen(boekTitel) {
+    document.getElementById("boekid").value = boekTitel;
 }

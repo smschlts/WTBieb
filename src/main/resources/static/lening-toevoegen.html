@@ -4,32 +4,56 @@
     <meta charset="UTF-8">
     <title>Bibliotheek WT | Lening toevoegen</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="script.js" defer></script>
 </head>
-<body>
-<div>
-    <button class="float-right">Log out</button>
-    <button class="float-right" onclick="document.location = 'index.html'">Home</button>
-</div>
-<h1>Lening toevoegen</h1>
-<div>
-    <form onsubmit="return leningToevoegen()">
-<!--        <label for="boektitel">Titel: </label>-->
-<!--        <input type="text" id="boektitel"><br>-->
-<!--        <label for="boekauteur">Auteur: </label>-->
-<!--        <input type="text" id="boekauteur"><br>-->
-<!--        <label for="boekisbn">ISBN: </label>-->
-<!--        <input type="text" id="boekisbn"><br>-->
-<!--        <label for="boekcategorie">Categorie: </label>-->
-<!--        <input type="text" id="boekcategorie"><br>-->
-<!--        <label for="boekomschrijving">Omschrijving: </label>-->
-<!--        <input type="text" id="boekomschrijving"><br>-->
-<!--        <input type="submit" value="Toevoegen"></input>-->
-    </form>
-</div>
-<div>
-    <button class="float-right" onclick="document.location = 'lening-overzicht-admin.html'">Overzicht</button>
-    <button class="float-right" onclick="history.back()">Terug</button>
-</div>
+<body onload="boekenOverzichtLening()">
+    <div>
+        <button class="float-right">Log out</button>
+        <button class="float-right" onclick="document.location = 'index.html'">Home</button>
+    </div>
+    <h1>Lening toevoegen</h1>
+    <div>
+        <form onsubmit="return leningToevoegen()">
+            <table>
+                <!--                Zoekbalk-->
+                <input type="search" id="boekInput" oninput="boekZoekenOverzicht()" placeholder="Voer titel in.."><br>
+                    <thead>
+                        <tr>
+                            <th>Titel</th>
+                            <th>Auteur</th>
+                            <th>ISBN</th>
+                            <th>Categorie</th>
+                            <th>Omschrijving</th>
+                            <th>Omslag</th>
+                            <th>Status</th>
+                            <th>Exemplaar</th>
+                        </tr>
+                    </thead>
+                    <tbody id="boekenOverzicht">
+                    <!--                    javascript-->
+                    </tbody>
+            </table>
+    <!--        <label for="boektitel">Titel: </label>-->
+    <!--        <input type="text" id="boektitel"><br>-->
+    <!--        <label for="boekauteur">Auteur: </label>-->
+    <!--        <input type="text" id="boekauteur"><br>-->
+    <!--        <label for="boekisbn">ISBN: </label>-->
+    <!--        <input type="text" id="boekisbn"><br>-->
+    <!--        <label for="boekcategorie">Categorie: </label>-->
+    <!--        <input type="text" id="boekcategorie"><br>-->
+    <!--        <label for="boekomschrijving">Omschrijving: </label>-->
+    <!--        <input type="text" id="boekomschrijving"><br>-->
+    <!--        <input type="submit" value="Toevoegen"></input>-->
+        </form>
+    </div>
+    <div>
+        <input type="text" name="accountid" value="lenersnaam" disabled> 
+        <input type="text" name="boekid" value="boeknaam" disabled /> 
+    </div>
+    <div>
+        <button class="float-right" onclick="document.location = 'lening-overzicht-admin.html'">Overzicht</button>
+        <button class="float-right" onclick="history.back()">Terug</button>
+    </div>
 </body>
 </html>
