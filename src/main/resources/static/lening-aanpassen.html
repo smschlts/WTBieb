@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="script.js" defer></script>
 </head>
-<body onload="leningOphalenVoorFormulier(5)">
+<body onload="leningOphalenVoorFormulier()">
 <div>
     <button class="float-right">Log out</button>
     <button class="float-right" onclick="document.location = 'index.html'">Home</button>
@@ -14,7 +14,7 @@
 <div class="flex-container">
     <div class="flex-item">
         <h1>Uitlening aanpassen</h1>
-        <form onsubmit="return leningAanpassen(5)">
+        <form onsubmit="return leningAanpassen()">
             <label for="boektitel">Titel: </label>
             <input type="text" id="boektitel"><br>
             <label for="boekauteur">Auteur: </label>
