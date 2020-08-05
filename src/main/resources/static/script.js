@@ -164,3 +164,36 @@ function boekenOverzichtAdmin(){
     xhr.open("GET","http://localhost:8082/boeken",true);
     xhr.send();
 }
+
+// uitleningOverzichtAdmin.html
+function uitleenOverzichtAdmin(){
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            var antwoord = JSON.parse(this.responseText);
+            for(var x = 0 ; x < antwoord.length; x++){
+              var titelOverzicht = antwoord[x].boek.titel;
+              var auteurOverzicht = antwoord[x].boek.auteur;
+              var isbnOverzicht = antwoord[x].boek.isbn;
+          //    var exemplaarOverzicht = antwoord[x].exemplaar;
+              var accountNaamOverzicht = antwoord[x].account.naam;
+              var uitleningsDatumOverzicht = antwoord[x].uitleenDatum;
+              var inleverDatumOverzicht = antwoord[x].inleverDatum;
+
+              $(uitleenOverzicht).append(
+                    "<tr>" +
+                    "<td>" + titelOverzicht + "</td>" +
+                    "<td>" + auteurOverzicht + "</td>" +
+                    "<td>" + isbnOverzicht + "</td>" +
+                  //  "<td>" + exemplaarOverzicht + "</td>" +
+                    "<td>" + accountNaamOverzicht + "</td>" +
+                    "<td>" + uitleningsDatumOverzicht + "</td>" +
+                    "<td>" + inleverDatumOverzicht + "</td>" +
+                    "</tr>"
+                    )
+            }
+        }
+    }
+    xhr.open("GET","http://localhost:8082/uitleningen",true);
+    xhr.send();
+}
