@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Bibliotheek WT | Account overzicht admin</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="script.js" defer></script>
+</head>
+
+<body onload="accountOverzichtAdmin()">
+<div>
+    <button class="float-right">Log out</button>
+    <button class="float-right" onclick="document.location = 'index.html'">Home</button>
+</div>
+<div>
+    <table>
+        <!--                Zoekbalk-->
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Naam</th>
+            <th>Email</th>
+            <th>Wachtwoord</th>
+        </tr>
+        </thead>
+        <tbody id="accountOverzicht">
+        <!--                    javascript-->
+        </tbody>
+    </table>
+</div>
+<div>
+    <button onclick="document.location = 'account-toevoegen.html'">Toevoegen</button>
+    <button onclick="document.location = 'account-aanpassen.html'">Bewerken</button>
+    <button>Toewijzen</button>
+</div>
+</body>
+
+</html>
