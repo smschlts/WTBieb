@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Bibliotheek WT | Uitleen overzicht admin</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="script.js" defer></script>
+</head>
+
+<body onload="uitleenOverzichtAdmin()">
+<div>
+    <button class="float-right">Log out</button>
+    <button class="float-right" onclick="document.location = 'index.html'">Home</button>
+</div>
+<div>
+    <table>
+        <!--                Zoekbalk-->
+        <thead>
+        <tr>
+            <th>Titel</th>
+            <th>Auteur</th>
+            <th>ISBN</th>
+            <!--th>Exemplaar</--th>-->
+            <th>Lener</th>
+            <th>uitlenings Datum</th>
+            <th>Inlever Datum</th>
+        </tr>
+        </thead>
+        <tbody id="uitleenOverzicht">
+        <!--                    javascript-->
+        </tbody>
+    </table>
+</div>
+<div>
+    <button onclick="document.location = 'lening-toevoegen.html'">Toevoegen</button>
+    <button onclick="document.location = 'lening-aanpassen.html'">Bewerken</button>
+    <button class="float-right" onclick="history.back()">Terug</button>
+</div>
+</body>
+
+</html>
