@@ -177,6 +177,7 @@ function uitleenOverzichtAdmin(){
               var isbnOverzicht = antwoord[x].boek.isbn;
           //    var exemplaarOverzicht = antwoord[x].exemplaar;
               var accountNaamOverzicht = antwoord[x].account.naam;
+              var uitleningID = antwoord[x].id;
               var uitleningsDatumOverzicht = antwoord[x].uitleenDatum;
               var inleverDatumOverzicht = antwoord[x].inleverDatum;
 
@@ -189,11 +190,19 @@ function uitleenOverzichtAdmin(){
                     "<td>" + accountNaamOverzicht + "</td>" +
                     "<td>" + uitleningsDatumOverzicht + "</td>" +
                     "<td>" + inleverDatumOverzicht + "</td>" +
+                    "<td>" + "<button onclick=\"document.location = 'lening-aanpassen.html?id="+uitleningID+"'\">Aanpassen</button>" + "</td>" +
+                    "<td>" + "<button onclick=\"uitleningVerwijderen("+uitleningID+");window.location.reload()\">Verwijderen</button>" + "</td>" +
                     "</tr>"
                     )
             }
         }
     }
     xhr.open("GET","http://localhost:8082/uitleningen",true);
+    xhr.send();
+}
+
+function uitleningVerwijderen(uitleningID) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("DELETE", "http://localhost:8082/uitleningen/" + uitleningID, true);
     xhr.send();
 }
