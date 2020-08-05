@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="script.js" defer></script>
 </head>
-<body onload="boekOphalenVoorFormulier(1)">
+<body onload="boekOphalenVoorFormulier()">
     <div>
         <button class="float-right">Log out</button>
         <button class="float-right" onclick="document.location = 'index.html'">Home</button>
@@ -17,7 +17,7 @@
         </div>
         <div class="flex-item">
             <h1>Boek aanpassen</h1>
-            <form onsubmit="return boekAanpassen(1)">
+            <form onsubmit="return boekAanpassen()">
                 <label for="boektitel">Titel: </label>
                 <input type="text" id="boektitel"><br>
                 <label for="boekauteur">Auteur: </label>
@@ -35,7 +35,7 @@
         </div>
     </div>
     <div>
-        <button onclick="boekVerwijderen()">Verwijderen</button>
+        <button onclick="boekVerwijderen();document.location = 'boeken-overzicht-admin.html'">Verwijderen</button>
         <button class="float-right" onclick="document.location = 'boeken-overzicht-admin.html'">Overzicht</button>
     </div>
 </body>

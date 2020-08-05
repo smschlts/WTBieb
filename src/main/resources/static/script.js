@@ -42,7 +42,10 @@ function boekenOverzichtAdmin(){
     xhr.send();
 }
 
-function boekVerwijderen(boekID) {
+function boekVerwijderen() {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const boekID = urlParams.get('id');
     bevestiging = confirmVerwijderen();
     if (bevestiging == true) {
         var xhr = new XMLHttpRequest();
@@ -93,7 +96,10 @@ function boekToevoegen() {
 }
 
 // boek-aanpassen.html
-function boekOphalenVoorFormulier(boekID) {
+function boekOphalenVoorFormulier() {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const boekID = urlParams.get('id');
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -111,7 +117,10 @@ function boekOphalenVoorFormulier(boekID) {
     xhr.send();
 }
 
-function boekAanpassen(boekID) {
+function boekAanpassen() {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const boekID = urlParams.get('id');
     var xhr = new XMLHttpRequest();
     var boek = {};
     boek.titel = document.getElementById("boektitel").value;
@@ -186,7 +195,10 @@ function accountOphalen() {
 }
 
 // account-aanpassen.html
-function accountOphalenVoorFormulier(accountID) {
+function accountOphalenVoorFormulier() {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const accountID = urlParams.get('id');
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -200,7 +212,10 @@ function accountOphalenVoorFormulier(accountID) {
     xhr.send();
 }
 
-function accountAanpassen(accountID) {
+function accountAanpassen() {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const accountID = urlParams.get('id');
     var xhr = new XMLHttpRequest();
     var account = {};
     account.naam = document.getElementById("naam").value;
@@ -211,7 +226,10 @@ function accountAanpassen(accountID) {
     xhr.send(accountJSON);
 }
 
-function accountVerwijderen(accountID) {
+function accountVerwijderen() {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const accountID = urlParams.get('id');
     bevestiging = confirmVerwijderen();
     if (bevestiging == true) {
         var xhr = new XMLHttpRequest();
@@ -258,7 +276,10 @@ function uitleenOverzichtAdmin(){
     xhr.send();
 }
 
-function uitleningVerwijderen(uitleningID) {
+function uitleningVerwijderen() {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const uitleningID = urlParams.get('id');
     bevestiging = confirmVerwijderen();
     if (bevestiging == true) {
         var xhr = new XMLHttpRequest();
@@ -270,7 +291,10 @@ function uitleningVerwijderen(uitleningID) {
 }
 
 // lening-aanpassen.html
-function leningOphalenVoorFormulier(leningID) {
+function leningOphalenVoorFormulier() {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const leningID = urlParams.get('id');
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -288,7 +312,10 @@ function leningOphalenVoorFormulier(leningID) {
     xhr.send();
 }
 
-function leningAanpassen(leningID) {
+function leningAanpassen() {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const leningID = urlParams.get('id');
     var xhr = new XMLHttpRequest();
     var lening = {};
     boek.titel = document.getElementById("boektitel").value;

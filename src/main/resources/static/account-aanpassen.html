@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="script.js" defer></script>
 </head>
-<body onload="accountOphalenVoorFormulier(3)">
+<body onload="accountOphalenVoorFormulier()">
     <div>
         <button class="float-right">Log out</button>
         <button class="float-right" onclick="document.location = 'index.html'">Home</button>
@@ -17,7 +17,7 @@
         </div>
         <div class="flex-item">
             <h1>Account aanpassen</h1>
-            <form onsubmit="return accountAanpassen(3)">
+            <form onsubmit="return accountAanpassen()">
                 <label for="naam">Naam: </label>
                 <input type="text" id="naam"><br>
                 <label for="emailadres">E-mailadres: </label>
@@ -32,7 +32,7 @@
     </div>
     <div>
         <!-- <button class="float-right" onclick="document.location = 'account-overzicht-admin.html'">Overzicht</button> -->
-        <button onclick="accountVerwijderen(3)">Verwijderen</button>
+        <button onclick="accountVerwijderen();document.location = 'account-overzicht.html'">Verwijderen</button>
         <button class="float-right" onclick="document.location = 'account-overzicht.html'">Overzicht</button>
     </div>
 </body>

@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="script.js" defer></script>
 </head>
-<body onload="accountOphalen(3)">
+<body onload="accountOphalen()">
     <div>
         <button class="float-right">Log out</button>
         <button class="float-right" onclick="document.location = 'index.html'">Home</button>
@@ -31,7 +31,7 @@
         </div>
     </div>
     <div>
-        <button onclick="document.location = 'account-aanpassen.html'">Bewerken</button>
+        <button onclick="document.location = 'account-aanpassen.html' + document.location.search">Bewerken</button>
         <button>Toewijzen</button>
         <button class="float-right" onclick="document.location = 'account-overzicht.html'">Overzicht</button>
     </div>
