@@ -2,10 +2,9 @@ package nl.workingtalent.bieb;
 
 import nl.workingtalent.bieb.controller.AccountRepository;
 import nl.workingtalent.bieb.controller.BoekRepository;
+import nl.workingtalent.bieb.controller.ExemplaarRepository;
 import nl.workingtalent.bieb.controller.UitleningRepository;
-import nl.workingtalent.bieb.domein.Account;
-import nl.workingtalent.bieb.domein.Boek;
-import nl.workingtalent.bieb.domein.Uitlening;
+import nl.workingtalent.bieb.domein.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -35,10 +34,22 @@ public class BiebApplication {
 	}
 
 	@Bean
-	public CommandLineRunner demo(BoekRepository boekRepository, AccountRepository accountRepository, UitleningRepository uitleningRepository) {
+	public CommandLineRunner demo(BoekRepository boekRepository, AccountRepository accountRepository,
+								  UitleningRepository uitleningRepository, ExemplaarRepository exemplaarRepository) {
 		return (args) -> {
 			Boek b1 = new Boek(0, "123456", "titeltje", "Auteur", "CatAdventure", "Heel mooi", "Er was eens");
 			Boek b2 = new Boek(0, "1245645656", "Nog eits", "haha", "Iets", "Heel nee", "Erens");
+
+			Exemplaar e1 = new Exemplaar(BoekStatus.BESCHIKBAAR);
+			Exemplaar e2 = new Exemplaar(BoekStatus.BESCHIKBAAR);
+			Exemplaar e3 = new Exemplaar(BoekStatus.BESCHIKBAAR);
+			Exemplaar e4 = new Exemplaar(BoekStatus.BESCHIKBAAR);
+
+			b1.voegExemplaarToe(e1);
+			b1.voegExemplaarToe(e2);
+			b2.voegExemplaarToe(e3);
+			b2.voegExemplaarToe(e4);
+
 			boekRepository.save(b1);
 			boekRepository.save(b2);
 
