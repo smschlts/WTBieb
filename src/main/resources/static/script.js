@@ -204,6 +204,7 @@ function uitleenOverzichtAdmin(){
               var isbnOverzicht = antwoord[x].boek.isbn;
           //    var exemplaarOverzicht = antwoord[x].exemplaar;
               var accountNaamOverzicht = antwoord[x].account.naam;
+              var uitleningID = antwoord[x].id;
               var uitleningsDatumOverzicht = antwoord[x].uitleenDatum;
               var inleverDatumOverzicht = antwoord[x].inleverDatum;
 
@@ -216,6 +217,8 @@ function uitleenOverzichtAdmin(){
                     "<td>" + accountNaamOverzicht + "</td>" +
                     "<td>" + uitleningsDatumOverzicht + "</td>" +
                     "<td>" + inleverDatumOverzicht + "</td>" +
+                    "<td>" + "<button onclick=\"document.location = 'lening-aanpassen.html?id="+uitleningID+"'\">Aanpassen</button>" + "</td>" +
+                    "<td>" + "<button onclick=\"uitleningVerwijderen("+uitleningID+");window.location.reload()\">Verwijderen</button>" + "</td>" +
                     "</tr>"
                     )
             }
@@ -223,4 +226,45 @@ function uitleenOverzichtAdmin(){
     }
     xhr.open("GET","http://localhost:8082/uitleningen",true);
     xhr.send();
+}
+
+function uitleningVerwijderen(uitleningID) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("DELETE", "http://localhost:8082/uitleningen/" + uitleningID, true);
+    xhr.send();
+}
+
+// lening-aanpassen.html
+function leningOphalenVoorFormulier(leningID) {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var lening = JSON.parse(this.responseText);
+            document.getElementById("boektitel").value = lening.boek.titel;
+            document.getElementById("boekauteur").value = lening.boek.auteur;
+            document.getElementById("boekisbn").value = lening.boek.isbn;
+            document.getElementById("AccountNaam").value =  lening.account.naam;
+            document.getElementById("UitleenDatum").value = lening.uitleenDatum;
+            document.getElementById("InleverDatum").value = lening.inleverDatum;
+
+        }
+    }
+    xhr.open("GET", "http://localhost:8082/uitleningen/" + leningID, true);
+    xhr.send();
+}
+
+function leningAanpassen(leningID) {
+    var xhr = new XMLHttpRequest();
+    var lening = {};
+    boek.titel = document.getElementById("boektitel").value;
+    boek.auteur = document.getElementById("boekauteur").value;
+    boek.isbn = document.getElementById("boekisbn").value;
+    account.naam = document.getElementById("AccountNaam").value;
+    uitleenDatum = document.getElementById("UitleenDatum").value;
+    inleverDatum = document.getElementById("InleverDatum").value;
+    var leningJSON = JSON.stringify(lening);
+    xhr.open("PUT", "http://localhost:8082/uitleningen/" + leningID, true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send(leningJSON);
+    return false;
 }
