@@ -148,13 +148,13 @@ function boekenOverzichtAdmin(){
               $(boekenOverzicht).append(
                     "<tr id='" + idOverzicht + "' onclick=\"window.location='/boek.html?id="+idOverzicht+"';\">" +
                     "<td>" + idOverzicht + "</td>" +
+                    "<td>" + titelOverzicht + "</td>" +
                     "<td>" + auteurOverzicht + "</td>" +
-                    "<td>" + categorieOverzicht + "</td>" +
                     "<td>" + isbnOverzicht + "</td>" +
+                    "<td>" + categorieOverzicht + "</td>" +
                     "<td>" + omschrijvingOverzicht + "</td>" +
                     "<td>" + omslagOverzicht + "</td>" +
                     "<td>" + statusOverzicht + "</td>" +
-                    "<td>" + titelOverzicht + "</td>" +
                     "<td>" + wtidOverzicht + "</td>" +
                     "</tr>"
                     )
@@ -162,6 +162,33 @@ function boekenOverzichtAdmin(){
         }
     }
     xhr.open("GET","http://localhost:8082/boeken",true);
+    xhr.send();
+}
+
+// accountOverzicht.html
+function accountOverzichtAdmin(){
+  var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            var antwoord = JSON.parse(this.responseText);
+            for(var x = 0 ; x < antwoord.length; x++){
+              var idOverzicht = antwoord[x].id;
+              var naamOverzicht = antwoord[x].naam;
+              var emailOverzicht = antwoord[x].email;
+              var wachtwoordOverzicht = antwoord[x].wachtwoord;
+
+              $(accountOverzicht).append(
+                    "<tr id='" + idOverzicht + "' onclick=\"window.location='/account.html?id="+idOverzicht+"';\">" +
+                    "<td>" + idOverzicht + "</td>" +
+                    "<td>" + naamOverzicht + "</td>" +
+                    "<td>" + emailOverzicht + "</td>" +
+                    "<td>" + wachtwoordOverzicht + "</td>" +
+                    "</tr>"
+                    )
+            }
+        }
+    }
+    xhr.open("GET","http://localhost:8082/accounts",true);
     xhr.send();
 }
 
