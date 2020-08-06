@@ -399,7 +399,7 @@ function boekenOverzichtLening(){
               var wtidOverzicht = antwoord[x].wtid;
 
               $(boekenOverzicht).append(
-                    "<tr id='" + idOverzicht + "' onclick=\"boekVeldInvullen("+ titelOverzicht + ")\">" +
+                    "<tr id='" + idOverzicht + "' onclick=\"boekVeldInvullen('" + idOverzicht + "', '" + titelOverzicht + "')\">" +
                     "<td>" + titelOverzicht + "</td>" +
                     "<td>" + auteurOverzicht + "</td>" +
                     "<td>" + isbnOverzicht + "</td>" +
@@ -417,7 +417,8 @@ function boekenOverzichtLening(){
     xhr.send();
 }
 
-//TODO (werkt nog niet) lening-aanpassen.html
-function boekVeldInvullen(boekTitel) {
-    document.getElementById("boekid").value = boekTitel;
+// voorbeeld lening-toevoegen.html
+function boekVeldInvullen(boekID, boekTitel) {
+    document.getElementById("boekid").value = boekID;
+    document.getElementById("boektitel").value = boekTitel;
 }
