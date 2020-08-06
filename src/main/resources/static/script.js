@@ -20,17 +20,18 @@ function boekenOverzichtAdmin(){
               var statusOverzicht = antwoord[x].status;
               var titelOverzicht = antwoord[x].titel;
               var wtidOverzicht = antwoord[x].wtid;
+              var urlString = " id='" + idOverzicht + "' onclick=\"window.location='boek.html?id=" + idOverzicht + "';\">"
 
               $(boekenOverzicht).append(
                     "<tr>" +
-                    "<td id='" + idOverzicht + "' onclick=\"window.location='boek.html?id="+idOverzicht+"';\">" + titelOverzicht + "</td>" +
-                    "<td id='" + idOverzicht + "' onclick=\"window.location='boek.html?id="+idOverzicht+"';\">" + auteurOverzicht + "</td>" +
-                    "<td id='" + idOverzicht + "' onclick=\"window.location='boek.html?id="+idOverzicht+"';\">" + isbnOverzicht + "</td>" +
-                    "<td id='" + idOverzicht + "' onclick=\"window.location='boek.html?id="+idOverzicht+"';\">" + categorieOverzicht + "</td>" +
-                    "<td id='" + idOverzicht + "' onclick=\"window.location='boek.html?id="+idOverzicht+"';\">" + omschrijvingOverzicht + "</td>" +
-                    "<td id='" + idOverzicht + "' onclick=\"window.location='boek.html?id="+idOverzicht+"';\">" + omslagOverzicht + "</td>" +
-                    "<td id='" + idOverzicht + "' onclick=\"window.location='boek.html?id="+idOverzicht+"';\">" + statusOverzicht + "</td>" +
-                    "<td id='" + idOverzicht + "' onclick=\"window.location='boek.html?id="+idOverzicht+"';\">" + wtidOverzicht + "</td>" +
+                    "<td" + urlString + titelOverzicht + "</td>" +
+                    "<td" + urlString + auteurOverzicht + "</td>" +
+                    "<td" + urlString + isbnOverzicht + "</td>" +
+                    "<td" + urlString + categorieOverzicht + "</td>" +
+                    "<td" + urlString + omschrijvingOverzicht + "</td>" +
+                    "<td" + urlString + omslagOverzicht + "</td>" +
+                    "<td" + urlString + statusOverzicht + "</td>" +
+                    "<td" + urlString + wtidOverzicht + "</td>" +
                     "<td>" + "<button onclick=\"document.location = 'boek-aanpassen.html?id="+idOverzicht+"'\">Bewerken</button>" + "</td>" +
                     "<td>" + "<button onclick=\"boekVerwijderen("+idOverzicht+");window.location.reload()\">Verwijderen</button>" + "</td>" +
                     "</tr>"
@@ -147,14 +148,15 @@ function accountOverzichtAdmin(){
                 var naamOverzicht = antwoord[x].naam;
                 var emailOverzicht = antwoord[x].email;
                 var wachtwoordOverzicht = antwoord[x].wachtwoord;
+                var urlString = " onclick=\"window.location='account.html?id=" + idOverzicht + "';\">"
   
                 $(accountOverzicht).append(
                       "<tr id='" + idOverzicht + "'>" +
-                      "<td onclick=\"window.location='account.html?id="+idOverzicht+"';\">" + naamOverzicht + "</td>" +
-                      "<td onclick=\"window.location='account.html?id="+idOverzicht+"';\">" + emailOverzicht + "</td>" +
-                      "<td onclick=\"window.location='account.html?id="+idOverzicht+"';\">" + wachtwoordOverzicht + "</td>" +
-                      "<td>" + "<button onclick=\"document.location = 'account-aanpassen.html?id="+idOverzicht+"'\">Bewerken</button>" + "</td>" +
-                      "<td>" + "<button onclick=\"accountVerwijderen("+idOverzicht+");window.location.reload()\">Verwijderen</button>" + "</td>" +
+                      "<td" + urlString + naamOverzicht + "</td>" +
+                      "<td" + urlString + emailOverzicht + "</td>" +
+                      "<td" + urlString + wachtwoordOverzicht + "</td>" +
+                      "<td>" + "<button onclick=\"document.location = 'account-aanpassen.html?id=" + idOverzicht + "'\">Bewerken</button>" + "</td>" +
+                      "<td>" + "<button onclick=\"accountVerwijderen(" + idOverzicht + ");window.location.reload()\">Verwijderen</button>" + "</td>" +
                       "</tr>"
                       )
               }
@@ -255,18 +257,20 @@ function uitleenOverzichtAdmin(){
               var uitleningID = antwoord[x].id;
               var uitleningsDatumOverzicht = antwoord[x].uitleenDatum;
               var inleverDatumOverzicht = antwoord[x].inleverDatum;
+          //   var urlString = " onclick=\"window.location='lening-aanpassen.html?id=" + uitleningID + "';\">"
+              var urlString = ">"
 
               $(uitleenOverzicht).append(
                     "<tr>" +
-                    "<td>" + titelOverzicht + "</td>" +
-                    "<td>" + auteurOverzicht + "</td>" +
-                    "<td>" + isbnOverzicht + "</td>" +
-                  //  "<td>" + exemplaarOverzicht + "</td>" +
-                    "<td>" + accountNaamOverzicht + "</td>" +
-                    "<td>" + uitleningsDatumOverzicht + "</td>" +
-                    "<td>" + inleverDatumOverzicht + "</td>" +
-                    "<td>" + "<button onclick=\"document.location = 'lening-aanpassen.html?id="+uitleningID+"'\">Bewerken</button>" + "</td>" +
-                    "<td>" + "<button onclick=\"uitleningVerwijderen("+uitleningID+");window.location.reload()\">Verwijderen</button>" + "</td>" +
+                    "<td" + urlString + titelOverzicht + "</td>" +
+                    "<td" + urlString + auteurOverzicht + "</td>" +
+                    "<td" + urlString + isbnOverzicht + "</td>" +
+                  //  "<td" + urlString + exemplaarOverzicht + "</td>" +
+                    "<td" + urlString + accountNaamOverzicht + "</td>" +
+                    "<td" + urlString + uitleningsDatumOverzicht + "</td>" +
+                    "<td" + urlString + inleverDatumOverzicht + "</td>" +
+                    "<td>" + "<button onclick=\"document.location = 'lening-aanpassen.html?id=" + uitleningID + "'\">Bewerken</button>" + "</td>" +
+                    "<td>" + "<button onclick=\"uitleningVerwijderen(" + uitleningID + ");window.location.reload()\">Verwijderen</button>" + "</td>" +
                     "</tr>"
                     )
             }
@@ -395,7 +399,7 @@ function boekenOverzichtLening(){
               var wtidOverzicht = antwoord[x].wtid;
 
               $(boekenOverzicht).append(
-                    "<tr id='" + idOverzicht + "' onclick=\"boekVeldInvullen("+ titelOverzicht + ")\">" +
+                    "<tr id='" + idOverzicht + "' onclick=\"boekVeldInvullen('" + idOverzicht + "', '" + titelOverzicht + "')\">" +
                     "<td>" + titelOverzicht + "</td>" +
                     "<td>" + auteurOverzicht + "</td>" +
                     "<td>" + isbnOverzicht + "</td>" +
@@ -413,7 +417,8 @@ function boekenOverzichtLening(){
     xhr.send();
 }
 
-//TODO (werkt nog niet) lening-aanpassen.html
-function boekVeldInvullen(boekTitel) {
-    document.getElementById("boekid").value = boekTitel;
+// voorbeeld lening-toevoegen.html
+function boekVeldInvullen(boekID, boekTitel) {
+    document.getElementById("boekid").value = boekID;
+    document.getElementById("boektitel").value = boekTitel;
 }

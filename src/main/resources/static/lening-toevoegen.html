@@ -48,8 +48,16 @@
         </form>
     </div>
     <div>
-        <input type="text" name="accountid" value="lenersnaam" disabled> 
-        <input type="text" name="boekid" value="boeknaam" disabled /> 
+        <form>
+            <label for="accountid">accountID: </label>
+            <input type="text" id="accountnaam" disabled>
+            <input type="hidden" id="accountid">
+            <label for="boektitel">Boektitel: </label>
+            <input type="text" id="boektitel" disabled>
+            <input type="hidden" id="boekid">
+            <input type="submit" value="Toevoegen"></input>
+        </form>
+        
     </div>
     <div>
         <button class="float-right" onclick="document.location = 'lening-overzicht-admin.html'">Overzicht</button>
