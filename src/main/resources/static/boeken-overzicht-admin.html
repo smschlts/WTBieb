@@ -21,17 +21,6 @@
         margin: 50px 0 200px 0;
     }
     
-
-    .zoekbalk {
-        position: relative;
-        left: 50%;
-        transform: translate(-50%, -0);
-        font-size: 120%;
-        border: 1px solid #140f1157;
-        font-weight: 100;
-        margin-bottom: 40px;
-    }
-    
 /* ---------------- BUTTONS ---------------- */
 
     
@@ -44,6 +33,7 @@
         font-weight: 500;
         padding: 0;
     }
+
     .btn {
         text-align: center;
     }
@@ -64,8 +54,26 @@
         transition: .2s;
     }
 
-    .button-table {
-        margin-top: 50px;
+/* ---------------- ZOEKBALK ---------------- */
+
+    .zoeken {
+        margin-bottom: 40px;
+    }
+
+    .zoekbalk {
+        border: 1px solid #140f1157;
+        padding: 4px;
+        font-size: 110%;
+    }
+
+    select {
+        font-weight: 100;
+        padding: 5px;
+        color: #fff;
+        border: none;
+        background-color: #8ec63f;
+        font-size: 110%;
+        margin-left: 10px;
     }
 
 /* ---------------- TABLE ---------------- */
@@ -75,6 +83,7 @@
         border-collapse: collapse;
         border: transparent;
         width: 100%;
+        margin-bottom: 50px;
     }
 
     th, td {
@@ -96,24 +105,16 @@
 
 /* ---------------- COLUMNS ---------------- */
 
-    .hide-column {
-        display: none;
-    }
+    .hide-column {display: none;}
 
     .titel,
     .auteur,
-    .categorie {
-        width: 20%;
-    }
+    .categorie {width: 20%;}
 
-    .isbn {
-        width: 16%;
-    }
+    .isbn {width: 16%;}
 
     .bewerk-verwijder,
-    .status {
-        width: 8%;
-    }
+    .status {width: 8%;}
 
 
 </style>
@@ -127,13 +128,13 @@
         <div>
             <table>
             <!--                Zoekbalk-->
-                <div class="zoekbalk-x">
+                <div class="zoeken">
+                    <input class="zoekbalk" type="search" id="boekInput" oninput="boekZoekenOverzicht()" placeholder="Zoeken...">
                     <select id="boekZoekOpties" onchange="boekZoekenOverzicht()">
                     <option value="titel">Titel</option>
                     <option value="auteur">Auteur</option>
                     <option value="isbn">ISBN</option>
                     </select>
-                    <input class="zoekbalk" type="search" id="boekInput" oninput="boekZoekenOverzicht()" placeholder="Zoeken..."><br>
                 </div>    
                     <thead>
                     <tr>
@@ -146,7 +147,7 @@
                         <th class="status">Status</th>
                         <th class="hide-column">Exemplaar</th>
                         <th class="bewerk-verwijder">Bewerken</th>
-                        <th>Verwijderen</th>
+                        <th class="bewerk-verwijder">Verwijderen</th>
                     </tr>
                 </thead>
                 <tbody id="boekenOverzicht">
@@ -155,8 +156,8 @@
             </table>
         </div>
         <div>
-            <button class="button-green button-table" onclick="document.location = 'boek-toevoegen.html'">Toevoegen</button>
-            <button class="button-green button-table">Toewijzen</button>
+            <button class="button-green" onclick="document.location = 'boek-toevoegen.html'">Toevoegen</button>
+            <button class="button-green">Toewijzen</button>
         </div>
     </div>
 </body>

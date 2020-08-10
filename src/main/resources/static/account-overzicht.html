@@ -9,36 +9,138 @@
     <script src="script.js" defer></script>
 </head>
 
+<style>
+/* ---------------- GENERAL ---------------- */
+
+    .page-content {
+        position: absolute;
+        left: 50%;
+        top: 5%;
+        transform: translate(-50%, 0%);
+        width: 60%;
+        margin: 50px 0 200px 0;
+    }
+
+
+/* ---------------- BUTTONS ---------------- */
+
+    table button {
+        color: #8ec63f;
+        background-color: transparent;
+        text-align: center;
+        font-size: 35px;
+        margin: auto;
+        font-weight: 500;
+        padding: 0;
+    }
+    
+    .btn {
+        text-align: center;
+    }
+
+    .button-green {
+        width: 150px;
+        height: 50px;
+        margin: 5px;
+        color: white;
+        font-weight: 700;
+        padding: 15px 32px;
+        font-size: 14px;
+        background-color: #8ec63f;
+    }
+
+    .button-green:hover {
+        background-color: #7caf34;
+        transition: .2s;
+    }
+
+/* ---------------- ZOEKBALK ---------------- */
+
+    .zoeken {
+        margin-bottom: 40px;
+    }
+
+    .zoekbalk {
+        border: 1px solid #140f1157;
+        padding: 4px;
+        font-size: 110%;
+    }
+
+    select {
+        font-weight: 100;
+        padding: 5px;
+        color: #fff;
+        border: none;
+        background-color: #8ec63f;
+        font-size: 110%;
+        margin-left: 10px;
+    }
+
+/* ---------------- TABLE ---------------- */
+
+table {
+        overflow-x:auto;
+        border-collapse: collapse;
+        border: transparent;
+        width: 100%;
+        margin-bottom: 50px;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #8ec63f;
+        color: white;
+    }
+
+    tr:nth-child(even) {background-color: #cce5a844;}
+
+    tr:hover {
+        background-color: #a5d266af;
+        transition: .2s;
+    }
+
+/* ---------------- COLUMNS ---------------- */
+
+    .bewerk-verwijder {width: 8%;}
+    .hide-column {display: none;}
+
+</style>
+
 <body onload="accountOverzichtAdmin()">
-<div>
-    <button class="float-right">Log out</button>
-    <button class="float-right" onclick="document.location = 'index.html'">Home</button>
-</div>
-<div>
-    <table>
-        <!--                Zoekbalk-->
-        <select id="accountZoekOpties" onchange="accountZoekenOverzicht()">
-            <option value="naam">Naam</option>
-            <option value="email">E-mail</option>
-        </select>
-        <input type="search" id="accountInput" oninput="accountZoekenOverzicht()" placeholder="Zoeken..."><br>
-        <thead>
-        <tr>
-            <th>Naam</th>
-            <th>Email</th>
-            <th>Wachtwoord</th>
-            <th>Bewerken</th>
-            <th>Verwijderen</th>
-        </tr>
-        </thead>
-        <tbody id="accountOverzicht">
-        <!--                    javascript-->
-        </tbody>
-    </table>
-</div>
-<div>
-    <button onclick="document.location = 'account-toevoegen.html'">Toevoegen</button>
-</div>
+    <div>
+        <button class="float-right button-green">Log out</button>
+        <button class="float-right button-green" onclick="document.location = 'index.html'">Home</button>
+    </div>
+    <div class="page-content">
+        <h2>Accountoverzicht</h2>
+        <table>
+            <!--                Zoekbalk-->
+            <div class="zoeken">
+                <input class="zoekbalk" type="search" id="accountInput" oninput="accountZoekenOverzicht()" placeholder="Zoeken...">
+                <select id="accountZoekOpties" onchange="accountZoekenOverzicht()">
+                    <option value="naam">Naam</option>
+                    <option value="email">E-mail</option>
+                </select>    
+            </div>
+            <thead>
+            <tr>
+                <th>Naam</th>
+                <th>Email</th>
+                <th>Wachtwoord</th>
+                <th class="bewerk-verwijder">Bewerken</th>
+                <th class="bewerk-verwijder">Verwijderen</th>
+            </tr>
+            </thead>
+            <tbody id="accountOverzicht">
+            <!--                    javascript-->
+            </tbody>
+        </table>
+        <button class="button-green" onclick="document.location = 'account-toevoegen.html'">Toevoegen</button>
+    </div>
 </body>
 
 </html>
