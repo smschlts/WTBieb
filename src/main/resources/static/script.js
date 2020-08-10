@@ -188,8 +188,8 @@ function accountOverzichtAdmin(){
                       "<td" + urlString + naamOverzicht + "</td>" +
                       "<td" + urlString + emailOverzicht + "</td>" +
                       "<td" + urlString + wachtwoordOverzicht + "</td>" +
-                      "<td>" + "<button onclick=\"document.location = 'account-aanpassen.html?id=" + idOverzicht + "'\">Bewerken</button>" + "</td>" +
-                      "<td>" + "<button onclick=\"accountVerwijderenOverzicht(" + idOverzicht + ");window.location.reload()\">Verwijderen</button>" + "</td>" +
+                      "<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"document.location = 'account-aanpassen.html?id=" + idOverzicht + "'\">&#9998</button>" + "</td>" +
+                      "<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"accountVerwijderenOverzicht(" + idOverzicht + ");window.location.reload()\">&#10006</button>" + "</td>" +
                       "</tr>"
                       )
               }
@@ -332,8 +332,8 @@ function uitleenOverzichtAdmin(){
                     "<td" + urlString + accountNaamOverzicht + "</td>" +
                     "<td" + urlString + uitleningsDatumOverzicht + "</td>" +
                     "<td" + urlString + inleverDatumOverzicht + "</td>" +
-                    "<td>" + "<button onclick=\"document.location = 'lening-aanpassen.html?id=" + uitleningID + "'\">Bewerken</button>" + "</td>" +
-                    "<td>" + "<button onclick=\"uitleningVerwijderenOverzicht(" + uitleningID + ");window.location.reload()\">Verwijderen</button>" + "</td>" +
+                    "<td class=\"bewerk-verwijder\">" + "<button onclick=\"document.location = 'lening-aanpassen.html?id=" + uitleningID + "'\">&#9998</button>" + "</td>" +
+                    "<td class=\"bewerk-verwijder\">" + "<button onclick=\"uitleningVerwijderenOverzicht(" + uitleningID + ");window.location.reload()\">&#10006</button>" + "</td>" +
                     "</tr>"
                     )
             }
