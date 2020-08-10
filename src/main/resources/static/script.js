@@ -24,20 +24,20 @@ function boekenOverzichtAdmin(){
               var statusOverzicht = antwoord[x].status;
               var titelOverzicht = antwoord[x].titel;
               var wtidOverzicht = antwoord[x].wtid;
-              var urlString = " id='" + idOverzicht + "' onclick=\"window.location='boek.html?id=" + idOverzicht + "';\">"
+              var urlString = " id='" + idOverzicht + "' onclick=\"window.location='boek.html?id=" + idOverzicht + "';\""
 
               $(boekenOverzicht).append(
                     "<tr>" +
-                    "<td" + urlString + titelOverzicht + "</td>" +
-                    "<td" + urlString + auteurOverzicht + "</td>" +
-                    "<td" + urlString + isbnOverzicht + "</td>" +
-                    "<td" + urlString + categorieOverzicht + "</td>" +
-                    "<td" + urlString + omschrijvingOverzicht + "</td>" +
-                    "<td" + urlString + omslagOverzicht + "</td>" +
-                    "<td" + urlString + statusOverzicht + "</td>" +
-                    "<td" + urlString + wtidOverzicht + "</td>" +
-                    "<td>" + "<button onclick=\"document.location = 'boek-aanpassen.html?id="+idOverzicht+"'\">Bewerken</button>" + "</td>" +
-                    "<td>" + "<button onclick=\"boekVerwijderenOverzicht("+idOverzicht+");window.location.reload()\">Verwijderen</button>" + "</td>" +
+                    "<td" + urlString + " class=\"titel\">" + titelOverzicht + "</td>" +
+                    "<td" + urlString + " class=\"auteur\">" + auteurOverzicht + "</td>" +
+                    "<td" + urlString + " class=\"isbn\">" + isbnOverzicht + "</td>" +
+                    "<td" + urlString + " class=\"categorie\">" + categorieOverzicht + "</td>" +
+                    "<td" + urlString + " class=\"hide-column\" >" + omschrijvingOverzicht + "</td>" +
+                    "<td" + urlString + " class=\"hide-column\">" + omslagOverzicht + "</td>" +
+                    "<td" + urlString + " class=\"status\">" + statusOverzicht + "</td>" +
+                    "<td" + urlString + " class=\"hide-column\" >" + wtidOverzicht + "</td>" +
+                    "<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"document.location = 'boek-aanpassen.html?id="+idOverzicht+"'\">&#9998;</button>" + "</td>" +
+                    "<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"boekVerwijderenOverzicht("+idOverzicht+");window.location.reload()\">&#10006;</button>" + "</td>" +
                     "</tr>"
                     )
             }
