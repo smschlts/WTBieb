@@ -127,13 +127,15 @@
         <div>
             <table>
             <!--                Zoekbalk-->
-                <select id="boekZoekOpties" onchange="boekZoekenOverzicht()">
+                <div class="zoekbalk-x">
+                    <select id="boekZoekOpties" onchange="boekZoekenOverzicht()">
                     <option value="titel">Titel</option>
                     <option value="auteur">Auteur</option>
                     <option value="isbn">ISBN</option>
-                </select>
-            <input class="zoekbalk" type="search" id="boekInput" oninput="boekZoekenOverzicht()" placeholder="Zoeken..."><br>
-                <thead>
+                    </select>
+                    <input class="zoekbalk" type="search" id="boekInput" oninput="boekZoekenOverzicht()" placeholder="Zoeken..."><br>
+                </div>    
+                    <thead>
                     <tr>
                         <th class="titel">Titel</th>
                         <th class="auteur">Auteur</th>
