@@ -134,6 +134,13 @@ function boekAanpassen() {
     const urlParams = new URLSearchParams(queryString);
     const boekID = urlParams.get('id');
     var xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function(){
+        if(this.readyState == 4) {
+            document.location = 'boeken-overzicht-admin.html';
+        }
+    }
+
     var boek = {};
     boek.titel = document.getElementById("boektitel").value;
     boek.auteur = document.getElementById("boekauteur").value;
@@ -145,7 +152,7 @@ function boekAanpassen() {
     xhr.open("PUT", "http://localhost:8082/boeken/" + boekID, true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(boekJSON);
-    document.location = 'boeken-overzicht-admin.html';
+
     return false;
 }
 
@@ -231,6 +238,13 @@ function accountAanpassen() {
     const urlParams = new URLSearchParams(queryString);
     const accountID = urlParams.get('id');
     var xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function(){
+        if(this.readyState == 4) {
+            document.location = 'account-overzicht.html';
+        }
+    }
+
     var account = {};
     account.naam = document.getElementById("naam").value;
     account.email = document.getElementById("emailadres").value;
@@ -238,7 +252,7 @@ function accountAanpassen() {
     xhr.open("PUT", "http://localhost:8082/accounts/" + accountID, true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(accountJSON);
-    document.location = 'account-overzicht.html';
+
     return false;
 }
 
@@ -362,6 +376,8 @@ function leningOphalenVoorFormulier() {
             document.getElementById("AccountNaam").value =  lening.account.naam;
             document.getElementById("UitleenDatum").value = lening.uitleenDatum;
             document.getElementById("InleverDatum").value = lening.inleverDatum;
+            document.getElementById("BoekId").value = lening.boek.id;
+            document.getElementById("AccountId").value = lening.account.id;
 
         }
     }
@@ -369,27 +385,30 @@ function leningOphalenVoorFormulier() {
     xhr.send();
 }
 
-// TODO: werkt nog niet
 function leningAanpassen() {
+
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const leningID = urlParams.get('id');
     var xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function(){
+        if(this.readyState == 4) {
+            document.location = 'uitleen-overzicht-admin.html';
+        }
+    }
+
     var lening = {};
-    // var boek = {};
-    // var account = {};
-    // lening.boek.id = document.getElementById("BoekId").value;
-    // lening.account.id = document.getElementById("AccountId").value;
-    // lening.boek = boek;
-    // lening.account = account;
-    // account.naam = document.getElementById("AccountNaam").value;
+     lening.boek = {'id' : document.getElementById("BoekId").value };
+     lening.account = {'id' : document.getElementById("AccountId").value };
     lening.uitleenDatum = document.getElementById("UitleenDatum").value;
     lening.inleverDatum = document.getElementById("InleverDatum").value;
     var leningJSON = JSON.stringify(lening);
+    console.log("Put uitvoeren" + leningJSON);
     xhr.open("PUT", "http://localhost:8082/uitleningen/" + leningID, true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(leningJSON);
-    document.location = 'uitleen-overzicht-admin.html';
+
     return false;
 }
 
