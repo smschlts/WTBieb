@@ -9,7 +9,11 @@ function boekenOverzichtAdmin(){
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200){
-            var antwoord = JSON.parse(this.responseText);
+            var antwoord = JSON.parse(this.responseText,
+               function (key, value) {
+                   return (value == null) ? "" : value
+                }
+           );
             for(var x = 0 ; x < antwoord.length; x++){
               var idOverzicht = antwoord[x].id;
               var auteurOverzicht = antwoord[x].auteur;
@@ -167,7 +171,11 @@ function accountOverzichtAdmin(){
     var xhr = new XMLHttpRequest();
       xhr.onreadystatechange = function(){
           if(this.readyState == 4 && this.status == 200){
-              var antwoord = JSON.parse(this.responseText);
+              var antwoord = JSON.parse(this.responseText,
+                 function (key, value) {
+                     return (value == null) ? "" : value
+                  }
+             );
               for(var x = 0 ; x < antwoord.length; x++){
                 var idOverzicht = antwoord[x].id;
                 var naamOverzicht = antwoord[x].naam;
@@ -298,7 +306,11 @@ function uitleenOverzichtAdmin(){
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200){
-            var antwoord = JSON.parse(this.responseText);
+            var antwoord = JSON.parse(this.responseText,
+                function (key, value) {
+                    return (value == null) ? "" : value
+                 }
+            );
             for(var x = 0 ; x < antwoord.length; x++){
               var titelOverzicht = antwoord[x].boek.titel;
               var auteurOverzicht = antwoord[x].boek.auteur;
