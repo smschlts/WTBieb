@@ -9,7 +9,11 @@ function boekenOverzichtAdmin(){
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200){
-            var antwoord = JSON.parse(this.responseText);
+            var antwoord = JSON.parse(this.responseText,
+               function (key, value) {
+                   return (value == null) ? "" : value
+                }
+           );
             for(var x = 0 ; x < antwoord.length; x++){
               var idOverzicht = antwoord[x].id;
               var auteurOverzicht = antwoord[x].auteur;
@@ -94,6 +98,12 @@ function boekOphalen() {
 // boek-toevoegen.html
 function boekToevoegen() {
     var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (this.readyState == 4) {
+            document.location = 'boeken-overzicht-admin.html';
+        }
+    }
+
     var boek = {};
     boek.titel = document.getElementById("boektitel").value;
     boek.auteur = document.getElementById("boekauteur").value;
@@ -134,6 +144,13 @@ function boekAanpassen() {
     const urlParams = new URLSearchParams(queryString);
     const boekID = urlParams.get('id');
     var xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function(){
+        if(this.readyState == 4) {
+            document.location = 'boeken-overzicht-admin.html';
+        }
+    }
+
     var boek = {};
     boek.titel = document.getElementById("boektitel").value;
     boek.auteur = document.getElementById("boekauteur").value;
@@ -145,6 +162,7 @@ function boekAanpassen() {
     xhr.open("PUT", "http://localhost:8082/boeken/" + boekID, true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(boekJSON);
+
     return false;
 }
 
@@ -153,7 +171,11 @@ function accountOverzichtAdmin(){
     var xhr = new XMLHttpRequest();
       xhr.onreadystatechange = function(){
           if(this.readyState == 4 && this.status == 200){
-              var antwoord = JSON.parse(this.responseText);
+              var antwoord = JSON.parse(this.responseText,
+                 function (key, value) {
+                     return (value == null) ? "" : value
+                  }
+             );
               for(var x = 0 ; x < antwoord.length; x++){
                 var idOverzicht = antwoord[x].id;
                 var naamOverzicht = antwoord[x].naam;
@@ -180,6 +202,12 @@ function accountOverzichtAdmin(){
 // account.html
 function accountToevoegen() {
     var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (this.readyState == 4) {
+            document.location = 'account-overzicht.html';
+        }
+    }
+
     var account = {};
     account.naam = document.getElementById("naam").value;
     account.email = document.getElementById("emailadres").value;
@@ -230,6 +258,13 @@ function accountAanpassen() {
     const urlParams = new URLSearchParams(queryString);
     const accountID = urlParams.get('id');
     var xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function(){
+        if(this.readyState == 4) {
+            document.location = 'account-overzicht.html';
+        }
+    }
+
     var account = {};
     account.naam = document.getElementById("naam").value;
     account.email = document.getElementById("emailadres").value;
@@ -237,6 +272,7 @@ function accountAanpassen() {
     xhr.open("PUT", "http://localhost:8082/accounts/" + accountID, true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(accountJSON);
+
     return false;
 }
 
@@ -270,7 +306,11 @@ function uitleenOverzichtAdmin(){
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200){
-            var antwoord = JSON.parse(this.responseText);
+            var antwoord = JSON.parse(this.responseText,
+                function (key, value) {
+                    return (value == null) ? "" : value
+                 }
+            );
             for(var x = 0 ; x < antwoord.length; x++){
               var titelOverzicht = antwoord[x].boek.titel;
               var auteurOverzicht = antwoord[x].boek.auteur;
@@ -328,6 +368,27 @@ function uitleningVerwijderen() {
     }
 }
 
+//lening-toevoegen.html
+function leningToevoegen() {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (this.readyState == 4) {
+            document.location = 'uitleen-overzicht-admin.html';
+        }
+    }
+
+    var lening = {};
+    lening.account = { "id" : document.getElementById("accountid").value };
+    lening.boek = { "id" : document.getElementById("boekid").value };
+    lening.uitleenDatum = document.getElementById("uitleendatum").value;
+    var leningJSON = JSON.stringify(lening);
+    console.log(leningJSON);
+    xhr.open("POST", "http://localhost:8082/uitleningen", true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send(leningJSON);
+    return false;
+}
+
 // lening-aanpassen.html
 function leningOphalenVoorFormulier() {
     const queryString = window.location.search;
@@ -343,6 +404,8 @@ function leningOphalenVoorFormulier() {
             document.getElementById("AccountNaam").value =  lening.account.naam;
             document.getElementById("UitleenDatum").value = lening.uitleenDatum;
             document.getElementById("InleverDatum").value = lening.inleverDatum;
+            document.getElementById("BoekId").value = lening.boek.id;
+            document.getElementById("AccountId").value = lening.account.id;
 
         }
     }
@@ -351,21 +414,29 @@ function leningOphalenVoorFormulier() {
 }
 
 function leningAanpassen() {
+
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const leningID = urlParams.get('id');
     var xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function(){
+        if(this.readyState == 4) {
+            document.location = 'uitleen-overzicht-admin.html';
+        }
+    }
+
     var lening = {};
-    boek.titel = document.getElementById("boektitel").value;
-    boek.auteur = document.getElementById("boekauteur").value;
-    boek.isbn = document.getElementById("boekisbn").value;
-    account.naam = document.getElementById("AccountNaam").value;
-    uitleenDatum = document.getElementById("UitleenDatum").value;
-    inleverDatum = document.getElementById("InleverDatum").value;
+     lening.boek = {'id' : document.getElementById("BoekId").value };
+     lening.account = {'id' : document.getElementById("AccountId").value };
+    lening.uitleenDatum = document.getElementById("UitleenDatum").value;
+    lening.inleverDatum = document.getElementById("InleverDatum").value;
     var leningJSON = JSON.stringify(lening);
+    console.log("Put uitvoeren" + leningJSON);
     xhr.open("PUT", "http://localhost:8082/uitleningen/" + leningID, true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(leningJSON);
+
     return false;
 }
 
@@ -377,10 +448,26 @@ function boekZoekenOverzicht() {
     filter = input.value.toUpperCase();
     table = document.getElementById("boekenOverzicht");
     tr = table.getElementsByTagName("tr");
+
+    var zoekIndex = 0;
+    switch(document.getElementById("boekZoekOpties").value) {
+        case "titel":
+            zoekIndex = 0;
+            break;
+       case "auteur":
+           zoekIndex = 1;
+           break;
+       case "isbn":
+           zoekIndex = 2;
+           break;
+       default:
+            zoekIndex = 0;
+            break;
+    }
   
     // Loop through all table rows, and hide those who don't match the search query
     for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName("td")[0]; // tabel kolom id voor "titel"
+      td = tr[i].getElementsByTagName("td")[zoekIndex]; // tabel kolom id voor "titel"
       if (td) {
         txtValue = td.textContent || td.innerText;
         if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -400,10 +487,71 @@ function accountZoekenOverzicht() {
     filter = input.value.toUpperCase();
     table = document.getElementById("accountOverzicht");
     tr = table.getElementsByTagName("tr");
+
+    var zoekIndex = 0;
+    switch(document.getElementById("accountZoekOpties").value) {
+        case "naam":
+            zoekIndex = 0;
+            break;
+       case "email":
+           zoekIndex = 1;
+           break;
+       default:
+            zoekIndex = 0;
+            break;
+    }
   
     // Loop through all table rows, and hide those who don't match the search query
     for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName("td")[0]; // tabel kolom id voor "naam"
+      td = tr[i].getElementsByTagName("td")[zoekIndex]; // tabel kolom id voor "naam"
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  }
+
+// zoekfunctie in account-overzicht.html
+function uitleningZoekenOverzicht() {
+    // Declare variables
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("uitleningInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("uitleenOverzicht");
+    tr = table.getElementsByTagName("tr");
+
+    var zoekIndex = 0;
+    switch(document.getElementById("uitleningZoekOpties").value) {
+        case "titel":
+            zoekIndex = 0;
+            break;
+        case "auteur":
+            zoekIndex = 1;
+            break;
+        case "isbn":
+            zoekIndex = 2;
+            break;
+        case "lener":
+            zoekIndex = 3;
+            break;
+        case "uitleendatum":
+            zoekIndex = 4;
+            break;
+        case "inleverdatum":
+            zoekIndex = 5;
+            break;
+        default:
+            zoekIndex = 0;
+            break;
+    }
+
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[zoekIndex]; // tabel kolom id voor "naam"
       if (td) {
         txtValue = td.textContent || td.innerText;
         if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -451,8 +599,38 @@ function boekenOverzichtLening(){
     xhr.send();
 }
 
+function accountOverzichtLening(){
+    var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function(){
+          if(this.readyState == 4 && this.status == 200){
+              var antwoord = JSON.parse(this.responseText);
+              for(var x = 0 ; x < antwoord.length; x++){
+                var idOverzicht = antwoord[x].id;
+                var naamOverzicht = antwoord[x].naam;
+                var emailOverzicht = antwoord[x].email;
+                // var wachtwoordOverzicht = antwoord[x].wachtwoord;
+  
+                $(accountOverzicht).append(
+                      "<tr id='" + idOverzicht + "' onclick=\"accountVeldInvullen('" + idOverzicht + "', '" + naamOverzicht + "')\">" +
+                      "<td>" + naamOverzicht + "</td>" +
+                      "<td>" + emailOverzicht + "</td>" +
+                    //   "<td" + urlString + wachtwoordOverzicht + "</td>" +
+                      "</tr>"
+                      )
+              }
+          }
+      }
+      xhr.open("GET","http://localhost:8082/accounts",true);
+      xhr.send();
+  }
+
 // voorbeeld lening-toevoegen.html
 function boekVeldInvullen(boekID, boekTitel) {
     document.getElementById("boekid").value = boekID;
     document.getElementById("boektitel").value = boekTitel;
+}
+
+function accountVeldInvullen(accountID, accountNaam) {
+    document.getElementById("accountid").value = accountID;
+    document.getElementById("accountnaam").value = accountNaam;
 }

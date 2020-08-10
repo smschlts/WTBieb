@@ -3,7 +3,7 @@ package nl.workingtalent.bieb.domein;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "uitleningen")
@@ -12,8 +12,8 @@ public class Uitlening {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @NotNull
-    private LocalDateTime uitleenDatum;
-    private LocalDateTime inleverDatum;
+    private LocalDate uitleenDatum;
+    private LocalDate inleverDatum;
 
     @NotNull
     @ManyToOne
@@ -26,19 +26,19 @@ public class Uitlening {
     public Uitlening() {
     }
 
-    public Uitlening(LocalDateTime uitleenDatum, LocalDateTime inleverDatum, Boek boek, Account account) {
+    public Uitlening(LocalDate uitleenDatum, LocalDate inleverDatum, Boek boek, Account account) {
         this.uitleenDatum = uitleenDatum;
         this.inleverDatum = inleverDatum;
         this.boek = boek;
         this.account = account;
     }
 
-    public Uitlening(LocalDateTime uitleenDatum, LocalDateTime inleverDatum) {
+    public Uitlening(LocalDate uitleenDatum, LocalDate inleverDatum) {
         this.uitleenDatum = uitleenDatum;
         this.inleverDatum = inleverDatum;
     }
 
-    public Uitlening(LocalDateTime uitleenDatum) {
+    public Uitlening(LocalDate uitleenDatum) {
         this.uitleenDatum = uitleenDatum;}
 
 
@@ -50,19 +50,19 @@ public class Uitlening {
         this.id = id;
     }
 
-    public LocalDateTime getUitleenDatum() {
+    public LocalDate getUitleenDatum() {
         return uitleenDatum;
     }
 
-    public void setUitleenDatum(LocalDateTime uitleenDatum) {
+    public void setUitleenDatum(LocalDate uitleenDatum) {
         this.uitleenDatum = uitleenDatum;
     }
 
-    public LocalDateTime getInleverDatum() {
+    public LocalDate getInleverDatum() {
         return inleverDatum;
     }
 
-    public void setInleverDatum(LocalDateTime inleverDatum) {
+    public void setInleverDatum(LocalDate inleverDatum) {
         this.inleverDatum = inleverDatum;
     }
 
