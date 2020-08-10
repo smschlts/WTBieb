@@ -8,38 +8,154 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="script.js" defer></script>
 </head>
+<style>
 
+/* ---------------- GENERAL ---------------- */
+    
+    .page-content {
+        position: absolute;
+        left: 50%;
+        top: 5%;
+        transform: translate(-50%, 0%);
+        width: 80%;
+        margin: 50px 0 200px 0;
+    }
+    
+
+    .zoekbalk {
+        position: relative;
+        left: 50%;
+        transform: translate(-50%, -0);
+        font-size: 120%;
+        border: 1px solid #140f1157;
+        font-weight: 100;
+        margin-bottom: 40px;
+    }
+    
+/* ---------------- BUTTONS ---------------- */
+
+    
+    table button {
+        color: #8ec63f;
+        background-color: transparent;
+        text-align: center;
+        font-size: 35px;
+        margin: auto;
+        font-weight: 500;
+        padding: 0;
+    }
+    .btn {
+        text-align: center;
+    }
+
+    .button-green {
+        width: 150px;
+        height: 50px;
+        margin: 5px;
+        color: white;
+        font-weight: 700;
+        padding: 15px 32px;
+        font-size: 14px;
+        background-color: #8ec63f;
+    }
+
+    .button-green:hover {
+        background-color: #7caf34;
+        transition: .2s;
+    }
+
+    .button-table {
+        margin-top: 50px;
+    }
+
+/* ---------------- TABLE ---------------- */
+
+    table {
+        overflow-x:auto;
+        border-collapse: collapse;
+        border: transparent;
+        width: 100%;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #8ec63f;
+        color: white;
+    }
+
+    tr:nth-child(even) {background-color: #cce5a844;}
+
+    tr:hover {
+        background-color: #a5d266af;
+        transition: .2s;
+    }
+
+/* ---------------- COLUMNS ---------------- */
+
+    .hide-column {
+        display: none;
+    }
+
+    .titel,
+    .auteur,
+    .categorie {
+        width: 20%;
+    }
+
+    .isbn {
+        width: 16%;
+    }
+
+    .bewerk-verwijder,
+    .status {
+        width: 8%;
+    }
+
+
+</style>
 <body onload="boekenOverzichtAdmin()">
     <div>
-        <button class="float-right">Log out</button>
-        <button class="float-right" onclick="document.location = 'index.html'">Home</button>
+        <button class="float-right button-green">Log out</button>
+        <button class="float-right button-green" onclick="document.location = 'index.html'">Home</button>
     </div>
-    <div>
-    <table>
-    <!--                Zoekbalk-->
-    <input type="search" id="boekInput" oninput="boekZoekenOverzicht()" placeholder="Voer titel in.."><br>
-        <thead>
-            <tr>
-                <th>Titel</th>
-                <th>Auteur</th>
-                <th>ISBN</th>
-                <th>Categorie</th>
-                <th>Omschrijving</th>
-                <th>Omslag</th>
-                <th>Status</th>
-                <th>Exemplaar</th>
-                <th>Bewerken</th>
-                <th>Verwijderen</th>
-            </tr>
-        </thead>
-        <tbody id="boekenOverzicht">
-<!--                    javascript-->
-        </tbody>
-    </table>
-    </div>
-    <div>
-        <button onclick="document.location = 'boek-toevoegen.html'">Toevoegen</button>
-        <button>Toewijzen</button>
+    <div class="page-content">
+        <h2>Boekenoverzicht</h2>
+        <div>
+            <table>
+            <!--                Zoekbalk-->
+                <select id="boekZoekOpties" onchange="boekZoekenOverzicht()">
+                    <option value="titel">Titel</option>
+                    <option value="auteur">Auteur</option>
+                    <option value="isbn">ISBN</option>
+                </select>
+            <input class="zoekbalk" type="search" id="boekInput" oninput="boekZoekenOverzicht()" placeholder="Zoeken..."><br>
+                <thead>
+                    <tr>
+                        <th class="titel">Titel</th>
+                        <th class="auteur">Auteur</th>
+                        <th class="isbn">ISBN</th>
+                        <th class="categorie">Categorie</th>
+                        <th class="hide-column">Omschrijving</th>
+                        <th class="hide-column">Omslag</th>
+                        <th class="status">Status</th>
+                        <th class="hide-column">Exemplaar</th>
+                        <th class="bewerk-verwijder">Bewerken</th>
+                        <th>Verwijderen</th>
+                    </tr>
+                </thead>
+                <tbody id="boekenOverzicht">
+                <!--                    javascript-->
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <button class="button-green button-table" onclick="document.location = 'boek-toevoegen.html'">Toevoegen</button>
+            <button class="button-green button-table">Toewijzen</button>
+        </div>
     </div>
 </body>
 

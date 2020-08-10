@@ -88,8 +88,8 @@
 
     </style>
 
-<div class="top-buttons">
-    <button class="float-right">Log out</button>
+    <div class="top-buttons">
+        <button class="float-right">Log out</button>
         <button class="float-right" onclick="document.location = 'uitleen-overzicht-admin.html'">Overzicht</button>
         <button class="float-right" onclick="document.location = 'index.html'">Home</button>
     </div>
@@ -99,20 +99,22 @@
         <h2>Uitlening aanpassen</h2>
         <div class="flex-item">
             <form onsubmit="return leningAanpassen()">
-                <label for="boektitel">Titel: </label>
-                <input type="text" id="boektitel"><br>
-                <label for="boekauteur">Auteur: </label>
-                <input type="text" id="boekauteur"><br>
-                <label for="boekisbn">ISBN: </label>
-                <input type="text" id="boekisbn"><br>
-                <label for="AccountNaam">Naam: </label>
-                <input type="text" id="AccountNaam"><br>
-                <label for="UitleenDatum">Uitleen Datum: </label>
-                <input type="text" id="UitleenDatum"><br>
-                <label for="InleverDatum">Inlever Datum: </label>
-                <input type="text" id="InleverDatum"><br><br>
-                <input type="submit" value="Opslaan"></input>
-            </form>
+              <label for="boektitel">Titel: </label>
+              <input type="text" id="boektitel" disabled><br>
+              <label for="boekauteur">Auteur: </label>
+              <input type="text" id="boekauteur" disabled><br>
+              <label for="boekisbn">ISBN: </label>
+              <input type="text" id="boekisbn" disabled><br>
+              <label for="AccountNaam">Naam: </label>
+              <input type="text" id="AccountNaam" disabled><br>
+              <label for="UitleenDatum">Uitleen Datum: </label>
+              <input type="date" id="UitleenDatum"><br>
+              <label for="InleverDatum">Inlever Datum: </label>
+              <input type="date" id="InleverDatum"><br>
+              <input type="hidden" id="BoekId">
+              <input type="hidden" id="AccountId">
+              <input type="submit" value="Opslaan"></input>
+          </form>
         </div>
     </div>
     </div>

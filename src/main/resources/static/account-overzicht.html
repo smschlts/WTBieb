@@ -17,7 +17,11 @@
 <div>
     <table>
         <!--                Zoekbalk-->
-        <input type="search" id="accountInput" oninput="accountZoekenOverzicht()" placeholder="Voer naam in.."><br>
+        <select id="accountZoekOpties" onchange="accountZoekenOverzicht()">
+            <option value="naam">Naam</option>
+            <option value="email">E-mail</option>
+        </select>
+        <input type="search" id="accountInput" oninput="accountZoekenOverzicht()" placeholder="Zoeken..."><br>
         <thead>
         <tr>
             <th>Naam</th>
