@@ -1,26 +1,49 @@
-body {
-    font-family: "Open Sans","Helvetica Neue",Arial,sans-serif;
-    font-size: 1rem;
-    line-height: 2;
-    color: #140f11;
-    background-color: #fff;
-}
 
-.flex-container {
-    display: flex;
-    flex-wrap: wrap;
-}
+/* ---------------- GENERAL ---------------- */
 
-.flex-item {
-    flex: 50%;
-}
+    *:focus {outline: none;}
 
-.float-right {
-    float: right;
-}
+    body {
+        font-family: "Open Sans","Helvetica Neue",Arial,sans-serif;
+        font-size: 1rem;
+        line-height: 2;
+        color: #140f11;
+        background-color: #fff;
+    }
+
+    .flex-container {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .flex-item {
+        flex: 50%;
+    }
+
+    .float-right {
+        float: right;
+    }
+
+/* ---------------- HEADERS ---------------- */
+
+    h2 {
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: 200;
+        font-size: 250%;
+    }
 
 
-/*table, th, td {
-    border: 1px solid black;
-}
-*/
+/* ---------------- BUTTONS ---------------- */
+
+    button {
+        border: none;
+        color: white;
+        letter-spacing: 1px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+
