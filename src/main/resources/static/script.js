@@ -33,7 +33,7 @@ function boekenOverzichtAdmin(){
                     "<td" + urlString + statusOverzicht + "</td>" +
                     "<td" + urlString + wtidOverzicht + "</td>" +
                     "<td>" + "<button onclick=\"document.location = 'boek-aanpassen.html?id="+idOverzicht+"'\">Bewerken</button>" + "</td>" +
-                    "<td>" + "<button onclick=\"boekVerwijderen("+idOverzicht+");window.location.reload()\">Verwijderen</button>" + "</td>" +
+                    "<td>" + "<button onclick=\"boekVerwijderenOverzicht("+idOverzicht+");window.location.reload()\">Verwijderen</button>" + "</td>" +
                     "</tr>"
                     )
             }
@@ -41,6 +41,17 @@ function boekenOverzichtAdmin(){
     }
     xhr.open("GET","http://localhost:8082/boeken",true);
     xhr.send();
+}
+
+function boekVerwijderenOverzicht(boekID) {
+    bevestiging = confirmVerwijderen();
+    if (bevestiging == true) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("DELETE", "http://localhost:8082/boeken/" + boekID, true);
+        xhr.send();
+    } else {
+        // pass
+    }
 }
 
 function boekVerwijderen() {
@@ -156,7 +167,7 @@ function accountOverzichtAdmin(){
                       "<td" + urlString + emailOverzicht + "</td>" +
                       "<td" + urlString + wachtwoordOverzicht + "</td>" +
                       "<td>" + "<button onclick=\"document.location = 'account-aanpassen.html?id=" + idOverzicht + "'\">Bewerken</button>" + "</td>" +
-                      "<td>" + "<button onclick=\"accountVerwijderen(" + idOverzicht + ");window.location.reload()\">Verwijderen</button>" + "</td>" +
+                      "<td>" + "<button onclick=\"accountVerwijderenOverzicht(" + idOverzicht + ");window.location.reload()\">Verwijderen</button>" + "</td>" +
                       "</tr>"
                       )
               }
@@ -226,6 +237,18 @@ function accountAanpassen() {
     xhr.open("PUT", "http://localhost:8082/accounts/" + accountID, true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(accountJSON);
+    return false;
+}
+
+function accountVerwijderenOverzicht(accountID) {
+    bevestiging = confirmVerwijderen();
+    if (bevestiging == true) {
+        var xhr = new XMLHttpRequest();
+    xhr.open("DELETE", "http://localhost:8082/accounts/" + accountID, true);
+    xhr.send();
+    } else {
+        // pass
+    }
 }
 
 function accountVerwijderen() {
@@ -270,7 +293,7 @@ function uitleenOverzichtAdmin(){
                     "<td" + urlString + uitleningsDatumOverzicht + "</td>" +
                     "<td" + urlString + inleverDatumOverzicht + "</td>" +
                     "<td>" + "<button onclick=\"document.location = 'lening-aanpassen.html?id=" + uitleningID + "'\">Bewerken</button>" + "</td>" +
-                    "<td>" + "<button onclick=\"uitleningVerwijderen(" + uitleningID + ");window.location.reload()\">Verwijderen</button>" + "</td>" +
+                    "<td>" + "<button onclick=\"uitleningVerwijderenOverzicht(" + uitleningID + ");window.location.reload()\">Verwijderen</button>" + "</td>" +
                     "</tr>"
                     )
             }
@@ -278,6 +301,17 @@ function uitleenOverzichtAdmin(){
     }
     xhr.open("GET","http://localhost:8082/uitleningen",true);
     xhr.send();
+}
+
+function uitleningVerwijderenOverzicht(uitleningID) {
+    bevestiging = confirmVerwijderen();
+    if (bevestiging == true) {
+        var xhr = new XMLHttpRequest();
+    xhr.open("DELETE", "http://localhost:8082/uitleningen/" + uitleningID, true);
+    xhr.send();
+    } else {
+        // pass
+    }
 }
 
 function uitleningVerwijderen() {
