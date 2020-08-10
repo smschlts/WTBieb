@@ -94,6 +94,12 @@ function boekOphalen() {
 // boek-toevoegen.html
 function boekToevoegen() {
     var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (this.readyState == 4) {
+            document.location = 'boeken-overzicht-admin.html';
+        }
+    }
+
     var boek = {};
     boek.titel = document.getElementById("boektitel").value;
     boek.auteur = document.getElementById("boekauteur").value;
@@ -188,6 +194,12 @@ function accountOverzichtAdmin(){
 // account.html
 function accountToevoegen() {
     var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (this.readyState == 4) {
+            document.location = 'account-overzicht.html';
+        }
+    }
+
     var account = {};
     account.naam = document.getElementById("naam").value;
     account.email = document.getElementById("emailadres").value;
@@ -347,9 +359,13 @@ function uitleningVerwijderen() {
 //lening-toevoegen.html
 function leningToevoegen() {
     var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (this.readyState == 4) {
+            document.location = 'uitleen-overzicht-admin.html';
+        }
+    }
+
     var lening = {};
-    // lening.account = { 'id' : document.getElementById("accountid").value };
-    // lening.boek = { 'id' : document.getElementById("boekid").value };
     lening.account = { "id" : document.getElementById("accountid").value };
     lening.boek = { "id" : document.getElementById("boekid").value };
     lening.uitleenDatum = document.getElementById("uitleendatum").value;
@@ -420,10 +436,26 @@ function boekZoekenOverzicht() {
     filter = input.value.toUpperCase();
     table = document.getElementById("boekenOverzicht");
     tr = table.getElementsByTagName("tr");
+
+    var zoekIndex = 0;
+    switch(document.getElementById("boekZoekOpties").value) {
+        case "titel":
+            zoekIndex = 0;
+            break;
+       case "auteur":
+           zoekIndex = 1;
+           break;
+       case "isbn":
+           zoekIndex = 2;
+           break;
+       default:
+            zoekIndex = 0;
+            break;
+    }
   
     // Loop through all table rows, and hide those who don't match the search query
     for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName("td")[0]; // tabel kolom id voor "titel"
+      td = tr[i].getElementsByTagName("td")[zoekIndex]; // tabel kolom id voor "titel"
       if (td) {
         txtValue = td.textContent || td.innerText;
         if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -443,10 +475,71 @@ function accountZoekenOverzicht() {
     filter = input.value.toUpperCase();
     table = document.getElementById("accountOverzicht");
     tr = table.getElementsByTagName("tr");
+
+    var zoekIndex = 0;
+    switch(document.getElementById("accountZoekOpties").value) {
+        case "naam":
+            zoekIndex = 0;
+            break;
+       case "email":
+           zoekIndex = 1;
+           break;
+       default:
+            zoekIndex = 0;
+            break;
+    }
   
     // Loop through all table rows, and hide those who don't match the search query
     for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName("td")[0]; // tabel kolom id voor "naam"
+      td = tr[i].getElementsByTagName("td")[zoekIndex]; // tabel kolom id voor "naam"
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  }
+
+// zoekfunctie in account-overzicht.html
+function uitleningZoekenOverzicht() {
+    // Declare variables
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("uitleningInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("uitleenOverzicht");
+    tr = table.getElementsByTagName("tr");
+
+    var zoekIndex = 0;
+    switch(document.getElementById("uitleningZoekOpties").value) {
+        case "titel":
+            zoekIndex = 0;
+            break;
+        case "auteur":
+            zoekIndex = 1;
+            break;
+        case "isbn":
+            zoekIndex = 2;
+            break;
+        case "lener":
+            zoekIndex = 3;
+            break;
+        case "uitleendatum":
+            zoekIndex = 4;
+            break;
+        case "inleverdatum":
+            zoekIndex = 5;
+            break;
+        default:
+            zoekIndex = 0;
+            break;
+    }
+
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[zoekIndex]; // tabel kolom id voor "naam"
       if (td) {
         txtValue = td.textContent || td.innerText;
         if (txtValue.toUpperCase().indexOf(filter) > -1) {

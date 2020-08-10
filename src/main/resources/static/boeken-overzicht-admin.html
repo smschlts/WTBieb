@@ -17,7 +17,12 @@
     <div>
     <table>
     <!--                Zoekbalk-->
-    <input type="search" id="boekInput" oninput="boekZoekenOverzicht()" placeholder="Voer titel in.."><br>
+        <select id="boekZoekOpties" onchange="boekZoekenOverzicht()">
+            <option value="titel">Titel</option>
+            <option value="auteur">Auteur</option>
+            <option value="isbn">ISBN</option>
+        </select>
+    <input type="search" id="boekInput" oninput="boekZoekenOverzicht()" placeholder="Zoeken..."><br>
         <thead>
             <tr>
                 <th>Titel</th>
