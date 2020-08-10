@@ -145,6 +145,7 @@ function boekAanpassen() {
     xhr.open("PUT", "http://localhost:8082/boeken/" + boekID, true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(boekJSON);
+    document.location = 'boeken-overzicht-admin.html';
     return false;
 }
 
@@ -237,6 +238,7 @@ function accountAanpassen() {
     xhr.open("PUT", "http://localhost:8082/accounts/" + accountID, true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(accountJSON);
+    document.location = 'account-overzicht.html';
     return false;
 }
 
@@ -328,6 +330,23 @@ function uitleningVerwijderen() {
     }
 }
 
+//lening-toevoegen.html
+function leningToevoegen() {
+    var xhr = new XMLHttpRequest();
+    var lening = {};
+    // lening.account = { 'id' : document.getElementById("accountid").value };
+    // lening.boek = { 'id' : document.getElementById("boekid").value };
+    lening.account = { "id" : document.getElementById("accountid").value };
+    lening.boek = { "id" : document.getElementById("boekid").value };
+    lening.uitleenDatum = document.getElementById("uitleendatum").value;
+    var leningJSON = JSON.stringify(lening);
+    console.log(leningJSON);
+    xhr.open("POST", "http://localhost:8082/uitleningen", true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send(leningJSON);
+    return false;
+}
+
 // lening-aanpassen.html
 function leningOphalenVoorFormulier() {
     const queryString = window.location.search;
@@ -350,22 +369,27 @@ function leningOphalenVoorFormulier() {
     xhr.send();
 }
 
+// TODO: werkt nog niet
 function leningAanpassen() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const leningID = urlParams.get('id');
     var xhr = new XMLHttpRequest();
     var lening = {};
-    boek.titel = document.getElementById("boektitel").value;
-    boek.auteur = document.getElementById("boekauteur").value;
-    boek.isbn = document.getElementById("boekisbn").value;
-    account.naam = document.getElementById("AccountNaam").value;
-    uitleenDatum = document.getElementById("UitleenDatum").value;
-    inleverDatum = document.getElementById("InleverDatum").value;
+    // var boek = {};
+    // var account = {};
+    // lening.boek.id = document.getElementById("BoekId").value;
+    // lening.account.id = document.getElementById("AccountId").value;
+    // lening.boek = boek;
+    // lening.account = account;
+    // account.naam = document.getElementById("AccountNaam").value;
+    lening.uitleenDatum = document.getElementById("UitleenDatum").value;
+    lening.inleverDatum = document.getElementById("InleverDatum").value;
     var leningJSON = JSON.stringify(lening);
     xhr.open("PUT", "http://localhost:8082/uitleningen/" + leningID, true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(leningJSON);
+    document.location = 'uitleen-overzicht-admin.html';
     return false;
 }
 
@@ -451,8 +475,38 @@ function boekenOverzichtLening(){
     xhr.send();
 }
 
+function accountOverzichtLening(){
+    var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function(){
+          if(this.readyState == 4 && this.status == 200){
+              var antwoord = JSON.parse(this.responseText);
+              for(var x = 0 ; x < antwoord.length; x++){
+                var idOverzicht = antwoord[x].id;
+                var naamOverzicht = antwoord[x].naam;
+                var emailOverzicht = antwoord[x].email;
+                // var wachtwoordOverzicht = antwoord[x].wachtwoord;
+  
+                $(accountOverzicht).append(
+                      "<tr id='" + idOverzicht + "' onclick=\"accountVeldInvullen('" + idOverzicht + "', '" + naamOverzicht + "')\">" +
+                      "<td>" + naamOverzicht + "</td>" +
+                      "<td>" + emailOverzicht + "</td>" +
+                    //   "<td" + urlString + wachtwoordOverzicht + "</td>" +
+                      "</tr>"
+                      )
+              }
+          }
+      }
+      xhr.open("GET","http://localhost:8082/accounts",true);
+      xhr.send();
+  }
+
 // voorbeeld lening-toevoegen.html
 function boekVeldInvullen(boekID, boekTitel) {
     document.getElementById("boekid").value = boekID;
     document.getElementById("boektitel").value = boekTitel;
+}
+
+function accountVeldInvullen(accountID, accountNaam) {
+    document.getElementById("accountid").value = accountID;
+    document.getElementById("accountnaam").value = accountNaam;
 }
