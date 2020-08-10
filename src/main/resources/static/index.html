@@ -5,11 +5,46 @@
     <title>Bibliotheek WT</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="script.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 </head>
+<style>
+    body {
+        display: flex;
+        align-items: center; /* CROSS AXIS */
+        justify-content: center; /* MAIN AXIS */
+        flex-direction: column;
+        height: 100vh;
+    }
+    button {
+        text-transform: uppercase;
+        width: 250px;
+        height: 70px;
+        border: none;
+        margin: 5px;
+        color: white;
+        font-weight: 700;
+        letter-spacing: 1px;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        
+    }
+
+    .button-green {
+        background-color: #8ec63f; /* Green */
+        margin-bottom: 15px;
+    }
+    .button-black {
+        background-color: #140f11;; /* Black */
+    }
+</style>
 <body>
     <h1>WT Bibliotheek</h1>
-    <button onclick="document.location = 'boeken-overzicht-admin.html'">Boekenlijst</button>
-    <button onclick="document.location = 'account-overzicht.html'">Accountbeheer</button>
-    <button onclick="document.location = 'uitleen-overzicht-admin.html'">Uitleenoverzicht</button>
+
+    <button class="button-green" onclick="document.location = 'boeken-overzicht-admin.html'">Boekenlijst</button> 
+    <button class="button-black" onclick="document.location = 'account-overzicht.html'">Accountbeheer</button> 
+    <button class="button-black" onclick="document.location = 'uitleen-overzicht-admin.html'">Uitleenoverzicht</button>
 </body>
 </html>
