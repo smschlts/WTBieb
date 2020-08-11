@@ -589,8 +589,8 @@ function boekenOverzichtLening(){
                     "<td>" + auteurOverzicht + "</td>" +
                     "<td>" + isbnOverzicht + "</td>" +
                     "<td>" + categorieOverzicht + "</td>" +
-                    "<td>" + omschrijvingOverzicht + "</td>" +
-                    "<td>" + omslagOverzicht + "</td>" +
+                    // "<td>" + omschrijvingOverzicht + "</td>" +
+                    // "<td>" + omslagOverzicht + "</td>" +
                     "<td>" + statusOverzicht + "</td>" +
                     "<td>" + wtidOverzicht + "</td>" +
                     "</tr>"
