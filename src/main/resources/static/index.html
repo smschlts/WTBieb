@@ -8,11 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <style>
-    * {
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-    }
     .page-content_flex {
         display: flex;
         align-items: center; /* CROSS AXIS */
@@ -20,6 +15,7 @@
         flex-direction: column;
         margin-top: 100px;
     }
+
     button {
         text-transform: uppercase;
         width: 250px;
@@ -49,38 +45,12 @@
 
     }
 
-    header {
-        background-color: #140f11;
-        width: 100%;
-        display: flex;
-        /*justify-content: space-between
-    */}
-
-    #logo {
-        cursor: pointer;
-        width: 100px;
-        height: auto;
-        margin: 20px;
-    }
-
-    h1 {
-        position: absolute;
-        font-weight: 400;
-        font-size: 300%;
-        color: #fff;
-        text-align: center;
-        align-self: center;
-        color: #97bf0d;
-        letter-spacing: 1px;
-        left: 20%;
-    }
 
 </style>
 <body>
     <header>
         <img onclick="document.location = 'index.html'" src="working-talent-logo-Large.png" alt="Working Talent Logo" id="logo">
-        <h1>Bibliotheek</h1>
-        <div></div>
+        <h1 class="main-header">Bibliotheek</h1>
     </header>
     <div class="page-content_flex">
     
