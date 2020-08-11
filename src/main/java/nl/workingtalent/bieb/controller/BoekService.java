@@ -15,6 +15,7 @@ public class BoekService {
 
      public Boek opslaan(Boek nieuwBoek) {
           System.out.println("Boek opslaan");
+          nieuwBoek.voegAantalExemplarenToe(nieuwBoek.getAantal());
           return boekRepository.save(nieuwBoek);
      }
 
@@ -47,6 +48,8 @@ public class BoekService {
           Boek bestaandBoek = boekRepository.findById(id).orElse(null);
 
           if (bestaandBoek != null) {
+               bestaandBoek.voegAantalExemplarenToe(nieuwBoek.getAantal()-bestaandBoek.getAantal());
+
                bestaandBoek.setWtId(nieuwBoek.getWtId());
                bestaandBoek.setIsbn(nieuwBoek.getIsbn());
                bestaandBoek.setTitel(nieuwBoek.getTitel());
@@ -55,8 +58,11 @@ public class BoekService {
                bestaandBoek.setCategorie(nieuwBoek.getCategorie());
                bestaandBoek.setOmslag(nieuwBoek.getOmslag());
                bestaandBoek.setOmschrijving(nieuwBoek.getOmschrijving());
+               bestaandBoek.setAantal(nieuwBoek.getAantal());
+
 
                return boekRepository.save(bestaandBoek);
+
           } else {
                return boekRepository.save(nieuwBoek);
           }

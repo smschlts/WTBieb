@@ -24,6 +24,8 @@ public class Boek {
     private String categorie;
     private String omslag;
     private String omschrijving;
+    private int aantal;
+
 
     @OneToMany(
             mappedBy = "boek",
@@ -36,7 +38,7 @@ public class Boek {
     public Boek() {
     }
 
-    public Boek(long wtId, String isbn, String titel, String auteur, String categorie, String omslag, String omschrijving) {
+    public Boek(long wtId, String isbn, String titel, String auteur, String categorie, String omslag, String omschrijving, int aantal) {
         this.wtId = wtId;
         this.isbn = isbn;
         this.titel = titel;
@@ -45,6 +47,9 @@ public class Boek {
         this.categorie = categorie;
         this.omslag = omslag;
         this.omschrijving = omschrijving;
+        this.aantal = aantal;
+        this.voegAantalExemplarenToe(aantal);
+
     }
 
     public long getId() {
@@ -114,13 +119,29 @@ public class Boek {
         return exemplaren;
     }
 
+    public int getAantal() {
+        return aantal;
+    }
+
+    public void setAantal(int aantal) {
+        this.aantal = aantal;
+    }
+
     public void voegExemplaarToe(Exemplaar exemplaar) {
         exemplaren.add(exemplaar);
         exemplaar.setBoek(this);
     }
 
-    public void verwijderExemplaar(Exemplaar exemplaar) {
-        exemplaren.remove(exemplaar);
-        exemplaar.setBoek(null);
+    public void voegAantalExemplarenToe(int aantalExemplaren) {
+        for (int i = 0; i < aantalExemplaren; i++) {
+            Exemplaar e = new Exemplaar(exemplaren.size() + 1);
+            exemplaren.add(e);
+            e.setBoek(this);
+        }
     }
+
+//    public void verwijderExemplaar(Exemplaar exemplaar) {
+//        exemplaren.remove(exemplaar);
+//        exemplaar.setBoek(null);
+//    }
 }
