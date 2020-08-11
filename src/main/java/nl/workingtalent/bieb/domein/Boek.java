@@ -2,7 +2,6 @@ package nl.workingtalent.bieb.domein;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
-import nl.workingtalent.bieb.rest.ExemplaarEndpoint;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -139,8 +138,6 @@ public class Boek {
             exemplaren.add(e);
             e.setBoek(this);
         }
-
-        aantal += aantalExemplaren;
     }
 
 //    public void verwijderExemplaar(Exemplaar exemplaar) {
