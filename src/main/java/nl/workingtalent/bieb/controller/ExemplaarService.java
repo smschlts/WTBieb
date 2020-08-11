@@ -2,6 +2,7 @@ package nl.workingtalent.bieb.controller;
 
 
 import nl.workingtalent.bieb.domein.Account;
+import nl.workingtalent.bieb.domein.BoekStatus;
 import nl.workingtalent.bieb.domein.Exemplaar;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -49,4 +50,15 @@ public class ExemplaarService {
         }
     }
 
+    public Exemplaar patchExemplaar(long boekId, long exemplaarId, BoekStatus nieuweStatus) {
+        System.out.println("Update status boek " + boekId + ", exemplaar " + exemplaarId);
+        long id = exemplaarRepository.zoekExemplaarId(boekId, exemplaarId);
+        Exemplaar bestaandExemplaar = exemplaarRepository.findById(id).orElse(null);
+        if (bestaandExemplaar != null) {
+            bestaandExemplaar.setStatus(nieuweStatus);
+            return exemplaarRepository.save(bestaandExemplaar);
+        } else {
+            return null;
+        }
+    }
 }
