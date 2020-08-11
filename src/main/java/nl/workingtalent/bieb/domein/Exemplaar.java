@@ -15,7 +15,7 @@ public class Exemplaar {
 
     @NotNull
     private BoekStatus status;
-    private long workingTalentId;
+    private long workingTalentExemplaarId;
 
     @ManyToOne( fetch = FetchType.EAGER)
     @JsonIgnoreProperties("exemplaren")
@@ -24,8 +24,9 @@ public class Exemplaar {
     public Exemplaar() {
     }
 
-    public Exemplaar(BoekStatus status) {
-        this.status = status;
+    public Exemplaar(long workingTalentExemplaarId) {
+        this.workingTalentExemplaarId = workingTalentExemplaarId;
+        this.status = BoekStatus.BESCHIKBAAR;
     }
 
     public Exemplaar(BoekStatus status, Boek boek) {
@@ -49,12 +50,12 @@ public class Exemplaar {
         this.status = status;
     }
 
-    public long getWorkingTalentId() {
-        return workingTalentId;
+    public long getworkingTalentExemplaarId() {
+        return workingTalentExemplaarId;
     }
 
-    public void setWorkingTalentId(long workingTalentId) {
-        this.workingTalentId = workingTalentId;
+    public void setworkingTalentExemplaarId(long workingTalentId) {
+        this.workingTalentExemplaarId = workingTalentId;
     }
 
     public Boek getBoek() {
@@ -71,7 +72,7 @@ public class Exemplaar {
         if (o == null || getClass() != o.getClass()) return false;
         Exemplaar exemplaar = (Exemplaar) o;
         return id == exemplaar.id &&
-                workingTalentId == exemplaar.workingTalentId;
+                workingTalentExemplaarId == exemplaar.workingTalentExemplaarId;
     }
 
     @Override

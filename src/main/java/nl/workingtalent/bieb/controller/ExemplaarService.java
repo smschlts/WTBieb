@@ -41,7 +41,7 @@ public class ExemplaarService {
 
         if (bestaandExemplaar != null) {
             bestaandExemplaar.setStatus(nieuwExemplaar.getStatus());
-            bestaandExemplaar.setWorkingTalentId(nieuwExemplaar.getWorkingTalentId());
+            bestaandExemplaar.setworkingTalentExemplaarId(nieuwExemplaar.getworkingTalentExemplaarId());
 
             return exemplaarRepository.save(bestaandExemplaar);
         } else {
