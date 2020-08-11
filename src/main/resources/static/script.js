@@ -540,13 +540,13 @@ function uitleningZoekenOverzicht() {
             zoekIndex = 2;
             break;
         case "lener":
-            zoekIndex = 3;
-            break;
-        case "uitleendatum":
             zoekIndex = 4;
             break;
-        case "inleverdatum":
+        case "uitleendatum":
             zoekIndex = 5;
+            break;
+        case "inleverdatum":
+            zoekIndex = 6;
             break;
         default:
             zoekIndex = 0;
@@ -586,7 +586,7 @@ function boekenOverzichtLening(){
 
               $(boekenOverzicht).append(
                     "<tr id='" + idOverzicht + "' onclick=\"boekVeldInvullen('" + idOverzicht + "', '" + titelOverzicht + "')\">" +
-                    "<td>" + titelOverzicht + "</td>" +
+                    "<td id='titel'>" + titelOverzicht + "</td>" +
                     "<td>" + auteurOverzicht + "</td>" +
                     "<td>" + isbnOverzicht + "</td>" +
                     "<td>" + categorieOverzicht + "</td>" +
