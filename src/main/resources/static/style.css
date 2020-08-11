@@ -25,17 +25,84 @@
         flex: 50%;
     }
 
-    .float-right {
+    .float-right.button-green {
         float: right;
+        margin: 30px;
     }
+
+
+/* ---------------- HEADER ---------------- */
+
+    header {
+        background-color: #140f11;
+        width: 100%;
+        display: flex;
+    }
+
+    #logo {
+        cursor: pointer;
+        width: 100px;
+        height: auto;
+        margin: 20px;
+    }
+
+    .btn-logout {
+        position: absolute;
+        right: 5%;
+        align-self: center;
+        font-size: 100%;
+        background-color: transparent;
+        color: #97bf0d;
+        /* background-color: #97bf0d; */
+        /* color: #140f11; */
+        padding: 10px;
+    }
+    
+    .btn-logout:hover {
+        color: #7caf34c7;
+        transition: .2s;
+    }
+
 
 /* ---------------- HEADERS ---------------- */
 
-    h2 {
-        text-align: center;
-        text-transform: uppercase;
-        font-weight: 200;
-        font-size: 250%;
+    h1 {
+        position: absolute;
+        color: #97bf0d;
+        letter-spacing: 1px;
+        font-size: 300%;
+        font-weight: 400;
+        left: 20%;
+        align-self: center;
+    }
+    /* h1,
+    h1.main-header,
+    h2.main-header {
+        position: absolute;
+        color: #97bf0d;
+        letter-spacing: 1px;
+    }
+
+    h1.main-header {
+        font-size: 300%;
+        font-weight: 400;
+        left: 20%;
+        align-self: center;
+    }
+
+    h1 {
+        font-weight: 300;
+        font-size: 200%;
+        left: 15%;
+        align-self: flex-end;
+    } */
+
+    h2.main-header {
+        font-size: 300%;
+        font-weight: 400;
+        left: 50%;
+        transform: translate(-50%, 0);
+        align-self: center;
     }
 
 
