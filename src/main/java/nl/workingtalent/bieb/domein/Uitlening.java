@@ -20,17 +20,21 @@ public class Uitlening {
     private Boek boek;
 
     @NotNull
+    private long exemplaarId;
+
+    @NotNull
     @ManyToOne
     private Account account;
 
     public Uitlening() {
     }
 
-    public Uitlening(LocalDate uitleenDatum, LocalDate inleverDatum, Boek boek, Account account) {
+    public Uitlening(LocalDate uitleenDatum, LocalDate inleverDatum, Boek boek, Account account, long exemplaarId) {
         this.uitleenDatum = uitleenDatum;
         this.inleverDatum = inleverDatum;
         this.boek = boek;
         this.account = account;
+        this.exemplaarId = exemplaarId;
     }
 
     public Uitlening(LocalDate uitleenDatum, LocalDate inleverDatum) {
@@ -80,5 +84,13 @@ public class Uitlening {
 
     public void setAccount(Account account) {
         this.account = account;
+    }
+
+    public long getExemplaarId() {
+        return exemplaarId;
+    }
+
+    public void setExemplaarId(long exemplaarId) {
+        this.exemplaarId = exemplaarId;
     }
 }
