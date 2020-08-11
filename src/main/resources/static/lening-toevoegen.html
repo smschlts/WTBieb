@@ -26,16 +26,16 @@
 
         .lening-toevoegen-account-tabel {
             box-sizing: border-box;
-            inline-size: 10%;
-            margin: 0 0 5% 2%;
+            inline-size: 28%;
+            margin: 40px 0 50px 5%;
             padding: 0;
             float: left;
         }
 
         .lening-toevoegen-boek-tabel {
             box-sizing: border-box;
-            inline-size: 80%;
-            margin: 0 2% 5% 0;
+            inline-size: 60%;
+            margin: 40px 5% 50px 0;
             padding: 0;
             float: right;
         }
@@ -112,59 +112,59 @@
         border: transparent;
         width: 100%;
         margin-bottom: 50px;
-    }
+        }
 
-    th, td {
-        padding: 10px;
-        text-align: left;
-    }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
 
-    th {
-        background-color: #8ec63f;
-        color: white;
-    }
+        th {
+            background-color: #8ec63f;
+            color: white;
+        }
 
-    tr:nth-child(even) {background-color: #cce5a844;}
+        tr:nth-child(even) {background-color: #cce5a844;}
 
-    tr:hover {
-        background-color: #a5d266af;
-        transition: .2s;
-    }
+        tr:hover {
+            background-color: #a5d266af;
+            transition: .2s;
+        }
 
-    /* ---------------- COLUMNS ---------------- */
+        /* ---------------- COLUMNS ---------------- */
 
-    .hide-column {display: none;}
+        .hide-column {display: none;}
 
-    .titel,
-    .auteur,
-    .categorie {width: 20%;}
+        .titel,
+        .auteur,
+        .categorie {width: 20%;}
 
-    .isbn {width: 16%;}
+        .isbn {width: 16%;}
 
-    .bewerk-verwijder,
-    .status {width: 8%;}
+        .bewerk-verwijder,
+        .status {width: 8%;}
 
-    /* ---------------- ZOEKBALK ---------------- */
+        /* ---------------- ZOEKBALK ---------------- */
 
-    .zoeken {
+        .zoeken {
         margin-bottom: 40px;
-    }
+        }
 
-    .zoekbalk {
-        border: 1px solid #140f1157;
-        padding: 4px;
-        font-size: 110%;
-    }
+        .zoekbalk {
+            border: 1px solid #140f1157;
+            padding: 4px;
+            font-size: 110%;
+        }
 
-    select {
-        font-weight: 100;
-        padding: 5px;
-        color: #fff;
-        border: none;
-        background-color: #8ec63f;
-        font-size: 110%;
-        margin-left: 10px;
-    }
+        select {
+            font-weight: 100;
+            padding: 5px;
+            color: #fff;
+            border: none;
+            background-color: #8ec63f;
+            font-size: 110%;
+            margin-left: 10px;
+        }
 
     </style>
 
@@ -196,7 +196,9 @@
         <!-- <div class="flex-item"> -->
             <table>
                 <!--                Zoekbalk-->
-                <input type="search" id="boekInput" oninput="accountZoekenOverzicht()" placeholder="Voer naam in.."><br>
+                <div class="zoeken">
+                    <input class="zoekbalk" type="search" id="boekInput" oninput="accountZoekenOverzicht()" placeholder="Voer naam in.."><br>
+                </div>
                     <thead>
                         <tr>
                             <th>Naam</th>
@@ -212,7 +214,9 @@
     <div class="lening-toevoegen-boek-tabel">
         <table>
             <!--                Zoekbalk-->
-            <input type="search" id="boekInput" oninput="boekZoekenOverzicht()" placeholder="Voer titel in.."><br>
+            <div class="zoeken">
+                <input class="zoekbalk" type="search" id="boekInput" oninput="boekZoekenOverzicht()" placeholder="Voer titel in.."><br>
+            </div>
                 <thead>
                     <tr>
                         <th>Titel</th>
