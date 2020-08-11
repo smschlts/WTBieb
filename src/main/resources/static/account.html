@@ -5,6 +5,7 @@
     <title>Bibliotheek WT | Accountgegevens</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="script.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 </head>
 
 <style>
@@ -14,10 +15,13 @@
         .page-content {
             position: absolute;
             left: 50%;
-            top: 5%;
+            top: 25%;
             transform: translate(-50%, 0%);
             width: 80%;
             margin: 50px 0 200px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
     /* ---------------- BUTTONS ---------------- */
@@ -27,7 +31,7 @@
             height: 50px;
             margin: 5px;
             color: white;
-            font-weight: 700;
+            font-weight: 200;
             padding: 15px 32px;
             font-size: 14px;
             background-color: #8ec63f;
@@ -37,6 +41,10 @@
         .button-green:hover {
             background-color: #7caf34;
             transition: .2s;
+        }
+
+        .bottom-buttons {
+            width: 50%;
         }
     
     
@@ -73,35 +81,41 @@
             width: auto;
         }*/
 
+        #naam {
+            text-align: center;
+            font-size: 170%;
+            font-weight: 700;
+        }
+
     </style>
 
-<body onload="accountOphalen()">
-    <div>
-        <button class="float-right button-green">Log out</button>
-        <button class="float-right button-green" onclick="document.location = 'index.html'">Home</button>
-    </div>
-    <div class="page-content">
-            <!--    <img src="https://freeiconshop.com/wp-content/uploads/edd/person-solid.png"> -->
-        <div>
-            <h2>Accountgegevens</h2>
-            <table class="account-info_tabel">
-                <tr>
-                    <td id="naam">Naam</td>
-                </tr>
-                <tr>
-                    <td id="emailadres">E-mail</td>
-                </tr>
-                <tr>
-                    <td id="type-gebruiker">Trainee/Medewerker</td>
-                </tr>
-            </table>
+    <header>
+        <img onclick="document.location = 'index.html'" src="working-talent-logo-Large.png" alt="Working Talent Logo" id="logo">
+        <h1>Accountbeheer</h1>
+        <!-- <h2 class="main-header">Accountbeheer</h2> -->
+        <button class="btn-logout">Log out</button>
+    </header>
+
+    <body onload="accountOphalen()">
+        <button class="float-right button-green" onclick="document.location = 'account-overzicht.html'">Overzicht</button>
+        <div class="page-content">
+                <!--    <img src="https://freeiconshop.com/wp-content/uploads/edd/person-solid.png"> -->
+                <table class="account-info_tabel">
+                    <tr>
+                        <td id="naam">Naam</td>
+                    </tr>
+                    <tr>
+                        <td id="emailadres">E-mail</td>
+                    </tr>
+                    <tr>
+                        <td id="type-gebruiker">Trainee/Medewerker</td>
+                    </tr>
+                </table>
+            <div class="bottom-buttons">
+                <button class="button-green" onclick="document.location = 'account-aanpassen.html' + document.location.search">Bewerken</button>
+                <button class="button-green">Toewijzen</button>
+            </div>
         </div>
-        <div>
-            <button class="button-green" onclick="document.location = 'account-aanpassen.html' + document.location.search">Bewerken</button>
-            <button class="button-green">Toewijzen</button>
-            <button class="float-right button-green" onclick="document.location = 'account-overzicht.html'">Overzicht</button>
-        </div>
-    </div>
     
-</body>
+    </body>
 </html>
