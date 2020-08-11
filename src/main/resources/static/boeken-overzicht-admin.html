@@ -15,7 +15,7 @@
     .page-content {
         position: absolute;
         left: 50%;
-        top: 5%;
+        top: 25%;
         transform: translate(-50%, 0%);
         width: 80%;
         margin: 50px 0 200px 0;
@@ -116,15 +116,44 @@
     .bewerk-verwijder,
     .status {width: 8%;}
 
+    header {
+        background-color: #140f11;
+        width: 100%;
+        display: flex;
+        /*justify-content: space-between
+    */}
+
+    #logo {
+        cursor: pointer;
+        width: 100px;
+        height: auto;
+        margin: 20px;
+    }
+    h1 {
+        position: absolute;
+        font-weight: 400;
+        font-size: 300%;
+        color: #fff;
+        text-align: center;
+        align-self: center;
+        color: #97bf0d;
+        letter-spacing: 1px;
+        left: 20%;
+    }
 
 </style>
+
 <body onload="boekenOverzichtAdmin()">
+    <header>
+        <img onclick="document.location = 'index.html'" src="working-talent-logo-Large.png" alt="Working Talent Logo" id="logo">
+        <h1>Bibliotheek</h1>
+        
+    </header>
     <div>
         <button class="float-right button-green">Log out</button>
-        <button class="float-right button-green" onclick="document.location = 'index.html'">Home</button>
     </div>
     <div class="page-content">
-        <h2>Boekenoverzicht</h2>
+        <h2 class="boek-overzicht">Boekenoverzicht</h2>
         <div>
             <table>
             <!--                Zoekbalk-->
