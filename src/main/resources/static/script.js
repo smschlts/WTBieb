@@ -133,6 +133,7 @@ function boekOphalenVoorFormulier() {
             document.getElementById("boekcategorie").value =  boek.categorie;
             document.getElementById("boekomschrijving").value = boek.omschrijving;
             document.getElementById("boekworkingtalentid").value = boek.wtId;
+            document.getElementById("aantalExemplaren").value = boek.aantal;
             // document.getElementById("boekomslag").value = boek.omslag;
         }
     }
@@ -159,6 +160,7 @@ function boekAanpassen() {
     boek.categorie = document.getElementById("boekcategorie").value;
     boek.omschrijving = document.getElementById("boekomschrijving").value;
     boek.wtId = document.getElementById("boekworkingtalentid").value;
+    boek.aantal = document.getElementById("aantalExemplaren").value;
     var boekJSON = JSON.stringify(boek);
     xhr.open("PUT", "http://localhost:8082/boeken/" + boekID, true);
     xhr.setRequestHeader("Content-Type", "application/json");
