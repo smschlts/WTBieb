@@ -6,18 +6,85 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="script.js" defer></script>
 </head>
+
+<style>
+
+    /* ---------------- GENERAL ---------------- */
+        
+        .page-content {
+            position: absolute;
+            left: 50%;
+            top: 5%;
+            transform: translate(-50%, 0%);
+            width: 80%;
+            margin: 50px 0 200px 0;
+        }
+
+    /* ---------------- BUTTONS ---------------- */
+    
+        .button-green {
+            width: 150px;
+            height: 50px;
+            margin: 5px;
+            color: white;
+            font-weight: 700;
+            padding: 15px 32px;
+            font-size: 14px;
+            background-color: #8ec63f;
+        }
+
+    
+        .button-green:hover {
+            background-color: #7caf34;
+            transition: .2s;
+        }
+    
+    
+    /* ---------------- TABLE ---------------- */
+    
+        table {
+            overflow-x: auto;
+            border-collapse: collapse;
+            border: transparent;
+        }
+
+        .account-info_tabel {
+            width: 50%;
+            margin: 50px auto 80px auto;
+        }
+    
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+    
+        th {
+            background-color: #8ec63f;
+            color: white;
+        }
+    
+        tr:nth-child(even) {background-color: #cce5a844;}
+    
+    /* ---------------- COLUMNS ---------------- */
+
+        /*img {
+            padding: 30px;
+            height: 300px;
+            width: auto;
+        }*/
+
+    </style>
+
 <body onload="accountOphalen()">
     <div>
-        <button class="float-right">Log out</button>
-        <button class="float-right" onclick="document.location = 'index.html'">Home</button>
+        <button class="float-right button-green">Log out</button>
+        <button class="float-right button-green" onclick="document.location = 'index.html'">Home</button>
     </div>
-    <div class="flex-container">
-        <div class="flex-item">
-            <img src="https://freeiconshop.com/wp-content/uploads/edd/person-solid.png">
-        </div>
-        <div class="flex-item">
-            <h1>Accountgegevens</h1>
-            <table>
+    <div class="page-content">
+            <!--    <img src="https://freeiconshop.com/wp-content/uploads/edd/person-solid.png"> -->
+        <div>
+            <h2>Accountgegevens</h2>
+            <table class="account-info_tabel">
                 <tr>
                     <td id="naam">Naam</td>
                 </tr>
@@ -29,11 +96,12 @@
                 </tr>
             </table>
         </div>
+        <div>
+            <button class="button-green" onclick="document.location = 'account-aanpassen.html' + document.location.search">Bewerken</button>
+            <button class="button-green">Toewijzen</button>
+            <button class="float-right button-green" onclick="document.location = 'account-overzicht.html'">Overzicht</button>
+        </div>
     </div>
-    <div>
-        <button onclick="document.location = 'account-aanpassen.html' + document.location.search">Bewerken</button>
-        <button>Toewijzen</button>
-        <button class="float-right" onclick="document.location = 'account-overzicht.html'">Overzicht</button>
-    </div>
+    
 </body>
 </html>
