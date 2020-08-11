@@ -9,7 +9,13 @@
 <body onload="accountOphalenVoorFormulier()">
     <style>
         *:focus {outline: none;}
-        
+        .page-content {
+            position: absolute;
+            left: 50%;
+            top: 5%;
+            transform: translate(-50%, 0%);
+        }
+
         h2 {
             text-align: center;
             text-transform: uppercase;
@@ -35,13 +41,6 @@
             cursor: pointer; 
         }
         
-        .page-content {
-            position: absolute;
-            left: 50%;
-            top: 5%;
-            transform: translate(-50%, 0%);
-        }
-
         input[type=text], select {
             width: 100%;
             padding: 12px 20px;
@@ -80,7 +79,7 @@
             transition: 0.2s;
         }
 
-        .flex-item {
+        form {
             border-radius: 5px;
             background-color: #cce5a844;
             padding: 20px;
@@ -95,9 +94,7 @@
     </div>
 
     <div class="page-content">
-    <div class="flex-container">
         <h2>Account aanpassen</h2>
-        <div class="flex-item">
             <form onsubmit="return accountAanpassen()">
                 <label for="naam">Naam: </label>
                 <input type="text" id="naam"><br>
@@ -110,8 +107,6 @@
                 <input type="button" value="Verwijderen" onclick="accountVerwijderen();document.location = 'account-overzicht.html'">
                 <input type="submit" value="Opslaan"></input>                
             </form>
-        </div>
-    </div>
     </div>
 </body>
 </html>
