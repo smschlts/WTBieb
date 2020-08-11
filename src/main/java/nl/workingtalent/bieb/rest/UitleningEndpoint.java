@@ -1,6 +1,8 @@
 package nl.workingtalent.bieb.rest;
 
+import nl.workingtalent.bieb.controller.ExemplaarService;
 import nl.workingtalent.bieb.controller.UitleningService;
+import nl.workingtalent.bieb.domein.BoekStatus;
 import nl.workingtalent.bieb.domein.Uitlening;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +13,8 @@ import java.util.List;
 public class UitleningEndpoint {
     @Autowired
     UitleningService uitleningService;
+    @Autowired
+    ExemplaarService exemplaarService;
 
     @GetMapping("/uitleningen")
     public List<Uitlening> uitleningenAlles() {
@@ -24,6 +28,7 @@ public class UitleningEndpoint {
 
     @PostMapping("/uitleningen")
     public Uitlening nieuweUitlening(@RequestBody Uitlening nieuweUitlening) {
+        exemplaarService.patchExemplaar(nieuweUitlening.getBoek().getId(), nieuweUitlening.getExemplaarId(), BoekStatus.UITGELEEND);
         return uitleningService.opslaan(nieuweUitlening);
     }
 
