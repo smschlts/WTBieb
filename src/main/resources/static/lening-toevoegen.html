@@ -173,7 +173,6 @@
         <button class="float-right" onclick="document.location = 'uitleen-overzicht-admin.html'">Overzicht</button>
         <button class="float-right" onclick="document.location = 'index.html'">Home</button>
     </div>
-
 <div class="page-content">
     <div class="lening-toevoegen-form">
         <h2>Lening toevoegen</h2>    
@@ -184,13 +183,15 @@
                 <label for="boektitel">Boektitel: </label>
                 <input type="text" id="boektitel" disabled>
                 <input type="hidden" id="boekid">
+                <label for="exemplaarid">Kies exemplaar: </label>
+                <select id="exemplaarid"></select>
                 <label for="uitleendatum">Uitleendatum: </label>
                 <input type="date" id="uitleendatum">
                 <div class="submit-toevoegen">
                         <input type="submit" value="Toevoegen"></input>
                 </div>
             </form>
-    </div>
+</div>
 
     <div class="lening-toevoegen-account-tabel">
         <!-- <div class="flex-item"> -->

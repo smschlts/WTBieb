@@ -318,7 +318,7 @@ function uitleenOverzichtAdmin(){
               var titelOverzicht = antwoord[x].boek.titel;
               var auteurOverzicht = antwoord[x].boek.auteur;
               var isbnOverzicht = antwoord[x].boek.isbn;
-          //    var exemplaarOverzicht = antwoord[x].exemplaar;
+              var exemplaarOverzicht = antwoord[x].exemplaarId;
               var accountNaamOverzicht = antwoord[x].account.naam;
               var uitleningID = antwoord[x].id;
               var uitleningsDatumOverzicht = antwoord[x].uitleenDatum;
@@ -331,7 +331,7 @@ function uitleenOverzichtAdmin(){
                     "<td class=\"uitleen-titel\"" + urlString + titelOverzicht + "</td>" +
                     "<td class=\"uitleen-auteur\"" + urlString + auteurOverzicht + "</td>" +
                     "<td class=\"uitleen-isbn\"" + urlString + isbnOverzicht + "</td>" +
-                  //  "<td" + urlString + exemplaarOverzicht + "</td>" +
+                    "<td class=\"uitleen-exemplaar-id\"" + urlString + exemplaarOverzicht + "</td>" +
                     "<td class=\"uitleen-lener\"" + urlString + accountNaamOverzicht + "</td>" +
                     "<td class=\"uitleen-datum\"" + urlString + uitleningsDatumOverzicht + "</td>" +
                     "<td class=\"uitleen-datum\"" + urlString + inleverDatumOverzicht + "</td>" +
@@ -384,6 +384,7 @@ function leningToevoegen() {
     lening.account = { "id" : document.getElementById("accountid").value };
     lening.boek = { "id" : document.getElementById("boekid").value };
     lening.uitleenDatum = document.getElementById("uitleendatum").value;
+    lening.exemplaarId = document.getElementById("exemplaarid").value;
     var leningJSON = JSON.stringify(lening);
     console.log(leningJSON);
     xhr.open("POST", "http://localhost:8082/uitleningen", true);
@@ -631,9 +632,35 @@ function accountOverzichtLening(){
 function boekVeldInvullen(boekID, boekTitel) {
     document.getElementById("boekid").value = boekID;
     document.getElementById("boektitel").value = boekTitel;
+    haalAantalExemplarenOp(boekID);
 }
 
 function accountVeldInvullen(accountID, accountNaam) {
     document.getElementById("accountid").value = accountID;
     document.getElementById("accountnaam").value = accountNaam;
+}
+
+function haalAantalExemplarenOp(boekid) {
+    var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function(){
+            if(this.readyState == 4 && this.status == 200){
+                var antwoord = JSON.parse(this.responseText,
+                    function (key, value) {
+                   return (value == null) ? "" : value
+                }
+           );
+           document.getElementById("exemplaarid").innerHTML="";
+            for(var x = 0 ; x < antwoord.exemplaren.length; x++){
+              var boekworkingtalentid = antwoord.exemplaren[x].workingTalentExemplaarId;
+
+              $(exemplaarid).append(
+              "<option>"+ boekworkingtalentid +"</option>"
+
+                    )
+            }
+        }
+    }
+    xhr.open("GET","http://localhost:8082/boeken/"+ boekid,true);
+    xhr.send();
+
 }
