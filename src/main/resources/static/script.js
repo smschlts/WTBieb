@@ -325,15 +325,15 @@ function uitleenOverzichtAdmin(){
 
               $(uitleenOverzicht).append(
                     "<tr>" +
-                    "<td" + urlString + titelOverzicht + "</td>" +
-                    "<td" + urlString + auteurOverzicht + "</td>" +
-                    "<td" + urlString + isbnOverzicht + "</td>" +
+                    "<td class=\"uitleen-titel\"" + urlString + titelOverzicht + "</td>" +
+                    "<td class=\"uitleen-auteur\"" + urlString + auteurOverzicht + "</td>" +
+                    "<td class=\"uitleen-isbn\"" + urlString + isbnOverzicht + "</td>" +
                   //  "<td" + urlString + exemplaarOverzicht + "</td>" +
-                    "<td" + urlString + accountNaamOverzicht + "</td>" +
-                    "<td" + urlString + uitleningsDatumOverzicht + "</td>" +
-                    "<td" + urlString + inleverDatumOverzicht + "</td>" +
-                    "<td class=\"bewerk-verwijder\">" + "<button onclick=\"document.location = 'lening-aanpassen.html?id=" + uitleningID + "'\">&#9998</button>" + "</td>" +
-                    "<td class=\"bewerk-verwijder\">" + "<button onclick=\"uitleningVerwijderenOverzicht(" + uitleningID + ");window.location.reload()\">&#10006</button>" + "</td>" +
+                    "<td class=\"uitleen-lener\"" + urlString + accountNaamOverzicht + "</td>" +
+                    "<td class=\"uitleen-datum\"" + urlString + uitleningsDatumOverzicht + "</td>" +
+                    "<td class=\"uitleen-datum\"" + urlString + inleverDatumOverzicht + "</td>" +
+                    "<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"document.location = 'lening-aanpassen.html?id=" + uitleningID + "'\">&#9998</button>" + "</td>" +
+                    "<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"uitleningVerwijderenOverzicht(" + uitleningID + ");window.location.reload()\">&#10006</button>" + "</td>" +
                     "</tr>"
                     )
             }
