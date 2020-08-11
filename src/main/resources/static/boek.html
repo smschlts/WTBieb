@@ -5,6 +5,7 @@
     <title>Bibliotheek WT | Boek</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="script.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <style>
 
@@ -13,10 +14,13 @@
         .page-content {
             position: absolute;
             left: 50%;
-            top: 5%;
+            top: 25%;
             transform: translate(-50%, 0%);
             width: 80%;
             margin: 50px 0 200px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
     /* ---------------- BUTTONS ---------------- */
@@ -26,7 +30,7 @@
             height: 50px;
             margin: 5px;
             color: white;
-            font-weight: 700;
+            font-weight: 200;
             padding: 15px 32px;
             font-size: 14px;
             background-color: #8ec63f;
@@ -36,6 +40,10 @@
         .button-green:hover {
             background-color: #7caf34;
             transition: .2s;
+        }
+
+        .bottom-buttons_boek {
+            width: 80%;
         }
     
     
@@ -48,8 +56,8 @@
         }
 
         .boek-info_tabel {
-            width: 50%;
-            margin: 0 auto 70px auto;
+            width: 80%;
+            margin: 0 auto 80px auto;
         }
     
         th, td {
@@ -63,6 +71,12 @@
         }
     
         tr:nth-child(even) {background-color: #cce5a844;}
+
+        #boektitel {
+            text-align: center;
+            font-size: 170%;
+            font-weight: 700;
+        }
     
     /* ---------------- COLUMNS ---------------- */
 
@@ -74,43 +88,42 @@
 
     </style>
 
-
+<header>
+    <img onclick="document.location = 'index.html'" src="working-talent-logo-Large.png" alt="Working Talent Logo" id="logo">
+    <h1>Boekbeheer</h1>
+    <button class="btn-logout">Uitloggen</button>
+</header>
 <body onload="boekOphalen()">
     <div>
-        <button class="float-right button-green">Log out</button>
-        <button class="float-right button-green" onclick="document.location = 'index.html'">Home</button>
+        <button class="float-right button-green" onclick="document.location = 'boeken-overzicht-admin.html'">Overzicht</button>
     </div>
     <div class="page-content">
-            <div>
-                <h2>Boek informatie</h2>
-                <table class="boek-info_tabel">
-                    <tr>
-                        <th id="boektitel">Harry Potter 1</th>
-                    </tr>
-                    <tr>
-                        <td id="boekisbn">ISBN</td>
-                    </tr>
-                    <tr>
-                        <td id="boekauteur">JKRowling</td>
-                    </tr>
-                    <tr>
-                        <td id="boekomschrijving">Omschrijving</td>
-                    </tr>
-                        <td id="boekcategorie">Categorie</td>
-                    </tr>
-                    <tr>
-                        <td id="boekstatus">Status</td>
-                    </tr>
-                    <tr>
-                        <td id="boekworkingtalentid">workingtalentid</td>
-                    </tr>
-                </table>
-            </div>
+            <table class="boek-info_tabel">
+                <tr>
+                    <td id="boektitel">Harry Potter 1</th>
+                </tr>
+                <tr>
+                    <td id="boekisbn">ISBN</td>
+                </tr>
+                <tr>
+                    <td id="boekauteur">JKRowling</td>
+                </tr>
+                <tr>
+                    <td id="boekomschrijving">Omschrijving</td>
+                </tr>
+                    <td id="boekcategorie">Categorie</td>
+                </tr>
+                <tr>
+                    <td id="boekstatus">Status</td>
+                </tr>
+                <tr>
+                    <td id="boekworkingtalentid">workingtalentid</td>
+                </tr>
+            </table>
             <!--   <img class="boek-info_flex-item boek-info_flex-item_omslag" src="https://vignette.wikia.nocookie.net/harrypotter/images/3/3e/Harry_Potter_and_the_Sorcerer's_Stone_cover.jpg"> -->
-        <div>
+        <div class="bottom-buttons_boek">
             <button class="button-green" onclick="document.location = 'boek-aanpassen.html' + document.location.search">Bewerken</button>
             <button class="button-green">Toewijzen</button>
-            <button class="float-right button-green" onclick="document.location = 'boeken-overzicht-admin.html'">Overzicht</button>
         </div>
     </div>
     
