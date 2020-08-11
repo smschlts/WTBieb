@@ -110,6 +110,7 @@ function boekToevoegen() {
     boek.isbn = document.getElementById("boekisbn").value;
     boek.categorie = document.getElementById("boekcategorie").value;
     boek.omschrijving = document.getElementById("boekomschrijving").value;
+    boek.aantal = document.getElementById("boekaantal").value;
     var boekJSON = JSON.stringify(boek);
     xhr.open("POST", "http://localhost:8082/boeken", true);
     xhr.setRequestHeader("Content-Type", "application/json");

@@ -48,7 +48,7 @@ public class Boek {
         this.categorie = categorie;
         this.omslag = omslag;
         this.omschrijving = omschrijving;
-
+        this.aantal = aantal;
         this.voegAantalExemplarenToe(aantal);
 
     }
@@ -135,7 +135,7 @@ public class Boek {
 
     public void voegAantalExemplarenToe(int aantalExemplaren) {
         for (int i = 0; i < aantalExemplaren; i++) {
-            Exemplaar e = new Exemplaar(exemplaren.size() + i + 1);
+            Exemplaar e = new Exemplaar(exemplaren.size() + 1);
             exemplaren.add(e);
             e.setBoek(this);
         }

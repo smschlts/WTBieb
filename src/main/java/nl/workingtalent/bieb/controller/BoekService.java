@@ -15,6 +15,7 @@ public class BoekService {
 
      public Boek opslaan(Boek nieuwBoek) {
           System.out.println("Boek opslaan");
+          nieuwBoek.voegAantalExemplarenToe(nieuwBoek.getAantal());
           return boekRepository.save(nieuwBoek);
      }
 
