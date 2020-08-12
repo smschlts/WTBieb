@@ -671,10 +671,16 @@ function haalAantalExemplarenOp(boekid) {
             for(var x = 0 ; x < antwoord.exemplaren.length; x++){
               var boekworkingtalentid = antwoord.exemplaren[x].workingTalentExemplaarId;
 
-              $(exemplaarid).append(
-              "<option>"+ boekworkingtalentid +"</option>"
-
-                    )
+              if (antwoord.exemplaren[x].status == "UITGELEEND") {
+                $(exemplaarid).append(
+                    "<option disabled>"+ boekworkingtalentid +"</option>"
+                            )
+              } else if (antwoord.exemplaren[x].status == "BESCHIKBAAR") {
+                $(exemplaarid).append(
+                            "<option>"+ boekworkingtalentid +"</option>"
+                                    )
+              }
+              
             }
         }
     }
