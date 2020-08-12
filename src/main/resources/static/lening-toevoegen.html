@@ -193,7 +193,11 @@
         <table>
             <!--                Zoekbalk-->
             <div class="zoeken">
-                <input class="zoekbalk" type="search" id="boekInput" oninput="accountZoekenOverzicht()" placeholder="Voer naam in.."><br>
+                <input class="zoekbalk" type="search" id="accountInput" oninput="accountZoekenOverzicht()" placeholder="Zoeken..."><br>
+                <select id="accountZoekOpties" onchange="accountZoekenOverzicht()">
+                    <option value="naam">Naam</option>
+                    <option value="email">E-mail</option>
+                </select>   
             </div>
             <thead>
                 <tr>
@@ -211,7 +215,12 @@
         <table>
             <!--                Zoekbalk-->
             <div class="zoeken">
-                <input class="zoekbalk" type="search" id="boekInput" oninput="boekZoekenOverzicht()" placeholder="Voer titel in.."><br>
+                <input class="zoekbalk" type="search" id="boekInput" oninput="boekZoekenOverzicht()" placeholder="Zoeken...">
+                <select id="boekZoekOpties" onchange="boekZoekenOverzicht()">
+                    <option value="titel">Titel</option>
+                    <option value="auteur">Auteur</option>
+                    <option value="isbn">ISBN</option>
+                </select>
             </div>
             <thead>
                 <tr>
@@ -222,7 +231,7 @@
                     <!-- <th>Omschrijving</th>
                     <th>Omslag</th> -->
                     <th>Status</th>
-                    <th>Exemplaar</th>
+                    <!-- <th>Exemplaar</th> -->
                 </tr>
             </thead>
             <tbody id="boekenOverzicht">

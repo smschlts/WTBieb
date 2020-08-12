@@ -4,6 +4,24 @@ function confirmVerwijderen() {
     return bevestiging;
 }
 
+
+function berekenBeschikbaarheid(exemplaren) {
+    var aantal = 0;
+    var beschikbaar = 0;
+    for (var i = 0; i < exemplaren.length; i++) {
+        var status = exemplaren[i].status;
+        if (status == "BESCHIKBAAR") {
+            aantal++;
+            beschikbaar++;
+        } else if (status == "UITGELEEND") {
+            aantal++;
+        }
+    }
+
+    return beschikbaar + " / " + aantal;
+
+}
+
 // boeken-overzicht-admin.html
 function boekenOverzichtAdmin(){
     var xhr = new XMLHttpRequest();
@@ -21,7 +39,7 @@ function boekenOverzichtAdmin(){
               var isbnOverzicht = antwoord[x].isbn;
               var omschrijvingOverzicht = antwoord[x].omschrijving;
               var omslagOverzicht = antwoord[x].omslag;
-              var statusOverzicht = antwoord[x].status;
+              var statusOverzicht = berekenBeschikbaarheid(antwoord[x].exemplaren);
               var titelOverzicht = antwoord[x].titel;
               var wtidOverzicht = antwoord[x].wtid;
               var urlString = " id='" + idOverzicht + "' onclick=\"window.location='boek.html?id=" + idOverzicht + "';\""
@@ -86,7 +104,7 @@ function boekOphalen() {
             document.getElementById("boekisbn").innerHTML = boek.isbn;
             document.getElementById("boekcategorie").innerHTML =  boek.categorie;
             document.getElementById("boekomschrijving").innerHTML = boek.omschrijving;
-            document.getElementById("boekstatus").innerHTML = boek.status;
+            document.getElementById("boekstatus").innerHTML = berekenBeschikbaarheid(boek.exemplaren);
             document.getElementById("boekworkingtalentid").innerHTML = boek.wtId;
             // document.getElementById("boekomslag").value = boek.omslag;
         }
@@ -580,7 +598,7 @@ function boekenOverzichtLening(){
               var isbnOverzicht = antwoord[x].isbn;
               var omschrijvingOverzicht = antwoord[x].omschrijving;
               var omslagOverzicht = antwoord[x].omslag;
-              var statusOverzicht = antwoord[x].status;
+              var statusOverzicht = berekenBeschikbaarheid(antwoord[x].exemplaren);
               var titelOverzicht = antwoord[x].titel;
               var wtidOverzicht = antwoord[x].wtid;
 
@@ -593,7 +611,7 @@ function boekenOverzichtLening(){
                     // "<td>" + omschrijvingOverzicht + "</td>" +
                     // "<td>" + omslagOverzicht + "</td>" +
                     "<td>" + statusOverzicht + "</td>" +
-                    "<td>" + wtidOverzicht + "</td>" +
+//                    "<td>" + wtidOverzicht + "</td>" +
                     "</tr>"
                     )
             }
@@ -653,10 +671,16 @@ function haalAantalExemplarenOp(boekid) {
             for(var x = 0 ; x < antwoord.exemplaren.length; x++){
               var boekworkingtalentid = antwoord.exemplaren[x].workingTalentExemplaarId;
 
-              $(exemplaarid).append(
-              "<option>"+ boekworkingtalentid +"</option>"
-
-                    )
+              if (antwoord.exemplaren[x].status == "UITGELEEND") {
+                $(exemplaarid).append(
+                    "<option disabled>"+ boekworkingtalentid +"</option>"
+                            )
+              } else if (antwoord.exemplaren[x].status == "BESCHIKBAAR") {
+                $(exemplaarid).append(
+                            "<option>"+ boekworkingtalentid +"</option>"
+                                    )
+              }
+              
             }
         }
     }
