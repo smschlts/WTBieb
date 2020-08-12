@@ -348,8 +348,17 @@ function uitleenOverzichtAdmin(){
               var inleverDatumOverzicht = antwoord[x].inleverDatum;
           //   var urlString = " onclick=\"window.location='lening-aanpassen.html?id=" + uitleningID + "';\">"
               var urlString = ">"
+              var inleverButtonString
 
-              $(uitleenOverzicht).append(
+
+              if(inleverDatumOverzicht=="") {
+                inleverButtonString = "<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"uitleningInleverOverzicht(" + uitleningID + ");\">&#10004</button>" + "</td>" +
+              "</tr>"
+            } else {
+                inleverButtonString = "<td class=\"btn bewerk-verwijder\">" + "</td>" + "</tr>"
+            }
+
+                $(uitleenOverzicht).append(
                     "<tr>" +
                     "<td class=\"uitleen-titel\"" + urlString + titelOverzicht + "</td>" +
                     "<td class=\"uitleen-auteur\"" + urlString + auteurOverzicht + "</td>" +
@@ -359,9 +368,10 @@ function uitleenOverzichtAdmin(){
                     "<td class=\"uitleen-datum\"" + urlString + uitleningsDatumOverzicht + "</td>" +
                     "<td class=\"uitleen-datum\"" + urlString + inleverDatumOverzicht + "</td>" +
                     "<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"document.location = 'lening-aanpassen.html?id=" + uitleningID + "'\">&#9998</button>" + "</td>" +
-                    "<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"uitleningInleverOverzicht(" + uitleningID + ");\">&#10004</button>" + "</td>" +
-                    "</tr>"
+                    inleverButtonString
                     )
+                
+                
             }
         }
     }
