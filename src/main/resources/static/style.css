@@ -105,6 +105,12 @@
         align-self: center;
     }
 
+    h2 {
+        text-align: center;
+        font-size: 170%;
+        font-weight: 700;
+    }
+
 
 /* ---------------- BUTTONS ---------------- */
 

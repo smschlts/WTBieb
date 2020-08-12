@@ -14,23 +14,32 @@
         .page-content {
             position: absolute;
             left: 50%;
-            top: 5%;
+            top: 25%;
             transform: translate(-50%, 0%);
+            width: 80%;
             margin: 50px 0 200px 0;
-            width: 60%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         /* ---------------- BUTTONS ---------------- */
 
-        .top-buttons button {
+        .button-green {
             width: 150px;
             height: 50px;
             margin: 5px;
             color: white;
-            font-weight: 700;
+            font-weight: 200;
             padding: 15px 32px;
             font-size: 14px;
             background-color: #8ec63f;
+        }
+
+    
+        .button-green:hover {
+            background-color: #7caf34;
+            transition: .2s;
         }
 
         /* ---------------- FORM ---------------- */
@@ -39,6 +48,7 @@
             border-radius: 5px;
             background-color: #cce5a844;
             padding: 20px;
+            min-width: 400px;
         }
 
         .formulieren input[type=text], .formulieren input[type=number] {
@@ -79,10 +89,14 @@
 
     </style>
 
-    <div class="top-buttons">
-        <button class="float-right">Log out</button>
-        <button class="float-right" onclick="document.location = 'boeken-overzicht-admin.html'">Overzicht</button>
-        <button class="float-right" onclick="document.location = 'index.html'">Home</button>
+    <header>
+        <img onclick="document.location = 'index.html'" src="working-talent-logo-Large.png" alt="Working Talent Logo" id="logo">
+        <h1>Boekbeheer</h1>
+        <button class="btn-logout">Uitloggen</button>
+    </header>
+
+    <div>
+        <button class="float-right button-green" onclick="document.location = 'account-overzicht.html'">Overzicht</button>
     </div>
     
     <div class="page-content">
