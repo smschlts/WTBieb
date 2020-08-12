@@ -381,8 +381,8 @@ function uitleningVerwijderenOverzicht(uitleningID) {
 }
 
 function uitleningInleverOverzicht(uitleningID) {
-//    bevestiging = confirmInleveren();
-//    if (bevestiging == true) {
+    bevestiging = confirmInleveren();
+    if (bevestiging == true) {
         console.log("inleveren: " + "http://localhost:8082/uitleningen/" + uitleningID + "/inlever");
         var xhr = new XMLHttpRequest();
          xhr.onreadystatechange = function() {
@@ -392,9 +392,9 @@ function uitleningInleverOverzicht(uitleningID) {
         }
         xhr.open("PUT", "http://localhost:8082/uitleningen/" + uitleningID + "/inlever", true);
         xhr.send();
-//    } else {
-//        // pass
-//    }
+    } else {
+        // pass
+    }
 }
 
 function uitleningVerwijderen() {
