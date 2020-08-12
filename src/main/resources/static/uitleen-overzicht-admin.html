@@ -1,96 +1,97 @@
 <!DOCTYPE html>
 <html lang="nl">
 
-<head>
-    <meta charset="UTF-8">
-    <title>Bibliotheek WT | Uitleen overzicht admin</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="script.js" defer></script>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <title>Bibliotheek WT | Uitleen overzicht admin</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="script.js" defer></script>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    </head>
 
-<style>
+    <style>
 
-    /* ---------------- ZOEKBALK ---------------- */
-    
-        .zoeken {
-            margin-bottom: 40px;
-        }
-    
-        .zoekbalk {
-            border: 1px solid #140f1157;
-            padding: 4px;
-            font-size: 110%;
-        }
-    
-        select {
-            font-weight: 100;
-            padding: 5px;
-            color: #fff;
-            border: none;
-            background-color: #8ec63f;
-            font-size: 110%;
-            margin-left: 10px;
-        }
+        /* ---------------- ZOEKBALK ---------------- */
 
-    /* ---------------- COLUMNS ---------------- */
+            .zoeken {
+                margin-bottom: 40px;
+            }
 
-        .uitleen-titel{width: 15%;}
-        .uitleen-auteur{width: 12%;}
-        .uitleen-isbn{width: 12%;}
-        .uitleen-lener{width: 15%;}
-        .uitleen-datum{width: 15%;}
+            .zoekbalk {
+                border: 1px solid #140f1157;
+                padding: 4px;
+                font-size: 110%;
+            }
 
-    
-</style>
+            select {
+                font-weight: 100;
+                padding: 5px;
+                color: #fff;
+                border: none;
+                background-color: #8ec63f;
+                font-size: 110%;
+                margin-left: 10px;
+            }
 
-<header>
-    <img onclick="document.location = 'index.html'" src="working-talent-logo-Large.png" alt="Working Talent Logo" id="logo">
-    <h1>Uitleningen</h1>
-    <button class="btn-logout">Uitloggen</button>
-</header>
-<body onload="uitleenOverzichtAdmin()">
-    <div class="page-content page-content_80">
-        <table>
-            <!--                Zoekbalk-->
-            <div class="zoeken">
-                <input class="zoekbalk" type="search" id="uitleningInput" oninput="uitleningZoekenOverzicht()" placeholder="Zoeken...">
-                <select id="uitleningZoekOpties" onchange="uitleningZoekenOverzicht()">
-                    <option value="titel">Titel</option>
-                    <option value="auteur">Auteur</option>
-                    <option value="isbn">ISBN</option>
-                    <option value="lener">Lener</option>
-                    <option value="uitleendatum">Uitleendatum</option>
-                    <option value="inleverdatum">Inleverdatum</option>
-                </select>
+        /* ---------------- COLUMNS ---------------- */
+
+            .uitleen-titel{width: 15%;}
+            .uitleen-auteur{width: 12%;}
+            .uitleen-isbn{width: 12%;}
+            .uitleen-lener{width: 15%;}
+            .uitleen-datum{width: 15%;}
+
+
+    </style>
+
+
+    <body onload="uitleenOverzichtAdmin()">
+        <header>
+            <img onclick="document.location = 'index.html'" src="working-talent-logo-Large.png" alt="Working Talent Logo" id="logo">
+            <h1>Uitleningen</h1>
+            <button class="btn-logout">Uitloggen</button>
+        </header>
+        <div class="page-content page-content_80">
+            <table>
+                <!--                Zoekbalk-->
+                <div class="zoeken">
+                    <input class="zoekbalk" type="search" id="uitleningInput" oninput="uitleningZoekenOverzicht()" placeholder="Zoeken...">
+                    <select id="uitleningZoekOpties" onchange="uitleningZoekenOverzicht()">
+                        <option value="titel">Titel</option>
+                        <option value="auteur">Auteur</option>
+                        <option value="isbn">ISBN</option>
+                        <option value="lener">Lener</option>
+                        <option value="uitleendatum">Uitleendatum</option>
+                        <option value="inleverdatum">Inleverdatum</option>
+                    </select>
+                </div>
+                <thead>
+                <tr>
+                    <th class="uitleen-titel">Titel</th>
+                    <th class="uitleen-auteur">Auteur</th>
+                    <th class="uitleen-isbn">ISBN</th>
+                    <th class="uitleen-exemplaar-id">Exemplaar</th>
+                    <th class="uitleen-lener">Lener</th>
+                    <th class="uitleen-datum">Uitleendatum</th>
+                    <th class="uitleen-datum">Inleverdatum</th>
+                    <th class="bewerk-verwijder">Bewerken</th>
+                    <th class="bewerk-inlever">Inleveren</th>
+
+
+                </tr>
+                </thead>
+                <tbody id="uitleenOverzicht">
+                <!--                    javascript-->
+                </tbody>
+            </table>
+
+            <div>
+                <button class="button-green" onclick="document.location = 'lening-toevoegen.html'">Toevoegen</button>
+                <!-- <button onclick="document.location = 'lening-aanpassen.html'">Bewerken</button>-->
+                <!-- <button class="float-right" onclick="history.back()">Terug</button> -->
             </div>
-            <thead>
-            <tr>
-                <th class="uitleen-titel">Titel</th>
-                <th class="uitleen-auteur">Auteur</th>
-                <th class="uitleen-isbn">ISBN</th>
-                <th class="uitleen-exemplaar-id">Exemplaar</th>
-                <th class="uitleen-lener">Lener</th>
-                <th class="uitleen-datum">Uitleendatum</th>
-                <th class="uitleen-datum">Inleverdatum</th>
-                <th class="bewerk-verwijder">Bewerken</th>
-                <th class="bewerk-inlever">Inleveren</th>
-
-
-            </tr>
-            </thead>
-            <tbody id="uitleenOverzicht">
-            <!--                    javascript-->
-            </tbody>
-        </table>
-    
-        <div>
-            <button class="button-green" onclick="document.location = 'lening-toevoegen.html'">Toevoegen</button>
-            <!-- <button onclick="document.location = 'lening-aanpassen.html'">Bewerken</button>-->
-            <!-- <button class="float-right" onclick="history.back()">Terug</button> -->
         </div>
-    </div>
-</body>
+    </body>
 
 </html>
