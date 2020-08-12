@@ -1,51 +1,51 @@
 <!DOCTYPE html>
 <html lang="nl">
-<head>
-    <meta charset="UTF-8">
-    <title>Bibliotheek WT | Boek</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="script.js" defer></script>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <title>Bibliotheek WT | Boek</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="script.js" defer></script>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    </head>
 
-<body onload="boekOphalen()">
-    <header>
-        <img onclick="document.location = 'index.html'" src="working-talent-logo-Large.png" alt="Working Talent Logo" id="logo">
-        <h1>Boekbeheer</h1>
-        <button class="btn-logout">Uitloggen</button>
-    </header>
-    <div>
+    <body onload="boekOphalen()">
+        <header>
+            <img onclick="document.location = 'index.html'" src="working-talent-logo-Large.png" alt="Working Talent Logo" id="logo">
+            <h1>Boekbeheer</h1>
+            <button class="btn-logout">Uitloggen</button>
+        </header>
+
         <button class="float-right button-green" onclick="document.location = 'boeken-overzicht-admin.html'">Overzicht</button>
-    </div>
-    <div class="page-content page-content_60 page-content_info">
-            <table class="tabel_boek-info">
-                <tr>
-                    <td class="tabel-titel" id="boektitel">Harry Potter 1</th>
-                </tr>
-                <tr>
-                    <td id="boekisbn">ISBN</td>
-                </tr>
-                <tr>
-                    <td id="boekauteur">JKRowling</td>
-                </tr>
-                <tr>
-                    <td id="boekomschrijving">Omschrijving</td>
-                </tr>
-                    <td id="boekcategorie">Categorie</td>
-                </tr>
-                <tr>
-                    <td id="boekstatus">Status</td>
-                </tr>
-                <tr>
-                    <td id="boekworkingtalentid">workingtalentid</td>
-                </tr>
-            </table>
-            <!--   <img class="boek-info_flex-item boek-info_flex-item_omslag" src="https://vignette.wikia.nocookie.net/harrypotter/images/3/3e/Harry_Potter_and_the_Sorcerer's_Stone_cover.jpg"> -->
-        <div class="bottom-buttons_boek">
-            <button class="button-green" onclick="document.location = 'boek-aanpassen.html' + document.location.search">Bewerken</button>
-            <button class="button-green" onclick="document.location = 'lening-toevoegen.html'">Toewijzen</button>
+
+        <div class="page-content page-content_60 page-content_info">
+                <table class="tabel_boek-info">
+                    <tr>
+                        <td class="tabel-titel" id="boektitel">Harry Potter 1</th>
+                    </tr>
+                    <tr>
+                        <td id="boekisbn">ISBN</td>
+                    </tr>
+                    <tr>
+                        <td id="boekauteur">JKRowling</td>
+                    </tr>
+                    <tr>
+                        <td id="boekomschrijving">Omschrijving</td>
+                    </tr>
+                        <td id="boekcategorie">Categorie</td>
+                    </tr>
+                    <tr>
+                        <td id="boekstatus">Status</td>
+                    </tr>
+                    <tr>
+                        <td id="boekworkingtalentid">workingtalentid</td>
+                    </tr>
+                </table>
+                <!--   <img class="boek-info_flex-item boek-info_flex-item_omslag" src="https://vignette.wikia.nocookie.net/harrypotter/images/3/3e/Harry_Potter_and_the_Sorcerer's_Stone_cover.jpg"> -->
+            <div class="bottom-buttons_boek">
+                <button class="button-green" onclick="document.location = 'boek-aanpassen.html' + document.location.search">Bewerken</button>
+                <button class="button-green" onclick="document.location = 'lening-toevoegen.html'">Toewijzen</button>
+            </div>
         </div>
-    </div>
-    
-</body>
+
+    </body>
 </html>
