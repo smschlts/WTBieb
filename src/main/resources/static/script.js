@@ -611,7 +611,7 @@ function boekenOverzichtLening(){
                     // "<td>" + omschrijvingOverzicht + "</td>" +
                     // "<td>" + omslagOverzicht + "</td>" +
                     "<td>" + statusOverzicht + "</td>" +
-                    "<td>" + wtidOverzicht + "</td>" +
+//                    "<td>" + wtidOverzicht + "</td>" +
                     "</tr>"
                     )
             }
