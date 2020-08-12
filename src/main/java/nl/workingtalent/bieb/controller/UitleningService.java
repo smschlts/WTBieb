@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -46,6 +47,18 @@ public class UitleningService {
             return uitleningRepository.save(bestaandeUitlening);
         } else {
             return uitleningRepository.save(nieuweUitlening);
+        }
+    }
+
+    public Uitlening inleverUitlening(Long id) {
+        Uitlening bestaandeUitlening = uitleningRepository.findById(id).orElse(null);
+
+        if (bestaandeUitlening != null) {
+            bestaandeUitlening.setInleverDatum(LocalDate.now());
+
+            return uitleningRepository.save(bestaandeUitlening);
+        } else {
+            return null;
         }
     }
 }

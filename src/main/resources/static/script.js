@@ -4,6 +4,11 @@ function confirmVerwijderen() {
     return bevestiging;
 }
 
+function confirmInleveren() {
+    var bevestiging = confirm("Item inleveren?");
+    return bevestiging;
+}
+
 
 function berekenBeschikbaarheid(exemplaren) {
     var aantal = 0;
@@ -354,7 +359,7 @@ function uitleenOverzichtAdmin(){
                     "<td class=\"uitleen-datum\"" + urlString + uitleningsDatumOverzicht + "</td>" +
                     "<td class=\"uitleen-datum\"" + urlString + inleverDatumOverzicht + "</td>" +
                     "<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"document.location = 'lening-aanpassen.html?id=" + uitleningID + "'\">&#9998</button>" + "</td>" +
-                    "<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"uitleningVerwijderenOverzicht(" + uitleningID + ");window.location.reload()\">&#10006</button>" + "</td>" +
+                    "<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"uitleningInleverOverzicht(" + uitleningID + ");\">&#10004</button>" + "</td>" +
                     "</tr>"
                     )
             }
@@ -373,6 +378,23 @@ function uitleningVerwijderenOverzicht(uitleningID) {
     } else {
         // pass
     }
+}
+
+function uitleningInleverOverzicht(uitleningID) {
+//    bevestiging = confirmInleveren();
+//    if (bevestiging == true) {
+        console.log("inleveren: " + "http://localhost:8082/uitleningen/" + uitleningID + "/inlever");
+        var xhr = new XMLHttpRequest();
+         xhr.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    window.location.reload();
+                }
+        }
+        xhr.open("PUT", "http://localhost:8082/uitleningen/" + uitleningID + "/inlever", true);
+        xhr.send();
+//    } else {
+//        // pass
+//    }
 }
 
 function uitleningVerwijderen() {
