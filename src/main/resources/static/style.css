@@ -16,19 +16,59 @@
         background-color: #fff;
     }
 
-    .flex-container {
+    /* .flex-container {
         display: flex;
         flex-wrap: wrap;
     }
 
     .flex-item {
         flex: 50%;
+    } */
+
+
+
+
+/* ---------------- PAGE-CONTENT ---------------- */
+
+    .page-content_index {
+        display: flex;
+        align-items: center; /* CROSS AXIS */
+        justify-content: center; /* MAIN AXIS */
+        flex-direction: column;
+        margin-top: 100px;
     }
 
-    .float-right.button-green {
-        float: right;
-        margin: 30px;
+    .page-content {
+        position: absolute;
+        left: 50%;
+        top: 25%;
+        transform: translate(-50%, 0%);
+        margin: 50px 0 200px 0;
     }
+
+    .page-content_80 {
+        width: 80%;
+    }
+
+    .page-content_60 {
+        width: 60%;
+    }
+
+    .page-content_info,
+    .page-content_bewerken,
+    .page-content_toevoegen {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .page-content_lening-overzicht {
+        box-sizing: content-box;
+        display: flow-root;
+        inline-size: 100%;
+        top: 25%;
+    }
+
 
 
 /* ---------------- HEADER ---------------- */
@@ -64,7 +104,9 @@
     }
 
 
-/* ---------------- HEADERS ---------------- */
+
+
+/* ---------------- PAGINA-TITELS ---------------- */
 
     h1 {
         position: absolute;
@@ -75,27 +117,6 @@
         left: 20%;
         align-self: center;
     }
-    /* h1,
-    h1.main-header,
-    h2.main-header {
-        position: absolute;
-        color: #97bf0d;
-        letter-spacing: 1px;
-    }
-
-    h1.main-header {
-        font-size: 300%;
-        font-weight: 400;
-        left: 20%;
-        align-self: center;
-    }
-
-    h1 {
-        font-weight: 300;
-        font-size: 200%;
-        left: 15%;
-        align-self: flex-end;
-    } */
 
     h2.main-header {
         font-size: 300%;
@@ -105,16 +126,18 @@
         align-self: center;
     }
 
-    h2 {
+    h2,
+    .tabel-titel {
         text-align: center;
         font-size: 170%;
         font-weight: 700;
     }
 
-
 /* ---------------- BUTTONS ---------------- */
+    
 
     button {
+        color: #fff;
         border: none;
         color: white;
         letter-spacing: 1px;
@@ -122,8 +145,274 @@
         text-decoration: none;
         display: inline-block;
         cursor: pointer;
+        font-size: 14px;
     }
 
-    
+    .button-green {
+        width: 150px;
+        height: 50px;
+        margin: 5px;
+        color: white;
+        font-weight: 700;
+        padding: 15px 32px;
+        font-size: 14px;
+        background-color: #8ec63f;
+    }
 
+    .button-green:hover,
+    .button-green_index:hover {
+        background-color: #7caf34;
+        transition: .2s;
+    }
+
+
+        /* Index buttons */
+    .button-green_index,
+    .button-black_index {
+        text-transform: uppercase;
+        width: 250px;
+        height: 120px;
+        margin: 40px;
+        font-weight: 700;
+        padding: 15px 32px;
+        text-decoration: none;
+        font-size: 16px;
+    }
+    
+    .button-green_index {
+        background-color: #8ec63f; /* Green */
+        margin-bottom: 15px;
+    }
+
+    .button-black_index {
+        background-color: #140f11; /* Black */
+    }
+
+    .button-black_index:hover {
+        background-color: #140f11e8;
+        transition: .2s;
+    }
+
+
+        /* Overzicht-button */
+    .float-right.button-green {
+        float: right;
+        margin: 30px;
+    }
+
+        /* Knoppen onder tabellen */
+    .bottom-buttons_boek {
+        width: 80%;
+    }
+
+    .bottom-buttons_account {
+        width: 50%;
+    }
+
+
+
+
+    /* ---------------- TABELLEN ---------------- */
+
+    /* TABEL */
+
+    table {
+        overflow-x:auto;
+        border-collapse: collapse;
+        border: transparent;
+        width: 100%;
+        margin-bottom: 50px;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #8ec63f;
+        color: white;
+    }
+
+    tr:nth-child(even) {background-color: #cce5a844;}
+
+    .met-hover tr:hover {
+        background-color: #a5d266af;
+        transition: .2s;
+    }
+
+    .tabel_boek-info {
+        width: 80%;
+    }
+
+    .tabel_account-info {
+        width: 50%;
+        margin: 50px auto 80px auto;
+    }
+
+
+
+    /* BUTTONS */
+
+    table button {
+        color: #8ec63f;
+        background-color: transparent;
+        text-align: center;
+        font-size: 35px;
+        margin: auto;
+        font-weight: 500;
+        padding: 0;
+    }
+
+    .btn {
+        text-align: center;
+    }
+
+
+    /* COLUMNS */
+
+    .hide-column {display: none;}
+
+            
+            /* boekoverzicht */
+    .titel_boek-overzicht,
+    .auteur_boek-overzicht,
+    .categorie_boek-overzicht {width: 20%;}
+
+    .isbn_boek-overzicht {width: 16%;}
+
+    .bewerk-verwijder,
+    .status_boek-overzicht {width: 8%;}
+
+
+            /* uitleenoverzicht */
+    .uitleen-titel,
+    .uitleen-lener,
+    .uitleen-datum {width: 15%;}
+
+    .uitleen-auteur,
+    .uitleen-isbn{width: 12%;}
+
+
+            /* lening-toevoegen */
+
+        .titel_uitlening-toevoegen,
+        .auteur_uitlening-toevoegen,
+        .categorie_uitlening-toevoegen {width: 20%;}
+
+        .isbn_uitlening-toevoegen {width: 16%;}
+
+        .status_uitlening-toevoegen {width: 8%;}
+
+        .naam_uitlening-toevoegen {width: 40%;}
+        .email_uitlening-toevoegen {width: 60%;}
+    
+    /* ---------------- FORM ---------------- */
+
+    .formulieren {
+        border-radius: 5px;
+        background-color: #cce5a844;
+        padding: 20px;
+        min-width: 400px;
+    }
+    
+    .formulieren input[type=text],
+    .formulieren input[type=number], 
+    .formulieren input[type=date],
+    .lening-toevoegen-form input[type=text], 
+    .lening-toevoegen-form input[type=date],
+    .lening-toevoegen-form select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        /* border-radius: 4px; */
+        box-sizing: border-box;
+    }
+
+    .formulieren input[type=submit], 
+    .formulieren input[type=button] {
+        width: 45%;
+        background-color: #8ec63f;
+        margin: 2%;
+        border: none;
+        /* border-radius: 4px; */
+        cursor: pointer;
+        color: white;
+        font-weight: 700;
+        letter-spacing: 1px;
+        padding: 15px 32px;
+        font-size: 14px;
+        /* min-width: 100px; */
+    }
+
+    .formulieren input[type=button] {
+        background-color: #140f11;
+    }
+
+    .formulieren input[type=submit]:hover,
+    .lening-toevoegen-form input[type=submit]:hover {
+        background-color: #7caf34;
+        transition: .2s;
+    }
+
+    .formulieren input[type=button]:hover,
+    .lening-toevoegen-form input[type=button]:hover {
+        background-color: #140f11e8;
+        transition: .2s;
+    }
+
+    .submit-toevoegen input[type=submit] {
+        width: 100%;
+        background-color: #8ec63f;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        color: white;
+        font-weight: 700;
+        letter-spacing: 1px;
+        padding: 15px 32px;
+        font-size: 14px;
+    }
+
+            /* Lening toevoegen formulier */
+
+    .lening-toevoegen-form {
+        box-sizing: content-box;
+        padding: 5px; 
+        inline-size: 400px;
+        margin: 20px auto;
+    }
+
+    .lening-toevoegen-account-tabel {
+        box-sizing: border-box;
+        inline-size: 28%;
+        margin: 40px 0 50px 5%;
+        padding: 0;
+        float: left;
+    }
+
+    .lening-toevoegen-boek-tabel {
+        box-sizing: border-box;
+        inline-size: 60%;
+        margin: 40px 5% 50px 0;
+        padding: 0;
+        float: right;
+    }
+
+    .lening-toevoegen-form form {
+        border-radius: 5px;
+        background-color: #cce5a844;
+        padding: 20px;
+    }
+
+
+    /* ---------------- OVERIGE ---------------- */
+
+    /*img {
+            padding: 30px;
+            height: 300px;
+            width: auto;
+    }*/
 
