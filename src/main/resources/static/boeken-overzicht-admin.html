@@ -1,82 +1,82 @@
 <!DOCTYPE html>
 <html lang="nl">
 
-<head>
-    <meta charset="UTF-8">
-    <title>Bibliotheek WT | Boeken overzicht admin</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="script.js" defer></script>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-</head>
-<style>
+    <head>
+        <meta charset="UTF-8">
+        <title>Bibliotheek WT | Boeken overzicht admin</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="script.js" defer></script>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    </head>
+    <style>
 
-/* ---------------- ZOEKBALK ---------------- */
+    /* ---------------- ZOEKBALK ---------------- */
 
-    .zoeken {
-        margin-bottom: 40px;
-    }
+        .zoeken {
+            margin-bottom: 40px;
+        }
 
-    .zoekbalk {
-        border: 1px solid #140f1157;
-        padding: 4px;
-        font-size: 110%;
-    }
+        .zoekbalk {
+            border: 1px solid #140f1157;
+            padding: 4px;
+            font-size: 110%;
+        }
 
-    select {
-        font-weight: 100;
-        padding: 5px;
-        color: #fff;
-        border: none;
-        background-color: #8ec63f;
-        font-size: 110%;
-        margin-left: 10px;
-    }
+        select {
+            font-weight: 100;
+            padding: 5px;
+            color: #fff;
+            border: none;
+            background-color: #8ec63f;
+            font-size: 110%;
+            margin-left: 10px;
+        }
 
-</style>
+    </style>
 
-<body onload="boekenOverzichtAdmin()">
-    <header>
-        <img onclick="document.location = 'index.html'" src="working-talent-logo-Large.png" alt="Working Talent Logo" id="logo">
-        <h1>Boekbeheer</h1>
-        <button class="btn-logout">Uitloggen</button>
-    </header>
-    <div class="page-content page-content_80">
-        <div>
-            <table class="met-hover">
-            <!--                Zoekbalk-->
-                <div class="zoeken">
-                    <input class="zoekbalk" type="search" id="boekInput" oninput="boekZoekenOverzicht()" placeholder="Zoeken...">
-                    <select id="boekZoekOpties" onchange="boekZoekenOverzicht()">
-                    <option value="titel">Titel</option>
-                    <option value="auteur">Auteur</option>
-                    <option value="isbn">ISBN</option>
-                    </select>
-                </div>    
-                    <thead>
-                    <tr>
-                        <th class="titel_boek-overzicht">Titel</th>
-                        <th class="auteur_boek-overzicht">Auteur</th>
-                        <th class="isbn_boek-overzicht">ISBN</th>
-                        <th class="categorie_boek-overzicht">Categorie</th>
-                        <th class="hide-column">Omschrijving</th>
-                        <th class="hide-column">Omslag</th>
-                        <th class="status_boek-overzicht">Status</th>
-                        <th class="hide-column">Exemplaar</th>
-                        <th class="bewerk-verwijder">Bewerken</th>
-                        <th class="bewerk-verwijder">Verwijderen</th>
-                    </tr>
-                </thead>
-                <tbody id="boekenOverzicht">
-                <!--                    javascript-->
-                </tbody>
-            </table>
+    <body onload="boekenOverzichtAdmin()">
+        <header>
+            <img onclick="document.location = 'index.html'" src="working-talent-logo-Large.png" alt="Working Talent Logo" id="logo">
+            <h1>Boekbeheer</h1>
+            <button class="btn-logout">Uitloggen</button>
+        </header>
+        <div class="page-content page-content_80">
+            <div>
+                <table class="met-hover">
+                <!--                Zoekbalk-->
+                    <div class="zoeken">
+                        <input class="zoekbalk" type="search" id="boekInput" oninput="boekZoekenOverzicht()" placeholder="Zoeken...">
+                        <select id="boekZoekOpties" onchange="boekZoekenOverzicht()">
+                            <option value="titel">Titel</option>
+                            <option value="auteur">Auteur</option>
+                            <option value="isbn">ISBN</option>
+                        </select>
+                    </div>    
+                        <thead>
+                            <tr>
+                                <th class="titel_boek-overzicht">Titel</th>
+                                <th class="auteur_boek-overzicht">Auteur</th>
+                                <th class="isbn_boek-overzicht">ISBN</th>
+                                <th class="categorie_boek-overzicht">Categorie</th>
+                                <th class="hide-column">Omschrijving</th>
+                                <th class="hide-column">Omslag</th>
+                                <th class="status_boek-overzicht">Status</th>
+                                <th class="hide-column">Exemplaar</th>
+                                <th class="bewerk-verwijder">Bewerken</th>
+                                <th class="bewerk-verwijder">Verwijderen</th>
+                            </tr>
+                        </thead>
+                    <tbody id="boekenOverzicht">
+                        <!--                    javascript-->
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <button class="button-green" onclick="document.location = 'boek-toevoegen.html'">Toevoegen</button>
+                <button class="button-green" onclick="document.location = 'lening-toevoegen.html'">Toewijzen</button>
+            </div>
         </div>
-        <div>
-            <button class="button-green" onclick="document.location = 'boek-toevoegen.html'">Toevoegen</button>
-            <button class="button-green" onclick="document.location = 'lening-toevoegen.html'">Toewijzen</button>
-        </div>
-    </div>
-</body>
+    </body>
 
 </html>

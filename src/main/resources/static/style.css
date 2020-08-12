@@ -16,16 +16,6 @@
         background-color: #fff;
     }
 
-    /* .flex-container {
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-    .flex-item {
-        flex: 50%;
-    } */
-
-
 
 
 /* ---------------- PAGE-CONTENT ---------------- */
@@ -93,8 +83,6 @@
         font-size: 100%;
         background-color: transparent;
         color: #97bf0d;
-        /* background-color: #97bf0d; */
-        /* color: #140f11; */
         padding: 10px;
     }
     
@@ -291,7 +279,7 @@
     .uitleen-datum {width: 15%;}
 
     .uitleen-auteur,
-    .uitleen-isbn{width: 12%;}
+    .uitleen-isbn {width: 12%;}
 
 
             /* lening-toevoegen */
@@ -305,6 +293,7 @@
         .status_uitlening-toevoegen {width: 8%;}
 
         .naam_uitlening-toevoegen {width: 40%;}
+
         .email_uitlening-toevoegen {width: 60%;}
     
     /* ---------------- FORM ---------------- */
@@ -347,9 +336,7 @@
         /* min-width: 100px; */
     }
 
-    .formulieren input[type=button] {
-        background-color: #140f11;
-    }
+    .formulieren input[type=button] { background-color: #140f11;}
 
     .formulieren input[type=submit]:hover,
     .lening-toevoegen-form input[type=submit]:hover {
