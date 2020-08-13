@@ -1,72 +1,48 @@
 <!DOCTYPE html>
 <html lang="nl">
 
-    <head>
-        <meta charset="UTF-8">
-        <title>Bibliotheek WT | Account overzicht admin</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="script.js" defer></script>
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <title>Bibliotheek WT | Account overzicht admin</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="script.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
 
-    <style>
-
-        /* ---------------- ZOEKBALK ---------------- */
-
-            .zoeken {
-                margin-bottom: 40px;
-            }
-
-            .zoekbalk {
-                border: 1px solid #140f1157;
-                padding: 4px;
-                font-size: 110%;
-            }
-
-            select {
-                font-weight: 100;
-                padding: 5px;
-                color: #fff;
-                border: none;
-                background-color: #8ec63f;
-                font-size: 110%;
-                margin-left: 10px;
-            }
-
-    </style>
-
+<body onload="accountOverzichtAdmin()">
     <header>
         <img onclick="document.location = 'index.html'" src="working-talent-logo-Large.png" alt="Working Talent Logo" id="logo">
         <h1>Accountbeheer</h1>
         <button class="btn-logout">Uitloggen</button>
     </header>
-    <body onload="accountOverzichtAdmin()">
-        <div class="page-content page-content_60">
-            <table class="met-hover">
-                <!--                Zoekbalk-->
-                <div class="zoeken">
-                    <input class="zoekbalk" type="search" id="accountInput" oninput="accountZoekenOverzicht()" placeholder="Zoeken...">
-                    <select id="accountZoekOpties" onchange="accountZoekenOverzicht()">
-                        <option value="naam">Naam</option>
-                        <option value="email">E-mail</option>
-                    </select>    
-                </div>
-                <thead>
-                    <tr>
-                        <th>Naam</th>
-                        <th>Email</th>
-                        <th>Wachtwoord</th>
-                        <th class="bewerk-verwijder">Bewerken</th>
-                        <th class="bewerk-verwijder">Verwijderen</th>
-                    </tr>
-                </thead>
-                <tbody id="accountOverzicht">
-                <!--                    javascript-->
-                </tbody>
-            </table>
-            <button class="button-green" onclick="document.location = 'account-toevoegen.html'">Toevoegen</button>
-        </div>
-    </body>
 
+    <div class="page-content page-content_60">
+        <table class="met-hover">
+            <!--                Zoekbalk-->
+            <div class="zoeken">
+                <input class="zoekbalk" type="search" id="accountInput" oninput="accountZoekenOverzicht()" placeholder="Zoeken...">
+                <select id="accountZoekOpties" onchange="accountZoekenOverzicht()">
+                    <option value="naam">Naam</option>
+                    <option value="email">E-mail</option>
+                </select>    
+            </div>
+            <thead>
+                <tr>
+                    <th>Naam</th>
+                    <th>Email</th>
+                    <th>Wachtwoord</th>
+                    <th class="bewerk-verwijder">Bewerken</th>
+                    <th class="bewerk-verwijder">Verwijderen</th>
+                </tr>
+            </thead>
+            <tbody id="accountOverzicht">
+            <!--                    javascript-->
+            </tbody>
+        </table>
+
+        <button class="button-green" onclick="document.location = 'account-toevoegen.html'">Toevoegen</button>
+        
+    </div>
+</body>
 </html>
