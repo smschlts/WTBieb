@@ -1,38 +1,39 @@
 <!DOCTYPE html>
 <html lang="nl">
-    <head>
-        <meta charset="UTF-8">
-        <title>Bibliotheek WT | Accountgegevens aanpassen</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
-        <script src="script.js" defer></script>
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    </head>
 
-    <body onload="accountOphalenVoorFormulier()">
-        <header>
-            <img onclick="document.location = 'index.html'" src="working-talent-logo-Large.png" alt="Working Talent Logo" id="logo">
-            <h1>Accountbeheer</h1>
-            <button class="btn-logout">Uitloggen</button>
-        </header>
-        
-        <button class="float-right button-green" onclick="document.location = 'account-overzicht.html'">Overzicht</button>
+<head>
+    <meta charset="UTF-8">
+    <title>Bibliotheek WT | Accountgegevens aanpassen</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
 
-        <div class="page-content page-content_80 page-content_bewerken">
-            <h2>Account aanpassen</h2>
-            <div class="formulieren">
-                <form onsubmit="return accountAanpassen()">
-                    <label for="naam">Naam: </label>
-                    <input type="text" id="naam"><br>
-                    <label for="emailadres">E-mailadres: </label>
-                    <input type="text" id="emailadres"><br>
-                    <input type="radio" id="trainee" name="type-gebruiker" value="trainee">
-                    <label for="trainee">Trainee</label><br>
-                    <input type="radio" id="medewerker" name="type-gebruiker" value="medewerker">
-                    <label for="medewerker">Medewerker</label><br><br>
-                    <input type="button" value="Verwijderen" onclick="accountVerwijderen();document.location = 'account-overzicht.html'">
-                    <input type="submit" value="Opslaan"></input>                
-                </form>
-            </div>
+<body onload="accountOphalenVoorFormulier()">
+    <header>
+        <img onclick="document.location = 'index.html'" src="working-talent-logo-Large.png" alt="Working Talent Logo" id="logo">
+        <h1>Accountbeheer</h1>
+        <button class="btn-logout">Uitloggen</button>
+    </header>
+    
+    <button class="float-right button-green" onclick="document.location = 'account-overzicht.html'">Overzicht</button>
+
+    <div class="page-content page-content_80 page-content_bewerken">
+        <h2>Account aanpassen</h2>
+        <div class="formulieren">
+            <form onsubmit="return accountAanpassen()">
+                <label for="naam">Naam: </label>
+                <input type="text" id="naam"><br>
+                <label for="emailadres">E-mailadres: </label>
+                <input type="text" id="emailadres"><br>
+                <input type="radio" id="trainee" name="type-gebruiker" value="trainee">
+                <label for="trainee">Trainee</label><br>
+                <input type="radio" id="medewerker" name="type-gebruiker" value="medewerker">
+                <label for="medewerker">Medewerker</label><br><br>
+                <input type="button" value="Verwijderen" onclick="accountVerwijderen();document.location = 'account-overzicht.html'">
+                <input type="submit" value="Opslaan"></input>                
+            </form>
         </div>
-    </body>
+    </div>
+</body>
 </html>

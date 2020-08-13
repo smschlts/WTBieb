@@ -1,112 +1,98 @@
 <!DOCTYPE html>
 <html lang="nl">
-    <head>
-        <meta charset="UTF-8">
-        <title>Bibliotheek WT | Lening toevoegen</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="script.js" defer></script>
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    </head>
 
-    <style>
-            
-        /* ---------------- ZOEKBALK ---------------- */
+<head>
+    <meta charset="UTF-8">
+    <title>Bibliotheek WT | Lening toevoegen</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="script.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
 
-        .zoeken {
-            margin-bottom: 40px;
-        }
+<body onload="boekenOverzichtLening();accountOverzichtLening()">
+    <header>
+        <img onclick="document.location = 'index.html'" src="working-talent-logo-Large.png" alt="Working Talent Logo" id="logo">
+        <h1>Uitleningen</h1>
+        <button class="btn-logout">Uitloggen</button>
+    </header>
 
-        .zoekbalk {
-            border: 1px solid #140f1157;
-            padding: 4px;
-            font-size: 110%;
-        }
+    <button class="float-right button-green" onclick="document.location = 'uitleen-overzicht-admin.html'">Overzicht</button>
 
-    </style>
-
-    <body onload="boekenOverzichtLening();accountOverzichtLening()">
-        <header>
-            <img onclick="document.location = 'index.html'" src="working-talent-logo-Large.png" alt="Working Talent Logo" id="logo">
-            <h1>Uitleningen</h1>
-            <button class="btn-logout">Uitloggen</button>
-        </header>
-
-        <button class="float-right button-green" onclick="document.location = 'uitleen-overzicht-admin.html'">Overzicht</button>
-
-        <div class="page-content_lening-overzicht">
-            <div class="lening-toevoegen-form">
-                <h2>Lening toevoegen</h2>    
-                <form onsubmit="return leningToevoegen()">
-                    <label for="accountid">Naam: </label>
-                    <input type="text" id="accountnaam" disabled>
-                    <input type="hidden" id="accountid">
-                    <label for="boektitel">Boektitel: </label>
-                    <input type="text" id="boektitel" disabled>
-                    <input type="hidden" id="boekid">
-                    <label for="exemplaarid">Kies exemplaar: </label>
-                    <select id="exemplaarid"></select>
-                    <label for="uitleendatum">Uitleendatum: </label>
-                    <input type="date" id="uitleendatum">
-                    <div class="submit-toevoegen">
-                            <input type="submit" value="Toevoegen"></input>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <div class="lening-toevoegen-account-tabel">
-            <table class="met-hover">
-                <!--                Zoekbalk-->
-                <div class="zoeken">
-                    <input class="zoekbalk" type="search" id="accountInput" oninput="accountZoekenOverzicht()" placeholder="Zoeken..."><br>
-                    <select id="accountZoekOpties" onchange="accountZoekenOverzicht()">
-                        <option value="naam">Naam</option>
-                        <option value="email">E-mail</option>
-                    </select>   
-                </div>
-                <thead>
-                    <tr>
-                        <th class="naam_uitlening-toevoegen">Naam</th>
-                        <th class="email_uitlening-toevoegen">E-mail</th>
-                    </tr>
-                </thead>
-                <tbody id="accountOverzicht">
-                <!--                    javascript-->
-                </tbody>
-            </table>
-        </div>
-
-        <div class="lening-toevoegen-boek-tabel">
-            <table class="met-hover">
-                <!--                Zoekbalk-->
-                <div class="zoeken">
-                    <input class="zoekbalk" type="search" id="boekInput" oninput="boekZoekenOverzicht()" placeholder="Zoeken...">
-                    <select id="boekZoekOpties" onchange="boekZoekenOverzicht()">
-                        <option value="titel">Titel</option>
-                        <option value="auteur">Auteur</option>
-                        <option value="isbn">ISBN</option>
-                    </select>
-                </div>
-                <thead>
-                    <tr>
-                        <th class="titel_uitlening-toevoegen">Titel</th>
-                        <th class="auteur_uitlening-toevoegen">Auteur</th>
-                        <th class="isbn_uitlening-toevoegen">ISBN</th>
-                        <th class="categorie_uitlening-toevoegen">Categorie</th>
-                        <!-- <th>Omschrijving</th>
-                        <th>Omslag</th> -->
-                        <th class="status_uitlening-toevoegen">Status</th>
-                        <!-- <th>Exemplaar</th> -->
-                    </tr>
-                </thead>
-                <tbody id="boekenOverzicht">
-                    <!--                    javascript-->
-                </tbody>
-            </table>
-            
+    <div class="page-content_lening-overzicht">
+        <div class="lening-toevoegen-form">
+            <h2>Lening toevoegen</h2>    
             <form onsubmit="return leningToevoegen()">
+                <label for="accountid">Naam: </label>
+                <input type="text" id="accountnaam" disabled>
+                <input type="hidden" id="accountid">
+                <label for="boektitel">Boektitel: </label>
+                <input type="text" id="boektitel" disabled>
+                <input type="hidden" id="boekid">
+                <label for="exemplaarid">Kies exemplaar: </label>
+                <select id="exemplaarid"></select>
+                <label for="uitleendatum">Uitleendatum: </label>
+                <input type="date" id="uitleendatum">
+                <div class="submit-toevoegen">
+                        <input type="submit" value="Toevoegen"></input>
+                </div>
             </form>
         </div>
-    </body>
+    </div>
+
+    <div class="lening-toevoegen-account-tabel">
+        <table class="met-hover">
+            <!--                Zoekbalk-->
+            <div class="zoeken">
+                <input class="zoekbalk" type="search" id="accountInput" oninput="accountZoekenOverzicht()" placeholder="Zoeken...">
+                <select id="accountZoekOpties" onchange="accountZoekenOverzicht()">
+                    <option value="naam">Naam</option>
+                    <option value="email">E-mail</option>
+                </select>   
+            </div>
+            <thead>
+                <tr>
+                    <th class="naam_uitlening-toevoegen">Naam</th>
+                    <th class="email_uitlening-toevoegen">E-mail</th>
+                </tr>
+            </thead>
+            <tbody id="accountOverzicht">
+            <!--                    javascript-->
+            </tbody>
+        </table>
+    </div>
+
+    <div class="lening-toevoegen-boek-tabel">
+        <table class="met-hover">
+            <!--                Zoekbalk-->
+            <div class="zoeken">
+                <input class="zoekbalk" type="search" id="boekInput" oninput="boekZoekenOverzicht()" placeholder="Zoeken...">
+                <select id="boekZoekOpties" onchange="boekZoekenOverzicht()">
+                    <option value="titel">Titel</option>
+                    <option value="auteur">Auteur</option>
+                    <option value="isbn">ISBN</option>
+                </select>
+            </div>
+            <thead>
+                <tr>
+                    <th class="titel_uitlening-toevoegen">Titel</th>
+                    <th class="auteur_uitlening-toevoegen">Auteur</th>
+                    <th class="isbn_uitlening-toevoegen">ISBN</th>
+                    <th class="categorie_uitlening-toevoegen">Categorie</th>
+                    <!-- <th>Omschrijving</th>
+                    <th>Omslag</th> -->
+                    <th class="status_uitlening-toevoegen">Status</th>
+                    <!-- <th>Exemplaar</th> -->
+                </tr>
+            </thead>
+            <tbody id="boekenOverzicht">
+                <!--                    javascript-->
+            </tbody>
+        </table>
+        
+        <form onsubmit="return leningToevoegen()">
+        </form>
+    </div>
+    
+</body>
 </html>
