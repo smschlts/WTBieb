@@ -229,6 +229,10 @@
         transition: .2s;
     }
 
+    .tabel_boek-info,
+    .tabel_account-info {
+        column-width: 50%;
+    }
 
     .tabel_boek-info {
         width: 80%;
@@ -239,7 +243,10 @@
         margin: 50px auto 80px auto;
     }
 
-
+    .th_info {
+        background-color: transparent;
+        color: #140F11;
+    }
 
     /* BUTTONS */
 
