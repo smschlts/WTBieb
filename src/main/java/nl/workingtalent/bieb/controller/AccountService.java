@@ -49,4 +49,18 @@ public class AccountService {
         }
     }
 
+    public Account patchAccount(long id, Account nieuwAccount) {
+        System.out.println("Patch account " + id);
+        Account bestaandAccount = accountRepository.findById(id).orElse(null);
+
+        if (bestaandAccount != null) {
+            bestaandAccount.setNaam(nieuwAccount.getNaam());
+            bestaandAccount.setEmail(nieuwAccount.getEmail());
+
+            return accountRepository.save(bestaandAccount);
+        } else {
+            return null;
+        }
+    }
+
 }

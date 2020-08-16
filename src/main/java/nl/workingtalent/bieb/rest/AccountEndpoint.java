@@ -37,4 +37,9 @@ public class AccountEndpoint {
         return accountService.updateAccount(id, nieuwAccount);
     }
 
+    @PatchMapping("/accounts/{id}")
+    public Account patchAccount(@PathVariable Long id, @RequestBody Account nieuwAccount) {
+        return accountService.patchAccount(id, nieuwAccount);
+    }
+
 }
