@@ -295,7 +295,7 @@ function accountAanpassen() {
     account.naam = document.getElementById("naam").value;
     account.email = document.getElementById("emailadres").value;
     var accountJSON = JSON.stringify(account);
-    xhr.open("PUT", "http://localhost:8082/accounts/" + accountID, true);
+    xhr.open("PATCH", "http://localhost:8082/accounts/" + accountID, true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(accountJSON);
 
