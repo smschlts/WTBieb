@@ -224,6 +224,7 @@
     th {
         background-color: #8ec63f;
         color: white;
+        cursor: default;
     }
 
     tr:nth-child(even) {background-color: #cce5a844;}
@@ -231,6 +232,7 @@
     .met-hover tr:hover {
         background-color: #a5d266af;
         transition: .2s;
+        cursor: pointer;
     }
 
     .tabel_boek-info,
