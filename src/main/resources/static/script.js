@@ -213,7 +213,7 @@ function accountOverzichtAdmin(){
                       "<tr id='" + idOverzicht + "'>" +
                       "<td" + urlString + naamOverzicht + "</td>" +
                       "<td" + urlString + emailOverzicht + "</td>" +
-                      "<td" + urlString + wachtwoordOverzicht + "</td>" +
+//                      "<td" + urlString + wachtwoordOverzicht + "</td>" +
                       "<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"document.location = 'account-aanpassen.html?id=" + idOverzicht + "'\">&#9998</button>" + "</td>" +
                       "<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"accountVerwijderenOverzicht(" + idOverzicht + ");window.location.reload()\">&#10006</button>" + "</td>" +
                       "</tr>"
