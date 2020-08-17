@@ -43,6 +43,10 @@
     .page-content_60 {
         width: 60%;
     }
+    
+    .page-content_40 {
+        width: 40%;
+    }
 
     .page-content_info,
     .page-content_bewerken,
