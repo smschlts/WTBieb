@@ -131,8 +131,9 @@ function boekToevoegen() {
     boek.titel = document.getElementById("boektitel").value;
     boek.auteur = document.getElementById("boekauteur").value;
     boek.isbn = document.getElementById("boekisbn").value;
-    boek.categorie = document.getElementById("boekcategorie").value;
-    boek.omschrijving = document.getElementById("boekomschrijving").value;
+//    boek.categorie = document.getElementById("boekcategorie").value;
+//    boek.omschrijving = document.getElementById("boekomschrijving").value;
+    boek.wtId = document.getElementById("boekwtid").value;
     boek.aantal = document.getElementById("boekaantal").value;
     var boekJSON = JSON.stringify(boek);
     xhr.open("POST", "http://localhost:8082/boeken", true);
