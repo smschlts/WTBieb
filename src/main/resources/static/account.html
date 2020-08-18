@@ -17,6 +17,10 @@
             <!-- <h2 class="main-header">Accountbeheer</h2> -->
             <button class="btn-logout">Uitloggen</button>
         </header>
+        <div>
+            <button class="float-left button-green" onclick="document.location = 'account-aanpassen.html' + document.location.search">Bewerken</button>
+            <button class="float-left button-green" onclick="document.location = 'lening-toevoegen.html'">Toewijzen</button>
+        </div>
         <button class="float-right button-green" onclick="document.location = 'account-overzicht.html'">Overzicht</button>
         <div class="page-content page-content_80 page-content_info">
                 <!--    <img src="https://freeiconshop.com/wp-content/uploads/edd/person-solid.png"> -->
@@ -33,15 +37,12 @@
                         <td id="type-gebruiker">Trainee/Medewerker</td>
                     </tr>
                 </table>
-            <div class="bottom-buttons_account">
-                <button class="button-green" onclick="document.location = 'account-aanpassen.html' + document.location.search">Bewerken</button>
-                <button class="button-green" onclick="document.location = 'lening-toevoegen.html'">Toewijzen</button>
-            </div>
+            
 
 
-            <table>
+            <table class="account_geschiedenis">
                 <!--                Zoekbalk-->
-                <div class="zoeken">
+                <div class="zoeken account_geschiedenis">
                     <input class="zoekbalk" type="search" id="uitleningInput" oninput="uitleningZoekenIndividueelAccount()" placeholder="Zoeken...">
                     <select id="uitleningZoekOpties" onchange="uitleningZoekenIndividueelAccount()">
                         <option value="wtid">WTid</option>
@@ -53,11 +54,11 @@
                 </div>
                 <thead>
                 <tr>
-                    <th class="uitleen-exemplaar-id">WTid</th>
-                    <th class="uitleen-titel">Titel</th>
-                    <th class="uitleen-auteur">Auteur</th>
-                    <th class="uitleen-datum">Uitleendatum</th>
-                    <th class="uitleen-datum">Inleverdatum</th>
+                    <th class="WTid_account-geschiedenis">WTid</th>
+                    <th class="titel_account-geschiedenis">Titel</th>
+                    <th class="auteur_account-geschiedenis">Auteur</th>
+                    <th class="datum_account-geschiedenis">Uitleendatum</th>
+                    <th class="datum_account-geschiedenis">Inleverdatum</th>
 
 
                 </tr>
