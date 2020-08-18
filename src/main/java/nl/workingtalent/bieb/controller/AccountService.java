@@ -31,7 +31,7 @@ public class AccountService {
 
     public void verwijderAccount(long id) {
         System.out.println("Verwijder account " + id);
-        accountRepository.deleteById(id);
+        accountRepository.softDelete(id);
     }
 
     public Account updateAccount(long id, Account nieuwAccount) {
