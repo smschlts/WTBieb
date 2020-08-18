@@ -560,7 +560,6 @@ function formulierInvullenVoorLening() {
         xhr.send();
         
     }
-// to-do als je via een exemplaar toevoegen hier komt dan wordt het in het formulier ingevuld: maak het selecteren van exemplaar nog af
     if (exemplaarID) {
         var xhr2 = new XMLHttpRequest();
         xhr2.onreadystatechange = function() {
@@ -569,9 +568,8 @@ function formulierInvullenVoorLening() {
                 var titelBoek = exemplaar.boek.titel;
                 var boekid = exemplaar.boek.id;
                 var wtExemplaarId = exemplaar.workingTalentExemplaarId;
-                boekVeldInvullen(boekid, titelBoek);
+                boekVeldInvullen(boekid, titelBoek, wtExemplaarId);
                 document.getElementById("boekenTabel").style.display = "none";
-                //console.log(document.getElementById("exemplaarid").options[1].selected);
             }
         }
         xhr2.open("GET", "http://localhost:8082/exemplaren/" + exemplaarID, true);
@@ -889,10 +887,10 @@ function accountOverzichtLening(){
   }
 
 // voorbeeld lening-toevoegen.html
-function boekVeldInvullen(boekID, boekTitel) {
+function boekVeldInvullen(boekID, boekTitel, wtexemplaarnummer = null) {
     document.getElementById("boekid").value = boekID;
     document.getElementById("boektitel").value = boekTitel;
-    haalAantalExemplarenOp(boekID);
+    haalAantalExemplarenOp(boekID, wtexemplaarnummer);
 }
 
 function accountVeldInvullen(accountID, accountNaam) {
@@ -900,29 +898,36 @@ function accountVeldInvullen(accountID, accountNaam) {
     document.getElementById("accountnaam").value = accountNaam;
 }
 
-function haalAantalExemplarenOp(boekid) {
+function haalAantalExemplarenOp(boekid, wtexemplaarnummer = null) {
     var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function(){
             if(this.readyState == 4 && this.status == 200){
                 var antwoord = JSON.parse(this.responseText,
                     function (key, value) {
-                   return (value == null) ? "" : value
+                    return (value == null) ? "" : value
                 }
-           );
-           document.getElementById("exemplaarid").innerHTML="";
+            );
+        document.getElementById("exemplaarid").innerHTML="";
             for(var x = 0 ; x < antwoord.exemplaren.length; x++){
-              var boekworkingtalentid = antwoord.wtId;
-              var exemplaarworkingtalentid = antwoord.exemplaren[x].workingTalentExemplaarId;
+                var boekworkingtalentid = antwoord.wtId;
+                var exemplaarworkingtalentid = antwoord.exemplaren[x].workingTalentExemplaarId;
 
-              if (antwoord.exemplaren[x].status == "UITGELEEND") {
-                $(exemplaarid).append(
-                    "<option value=\"" + exemplaarworkingtalentid + "\"disabled>" + boekworkingtalentid  + "." + exemplaarworkingtalentid +"</option>"
-                            )
-              } else if (antwoord.exemplaren[x].status == "BESCHIKBAAR") {
-                $(exemplaarid).append(
-                            "<option value=\"" + exemplaarworkingtalentid + "\">" + boekworkingtalentid + "." + exemplaarworkingtalentid +"</option>"
-                                    )
-              }
+                if (antwoord.exemplaren[x].status == "UITGELEEND") {
+                    $(exemplaarid).append(
+                        "<option value=\"" + exemplaarworkingtalentid + "\"disabled>" + boekworkingtalentid  + "." + exemplaarworkingtalentid +"</option>"
+                    )
+                } else if (antwoord.exemplaren[x].status == "BESCHIKBAAR") {
+                    if (wtexemplaarnummer == exemplaarworkingtalentid) {
+                        $(exemplaarid).append(
+                            "<option value=\"" + exemplaarworkingtalentid + "\" selected>" + boekworkingtalentid + "." + exemplaarworkingtalentid +"</option>"
+                        )
+                    } else {
+                        $(exemplaarid).append(
+                        "<option value=\"" + exemplaarworkingtalentid + "\">" + boekworkingtalentid + "." + exemplaarworkingtalentid +"</option>"
+                        )
+                    }
+                    
+                }
               
             }
         }
