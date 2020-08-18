@@ -341,7 +341,9 @@ function uitleenOverzichtAdmin(){
               var titelOverzicht = antwoord[x].boek.titel;
               var auteurOverzicht = antwoord[x].boek.auteur;
               var isbnOverzicht = antwoord[x].boek.isbn;
+              var boekidOverzicht = antwoord[x].boek.wtId;
               var exemplaarOverzicht = antwoord[x].exemplaarId;
+              var wtidOverzicht = boekidOverzicht + "." + exemplaarOverzicht;
               var accountNaamOverzicht = antwoord[x].account.naam;
               var uitleningID = antwoord[x].id;
               var uitleningsDatumOverzicht = antwoord[x].uitleenDatum;
@@ -363,7 +365,7 @@ function uitleenOverzichtAdmin(){
                     "<td class=\"uitleen-titel\"" + urlString + titelOverzicht + "</td>" +
                     "<td class=\"uitleen-auteur\"" + urlString + auteurOverzicht + "</td>" +
                     "<td class=\"uitleen-isbn\"" + urlString + isbnOverzicht + "</td>" +
-                    "<td class=\"uitleen-exemplaar-id\"" + urlString + exemplaarOverzicht + "</td>" +
+                    "<td class=\"uitleen-exemplaar-id\"" + urlString + wtidOverzicht + "</td>" +
                     "<td class=\"uitleen-lener\"" + urlString + accountNaamOverzicht + "</td>" +
                     "<td class=\"uitleen-datum\"" + urlString + uitleningsDatumOverzicht + "</td>" +
                     "<td class=\"uitleen-datum\"" + urlString + inleverDatumOverzicht + "</td>" +
@@ -505,14 +507,17 @@ function boekZoekenOverzicht() {
 
     var zoekIndex = 0;
     switch(document.getElementById("boekZoekOpties").value) {
-        case "titel":
+        case "wtid":
             zoekIndex = 0;
             break;
+        case "titel":
+            zoekIndex = 1;
+            break;
        case "auteur":
-           zoekIndex = 1;
+           zoekIndex = 2;
            break;
        case "isbn":
-           zoekIndex = 2;
+           zoekIndex = 3;
            break;
        default:
             zoekIndex = 0;
@@ -632,10 +637,11 @@ function boekenOverzichtLening(){
               var omslagOverzicht = antwoord[x].omslag;
               var statusOverzicht = berekenBeschikbaarheid(antwoord[x].exemplaren);
               var titelOverzicht = antwoord[x].titel;
-              var wtidOverzicht = antwoord[x].wtid;
+              var boekidOverzicht = antwoord[x].wtId;
 
               $(boekenOverzicht).append(
                     "<tr id='" + idOverzicht + "' onclick=\"boekVeldInvullen('" + idOverzicht + "', '" + titelOverzicht + "')\">" +
+                    "<td>" + boekidOverzicht + "</td>" +
                     "<td id='titel'>" + titelOverzicht + "</td>" +
                     "<td>" + auteurOverzicht + "</td>" +
                     "<td>" + isbnOverzicht + "</td>" +
@@ -701,15 +707,16 @@ function haalAantalExemplarenOp(boekid) {
            );
            document.getElementById("exemplaarid").innerHTML="";
             for(var x = 0 ; x < antwoord.exemplaren.length; x++){
-              var boekworkingtalentid = antwoord.exemplaren[x].workingTalentExemplaarId;
+              var boekworkingtalentid = antwoord.wtId;
+              var exemplaarworkingtalentid = antwoord.exemplaren[x].workingTalentExemplaarId;
 
               if (antwoord.exemplaren[x].status == "UITGELEEND") {
                 $(exemplaarid).append(
-                    "<option disabled>"+ boekworkingtalentid +"</option>"
+                    "<option disabled>" + boekworkingtalentid  + "." + exemplaarworkingtalentid +"</option>"
                             )
               } else if (antwoord.exemplaren[x].status == "BESCHIKBAAR") {
                 $(exemplaarid).append(
-                            "<option>"+ boekworkingtalentid +"</option>"
+                            "<option>" + boekworkingtalentid + "." + exemplaarworkingtalentid +"</option>"
                                     )
               }
               
