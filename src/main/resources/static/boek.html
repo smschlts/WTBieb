@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Bibliotheek WT | Boek</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="script.js" defer></script>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 </head>
@@ -52,6 +53,19 @@
             <button class="button-green" onclick="document.location = 'boek-aanpassen.html' + document.location.search">Bewerken</button>
             <button class="button-green" onclick="document.location = 'lening-toevoegen.html'">Toewijzen</button>
         </div>
+
+        <table class="met-hover page-content_40">
+            <thead>
+                <tr>
+                    <th>WTid</th>
+                    <th>Status</th>
+                    <th class="bewerk-verwijder">Toewijzen</th>
+                </tr>
+            </thead>
+            <tbody id="exemplaarOverzicht">
+                <!--                    javascript-->
+            </tbody>
+        </table>
     </div>
 
 </body>
