@@ -18,8 +18,13 @@
     </header>
 
     <button class="float-right button-green" onclick="document.location = 'boeken-overzicht-admin.html'">Overzicht</button>
+    <!-- <div class="bottom-buttons_boek"> -->
+        <button class="float-left button-green" onclick="document.location = 'boek-aanpassen.html' + document.location.search">Bewerken</button>
+        <!-- <button class="button-green" onclick="document.location = 'lening-toevoegen.html'">Toewijzen</button> -->
+    <!-- </div> -->
 
-    <div class="page-content page-content_60 page-content_info">
+    <div class="page-content page-content_80 page-content_info">
+        <div class="page-content_tables">    
             <table class="tabel_boek-info">
                 <tr>
                     <td colspan="2" class="tabel-titel" id="boektitel">Harry Potter 1</th>
@@ -49,23 +54,27 @@
                 </tr>
             </table>
             <!--   <img class="boek-info_flex-item boek-info_flex-item_omslag" src="https://vignette.wikia.nocookie.net/harrypotter/images/3/3e/Harry_Potter_and_the_Sorcerer's_Stone_cover.jpg"> -->
-        <div class="bottom-buttons_boek">
-            <button class="button-green" onclick="document.location = 'boek-aanpassen.html' + document.location.search">Bewerken</button>
-            <button class="button-green" onclick="document.location = 'lening-toevoegen.html'">Toewijzen</button>
-        </div>
+        
 
-        <table class="met-hover page-content_40">
-            <thead>
-                <tr>
-                    <th>WTid</th>
-                    <th>Status</th>
-                    <th class="bewerk-verwijder">Toewijzen</th>
-                </tr>
-            </thead>
-            <tbody id="exemplaarOverzicht">
-                <!--                    javascript-->
-            </tbody>
-        </table>
+            <table class="met-hover tabel_exemplaar_boek-info">
+                <thead>
+                    <tr>
+                        <td colspan="2" class="tabel-titel" id="boektitel">Exemplaren</th>
+                    </tr>
+                    <tr>
+                        <th class="th_info">WTid</th>
+                        <th class="th_info">Status</th>
+                        <th class="th_info bewerk-verwijder">Toewijzen</th>
+                    </tr>
+                </thead>
+                <tbody id="exemplaarOverzicht">
+                    <!--                    javascript-->
+                </tbody>
+            </table>
+    </div>
+
+        
+
     </div>
 
 </body>
