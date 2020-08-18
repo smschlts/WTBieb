@@ -16,9 +16,16 @@ public class UitleningEndpoint {
     @Autowired
     ExemplaarService exemplaarService;
 
+
+//    uitleningen?accountid=6
+
     @GetMapping("/uitleningen")
-    public List<Uitlening> uitleningenAlles() {
-        return uitleningService.ophalenAlleUitleningen();
+    public List<Uitlening> uitleningenAlles(@RequestParam(required = false) String accountId) {
+        if (accountId == null) {
+            return uitleningService.ophalenAlleUitleningen();
+        } else {
+            return uitleningService.ophalenAlleUitleningenMetAccountId(Long.parseLong(accountId));
+        }
     }
 
     @GetMapping("/uitleningen/{id}")
