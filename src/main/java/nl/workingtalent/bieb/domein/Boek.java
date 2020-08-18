@@ -13,6 +13,7 @@ public class Boek {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @Column(unique=true)
     private long wtId;
     @NotNull
     private String isbn;
