@@ -17,7 +17,7 @@ public class UitleningEndpoint {
     ExemplaarService exemplaarService;
 
 
-//    uitleningen?accountid=6
+//    uitleningen?accountId=6
 
     @GetMapping("/uitleningen")
     public List<Uitlening> uitleningenAlles(@RequestParam(required = false) String accountId) {

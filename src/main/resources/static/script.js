@@ -260,7 +260,61 @@ function accountOphalen() {
     }
     xhr.open("GET", "http://localhost:8082/accounts/" + accountID, true);
     xhr.send();
+    accountGeschiedenisOphalen(accountID);
 }
+
+// uitlening-overzicht-admin.html
+function accountGeschiedenisOphalen(accountId){
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            var antwoord = JSON.parse(this.responseText,
+                function (key, value) {
+                    return (value == null) ? "" : value
+                 }
+            );
+            for(var x = 0 ; x < antwoord.length; x++){
+              var boekidOverzicht = antwoord[x].boek.wtId;
+              var exemplaarOverzicht = antwoord[x].exemplaarId;
+              var wtidOverzicht = boekidOverzicht + "." + exemplaarOverzicht;
+              var titelOverzicht = antwoord[x].boek.titel;
+              var auteurOverzicht = antwoord[x].boek.auteur;
+              var isbnOverzicht = antwoord[x].boek.isbn;
+              var accountNaamOverzicht = antwoord[x].account.naam;
+              var uitleningID = antwoord[x].id;
+              var uitleningsDatumOverzicht = antwoord[x].uitleenDatum;
+              var inleverDatumOverzicht = antwoord[x].inleverDatum;
+          //   var urlString = " onclick=\"window.location='lening-aanpassen.html?id=" + uitleningID + "';\">"
+              var urlString = ">"
+              var inleverButtonString
+
+
+              if(inleverDatumOverzicht=="") {
+                inleverButtonString = "<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"uitleningInleverOverzicht(" + uitleningID + ");\">&#10004</button>" + "</td>" +
+              "</tr>"
+            } else {
+                inleverButtonString = "<td class=\"btn bewerk-verwijder\">" + "</td>" + "</tr>"
+            }
+
+                $(uitleenOverzicht).append(
+                    "<tr>" +
+                    "<td class=\"uitleen-exemplaar-id\"" + urlString + wtidOverzicht + "</td>" +
+                    "<td class=\"uitleen-titel\"" + urlString + titelOverzicht + "</td>" +
+                    "<td class=\"uitleen-auteur\"" + urlString + auteurOverzicht + "</td>" +
+                    "<td class=\"uitleen-datum\"" + urlString + uitleningsDatumOverzicht + "</td>" +
+                    "<td class=\"uitleen-datum\"" + urlString + inleverDatumOverzicht + "</td>"
+                    )
+                
+            }
+        }
+    }
+    xhr.open("GET","http://localhost:8082/uitleningen?accountId=" +accountId,true);
+    xhr.send();
+}
+
+
+
+
 
 // account-aanpassen.html
 function accountOphalenVoorFormulier() {
@@ -421,7 +475,7 @@ function uitleningVerwijderen() {
     } else {
         // pass
     }
-}
+    }
 
 //lening-toevoegen.html
 function leningToevoegen() {
@@ -621,6 +675,52 @@ function uitleningZoekenOverzicht() {
       }
     }
   }
+
+// zoekfunctie in account.html
+function uitleningZoekenIndividueelAccount() {
+    // Declare variables
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("uitleningInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("uitleenOverzicht");
+    tr = table.getElementsByTagName("tr");
+
+    var zoekIndex = 0;
+    switch(document.getElementById("uitleningZoekOpties").value) {
+        case "wtid":
+            zoekIndex = 0;
+            break;
+        case "titel":
+            zoekIndex = 1;
+            break;
+        case "auteur":
+            zoekIndex = 2;
+            break;
+        case "uitleendatum":
+            zoekIndex = 3;
+            break;
+        case "inleverdatum":
+            zoekIndex = 4;
+            break;
+        default:
+            zoekIndex = 0;
+            break;
+    }
+
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[zoekIndex]; // tabel kolom id voor "naam"
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  }
+
 
 // boek zoeken in lening-toevoegen.html
 function boekenOverzichtLening(){
