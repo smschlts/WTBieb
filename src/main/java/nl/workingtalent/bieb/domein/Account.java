@@ -1,10 +1,12 @@
 package nl.workingtalent.bieb.domein;
 
 import com.sun.istack.NotNull;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 
 @Entity
+@Where(clause="is_active=1")
 @Table(name = "accounts")
 public class Account {
     @Id
@@ -17,6 +19,10 @@ public class Account {
     @NotNull
     private String wachtwoord;
 
+    @Column(name="is_active")
+    private Boolean active;
+
+
     public Account() {
     }
 
@@ -24,6 +30,7 @@ public class Account {
         this.naam = naam;
         this.email = email;
         this.wachtwoord = wachtwoord;
+        this.active = true;
     }
 
     public long getId() {

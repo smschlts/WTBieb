@@ -345,6 +345,7 @@ function uitleenOverzichtAdmin(){
               var urlString = ">"
 
               $(uitleenOverzicht).append(
+
                     "<tr>" +
                     "<td class=\"uitleen-titel\"" + urlString + titelOverzicht + "</td>" +
                     "<td class=\"uitleen-auteur\"" + urlString + auteurOverzicht + "</td>" +
