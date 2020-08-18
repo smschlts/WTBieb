@@ -277,14 +277,15 @@
 
             
             /* boekoverzicht */
-        .titel_boek-overzicht,
         .auteur_boek-overzicht,
         .categorie_boek-overzicht {width: 20%;}
 
-        .isbn_boek-overzicht {width: 16%;}
+        .titel_boek-overzicht {width: 40%}
+
+        .isbn_boek-overzicht {width: 20%;}
 
         .bewerk-verwijder,
-        .status_boek-overzicht {width: 8%;}
+        .status_boek-overzicht {width: 10%;}
 
 
             /* uitleenoverzicht */
