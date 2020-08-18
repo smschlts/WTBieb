@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <title>Bibliotheek WT | Accountgegevens</title>
         <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="script.js" defer></script>
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     </head>
@@ -36,6 +37,36 @@
                 <button class="button-green" onclick="document.location = 'account-aanpassen.html' + document.location.search">Bewerken</button>
                 <button class="button-green" onclick="document.location = 'lening-toevoegen.html'">Toewijzen</button>
             </div>
+
+
+            <table>
+                <!--                Zoekbalk-->
+                <div class="zoeken">
+                    <input class="zoekbalk" type="search" id="uitleningInput" oninput="uitleningZoekenIndividueelAccount()" placeholder="Zoeken...">
+                    <select id="uitleningZoekOpties" onchange="uitleningZoekenIndividueelAccount()">
+                        <option value="wtid">WTid</option>
+                        <option value="titel">Titel</option>
+                        <option value="auteur">Auteur</option>
+                        <option value="uitleendatum">Uitleendatum</option>
+                        <option value="inleverdatum">Inleverdatum</option>
+                    </select>
+                </div>
+                <thead>
+                <tr>
+                    <th class="uitleen-exemplaar-id">WTid</th>
+                    <th class="uitleen-titel">Titel</th>
+                    <th class="uitleen-auteur">Auteur</th>
+                    <th class="uitleen-datum">Uitleendatum</th>
+                    <th class="uitleen-datum">Inleverdatum</th>
+
+
+                </tr>
+                </thead>
+                <tbody id="uitleenOverzicht">
+                <!--                    javascript-->
+                </tbody>
+            </table>
+
         </div>
 
     </body>
