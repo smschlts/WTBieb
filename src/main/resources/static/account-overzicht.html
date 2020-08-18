@@ -10,115 +10,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 </head>
 
-<style>
-/* ---------------- GENERAL ---------------- */
-
-    .page-content {
-        position: absolute;
-        left: 50%;
-        top: 25%;
-        transform: translate(-50%, 0%);
-        width: 60%;
-        margin: 50px 0 200px 0;
-    }
-
-
-/* ---------------- BUTTONS ---------------- */
-
-    table button {
-        color: #8ec63f;
-        background-color: transparent;
-        text-align: center;
-        font-size: 35px;
-        margin: auto;
-        font-weight: 500;
-        padding: 0;
-    }
-    
-    .btn {
-        text-align: center;
-    }
-
-    .button-green {
-        width: 150px;
-        height: 50px;
-        margin: 5px;
-        color: white;
-        font-weight: 700;
-        padding: 15px 32px;
-        font-size: 14px;
-        background-color: #8ec63f;
-    }
-
-    .button-green:hover {
-        background-color: #7caf34;
-        transition: .2s;
-    }
-
-/* ---------------- ZOEKBALK ---------------- */
-
-    .zoeken {
-        margin-bottom: 40px;
-    }
-
-    .zoekbalk {
-        border: 1px solid #140f1157;
-        padding: 4px;
-        font-size: 110%;
-    }
-
-    select {
-        font-weight: 100;
-        padding: 5px;
-        color: #fff;
-        border: none;
-        background-color: #8ec63f;
-        font-size: 110%;
-        margin-left: 10px;
-    }
-
-/* ---------------- TABLE ---------------- */
-
-table {
-        overflow-x:auto;
-        border-collapse: collapse;
-        border: transparent;
-        width: 100%;
-        margin-bottom: 50px;
-    }
-
-    th, td {
-        padding: 10px;
-        text-align: left;
-    }
-
-    th {
-        background-color: #8ec63f;
-        color: white;
-    }
-
-    tr:nth-child(even) {background-color: #cce5a844;}
-
-    tr:hover {
-        background-color: #a5d266af;
-        transition: .2s;
-    }
-
-/* ---------------- COLUMNS ---------------- */
-
-    .bewerk-verwijder {width: 8%;}
-    .hide-column {display: none;}
-
-</style>
-
-<header>
-    <img onclick="document.location = 'index.html'" src="working-talent-logo-Large.png" alt="Working Talent Logo" id="logo">
-    <h1>Accountbeheer</h1>
-    <button class="btn-logout">Uitloggen</button>
-</header>
 <body onload="accountOverzichtAdmin()">
-    <div class="page-content">
-        <table>
+    <header>
+        <img onclick="document.location = 'index.html'" src="working-talent-logo-Large.png" alt="Working Talent Logo" id="logo">
+        <h1>Accountbeheer</h1>
+        <button class="btn-logout">Uitloggen</button>
+    </header>
+
+    <div class="page-content page-content_40">
+        <table class="met-hover">
             <!--                Zoekbalk-->
             <div class="zoeken">
                 <input class="zoekbalk" type="search" id="accountInput" oninput="accountZoekenOverzicht()" placeholder="Zoeken...">
@@ -128,20 +28,21 @@ table {
                 </select>    
             </div>
             <thead>
-            <tr>
-                <th>Naam</th>
-                <th>Email</th>
-                <th>Wachtwoord</th>
-                <th class="bewerk-verwijder">Bewerken</th>
-                <th class="bewerk-verwijder">Verwijderen</th>
-            </tr>
+                <tr>
+                    <th>Naam</th>
+                    <th>Email</th>
+                    <!---<th>Wachtwoord</th>-->
+                    <th class="bewerk-verwijder">Bewerken</th>
+                    <th class="bewerk-verwijder">Verwijderen</th>
+                </tr>
             </thead>
             <tbody id="accountOverzicht">
             <!--                    javascript-->
             </tbody>
         </table>
+
         <button class="button-green" onclick="document.location = 'account-toevoegen.html'">Toevoegen</button>
+        
     </div>
 </body>
-
 </html>

@@ -4,6 +4,11 @@ function confirmVerwijderen() {
     return bevestiging;
 }
 
+function confirmInleveren() {
+    var bevestiging = confirm("Item inleveren?");
+    return bevestiging;
+}
+
 
 function berekenBeschikbaarheid(exemplaren) {
     var aantal = 0;
@@ -49,13 +54,13 @@ function boekenOverzichtAdmin(){
                     "<td" + urlString + " class=\"titel\">" + titelOverzicht + "</td>" +
                     "<td" + urlString + " class=\"auteur\">" + auteurOverzicht + "</td>" +
                     "<td" + urlString + " class=\"isbn\">" + isbnOverzicht + "</td>" +
-                    "<td" + urlString + " class=\"categorie\">" + categorieOverzicht + "</td>" +
+                    "<td" + urlString + " class=\"hide-column categorie\">" + categorieOverzicht + "</td>" +
                     "<td" + urlString + " class=\"hide-column\" >" + omschrijvingOverzicht + "</td>" +
                     "<td" + urlString + " class=\"hide-column\">" + omslagOverzicht + "</td>" +
                     "<td" + urlString + " class=\"status\">" + statusOverzicht + "</td>" +
                     "<td" + urlString + " class=\"hide-column\" >" + wtidOverzicht + "</td>" +
                     "<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"document.location = 'boek-aanpassen.html?id="+idOverzicht+"'\">&#9998;</button>" + "</td>" +
-                    "<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"boekVerwijderenOverzicht("+idOverzicht+");window.location.reload()\">&#10006;</button>" + "</td>" +
+                    "<td class=\"hide-column\">" + "<button onclick=\"boekVerwijderenOverzicht("+idOverzicht+");window.location.reload()\">&#10006;</button>" + "</td>" +
                     "</tr>"
                     )
             }
@@ -208,7 +213,7 @@ function accountOverzichtAdmin(){
                       "<tr id='" + idOverzicht + "'>" +
                       "<td" + urlString + naamOverzicht + "</td>" +
                       "<td" + urlString + emailOverzicht + "</td>" +
-                      "<td" + urlString + wachtwoordOverzicht + "</td>" +
+//                      "<td" + urlString + wachtwoordOverzicht + "</td>" +
                       "<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"document.location = 'account-aanpassen.html?id=" + idOverzicht + "'\">&#9998</button>" + "</td>" +
                       "<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"accountVerwijderenOverzicht(" + idOverzicht + ");window.location.reload()\">&#10006</button>" + "</td>" +
                       "</tr>"
@@ -290,7 +295,7 @@ function accountAanpassen() {
     account.naam = document.getElementById("naam").value;
     account.email = document.getElementById("emailadres").value;
     var accountJSON = JSON.stringify(account);
-    xhr.open("PUT", "http://localhost:8082/accounts/" + accountID, true);
+    xhr.open("PATCH", "http://localhost:8082/accounts/" + accountID, true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(accountJSON);
 
@@ -343,8 +348,17 @@ function uitleenOverzichtAdmin(){
               var inleverDatumOverzicht = antwoord[x].inleverDatum;
           //   var urlString = " onclick=\"window.location='lening-aanpassen.html?id=" + uitleningID + "';\">"
               var urlString = ">"
+              var inleverButtonString
 
-              $(uitleenOverzicht).append(
+
+              if(inleverDatumOverzicht=="") {
+                inleverButtonString = "<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"uitleningInleverOverzicht(" + uitleningID + ");\">&#10004</button>" + "</td>" +
+              "</tr>"
+            } else {
+                inleverButtonString = "<td class=\"btn bewerk-verwijder\">" + "</td>" + "</tr>"
+            }
+
+                $(uitleenOverzicht).append(
 
                     "<tr>" +
                     "<td class=\"uitleen-titel\"" + urlString + titelOverzicht + "</td>" +
@@ -355,9 +369,10 @@ function uitleenOverzichtAdmin(){
                     "<td class=\"uitleen-datum\"" + urlString + uitleningsDatumOverzicht + "</td>" +
                     "<td class=\"uitleen-datum\"" + urlString + inleverDatumOverzicht + "</td>" +
                     "<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"document.location = 'lening-aanpassen.html?id=" + uitleningID + "'\">&#9998</button>" + "</td>" +
-                    "<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"uitleningVerwijderenOverzicht(" + uitleningID + ");window.location.reload()\">&#10006</button>" + "</td>" +
-                    "</tr>"
+                    inleverButtonString
                     )
+                
+                
             }
         }
     }
@@ -371,6 +386,23 @@ function uitleningVerwijderenOverzicht(uitleningID) {
         var xhr = new XMLHttpRequest();
     xhr.open("DELETE", "http://localhost:8082/uitleningen/" + uitleningID, true);
     xhr.send();
+    } else {
+        // pass
+    }
+}
+
+function uitleningInleverOverzicht(uitleningID) {
+    bevestiging = confirmInleveren();
+    if (bevestiging == true) {
+        console.log("inleveren: " + "http://localhost:8082/uitleningen/" + uitleningID + "/inlever");
+        var xhr = new XMLHttpRequest();
+         xhr.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    window.location.reload();
+                }
+        }
+        xhr.open("PUT", "http://localhost:8082/uitleningen/" + uitleningID + "/inlever", true);
+        xhr.send();
     } else {
         // pass
     }
@@ -672,10 +704,16 @@ function haalAantalExemplarenOp(boekid) {
             for(var x = 0 ; x < antwoord.exemplaren.length; x++){
               var boekworkingtalentid = antwoord.exemplaren[x].workingTalentExemplaarId;
 
-              $(exemplaarid).append(
-              "<option>"+ boekworkingtalentid +"</option>"
-
-                    )
+              if (antwoord.exemplaren[x].status == "UITGELEEND") {
+                $(exemplaarid).append(
+                    "<option disabled>"+ boekworkingtalentid +"</option>"
+                            )
+              } else if (antwoord.exemplaren[x].status == "BESCHIKBAAR") {
+                $(exemplaarid).append(
+                            "<option>"+ boekworkingtalentid +"</option>"
+                                    )
+              }
+              
             }
         }
     }

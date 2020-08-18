@@ -41,4 +41,15 @@ public class UitleningEndpoint {
     public Uitlening updateUitlening(@PathVariable Long id, @RequestBody Uitlening nieuweUitlening) {
         return uitleningService.updateUitlening(id, nieuweUitlening);
     }
+
+    @PutMapping("/uitleningen/{id}/inlever")
+    public Uitlening inleverUitlening(@PathVariable Long id) {
+        System.out.println("Inleveren " + id);
+        Uitlening bestaandeUitlening = uitleningService.ophalenUitlening(id);
+        if (bestaandeUitlening != null) {
+            exemplaarService.patchExemplaar(bestaandeUitlening.getBoek().getId(), bestaandeUitlening.getExemplaarId(), BoekStatus.BESCHIKBAAR);
+        }
+
+        return uitleningService.inleverUitlening(id);
+    }
 }

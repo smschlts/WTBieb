@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="nl">
+
 <head>
     <meta charset="UTF-8">
     <title>Bibliotheek WT | Accountgegevens aanpassen</title>
@@ -7,98 +8,18 @@
     <script src="script.js" defer></script>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 </head>
+
 <body onload="accountOphalenVoorFormulier()">
-    <style>
-        /* ---------------- GENERAL ---------------- */
-        
-        .page-content {
-            position: absolute;
-            left: 50%;
-            top: 5%;
-            transform: translate(-50%, 0%);
-            margin: 50px 0 200px 0;
-            /* width: 60%; */
-        }
+    <header>
+        <img onclick="document.location = 'index.html'" src="working-talent-logo-Large.png" alt="Working Talent Logo" id="logo">
+        <h1>Accountbeheer</h1>
+        <button class="btn-logout">Uitloggen</button>
+    </header>
+    
+    <button class="float-right button-green" onclick="document.location = 'account-overzicht.html'">Overzicht</button>
 
-        /* h2 {
-            margin: 50px auto;
-        } */
-
-        /* ---------------- BUTTONS ---------------- */
-
-        .top-buttons button {
-            width: 150px;
-            height: 50px;
-            /* border: none; */
-            margin: 5px;
-            color: white;
-            font-weight: 700;
-            /* letter-spacing: 1px; */
-            padding: 15px 32px;
-            /* text-align: center; */
-            /* text-decoration: none; */
-            /* display: inline-block; */
-            font-size: 14px;
-            background-color: #8ec63f;
-            /* cursor: pointer;  */
-        }
-
-        /* ---------------- FORM ---------------- */
-
-        .formulieren {
-            border-radius: 5px;
-            background-color: #cce5a844;
-            padding: 20px;
-        }
-        
-        .formulieren input[type=text] {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            /* border-radius: 4px; */
-            box-sizing: border-box;
-        }
-
-        .formulieren input[type=submit], .formulieren input[type=button] {
-            width: 45%;
-            background-color: #8ec63f;
-            margin: 2%;
-            border: none;
-            /* border-radius: 4px; */
-            cursor: pointer;
-            color: white;
-            font-weight: 700;
-            letter-spacing: 1px;
-            padding: 15px 32px;
-            font-size: 14px;
-        }
-
-        .formulieren input[type=button] {
-            background-color: #140f11;
-        }
-
-        .formulieren input[type=submit]:hover {
-            background-color: #7caf34;
-            transition: .2s;
-        }
-
-        .formulieren input[type=button]:hover {
-            background-color: #140f11e8;
-            transition: .2s;
-        }
-
-    </style>
-
-    <div class="top-buttons">
-        <button class="float-right">Log out</button>
-        <button class="float-right" onclick="document.location = 'account-overzicht.html'">Overzicht</button>
-        <button class="float-right" onclick="document.location = 'index.html'">Home</button>
-    </div>
-
-    <div class="page-content">
-        <h2>Account aanpassen</h2>
+    <div class="page-content page-content_80 page-content_bewerken">
+        <h2>Account bewerken</h2>
         <div class="formulieren">
             <form onsubmit="return accountAanpassen()">
                 <label for="naam">Naam: </label>

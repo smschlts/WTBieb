@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="nl">
+
 <head>
     <meta charset="UTF-8">
     <title>Bibliotheek WT | Lening toevoegen</title>
@@ -8,159 +9,19 @@
     <script src="script.js" defer></script>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 </head>
+
 <body onload="boekenOverzichtLening();accountOverzichtLening()">
-    <style>
-        /* ---------------- GENERAL ---------------- */
-        
-        .page-content_lening-overzicht {
-            box-sizing: content-box;
-            display: flow-root;
-            inline-size: 100%;
-        }
-        
-        .lening-toevoegen-form {
-            box-sizing: content-box;
-            padding: 5px; 
-            inline-size: 500px;
-            margin: 20px auto;
-        }
+    <header>
+        <img onclick="document.location = 'index.html'" src="working-talent-logo-Large.png" alt="Working Talent Logo" id="logo">
+        <h1>Uitleningen</h1>
+        <button class="btn-logout">Uitloggen</button>
+    </header>
 
-        .lening-toevoegen-account-tabel {
-            box-sizing: border-box;
-            inline-size: 28%;
-            margin: 40px 0 50px 5%;
-            padding: 0;
-            float: left;
-        }
-
-        .lening-toevoegen-boek-tabel {
-            box-sizing: border-box;
-            inline-size: 60%;
-            margin: 40px 5% 50px 0;
-            padding: 0;
-            float: right;
-        }
-
-        /* ---------------- BUTTONS ---------------- */
-
-        .top-buttons button {
-            width: 150px;
-            height: 50px;
-            margin: 5px;
-            color: white;
-            font-weight: 700;
-            padding: 15px 32px;
-            font-size: 14px;
-            background-color: #8ec63f;
-        }
-
-        /* ---------------- FORM ---------------- */
-
-        .lening-toevoegen-form form {
-            border-radius: 5px;
-            background-color: #cce5a844;
-            padding: 20px;
-        }
-
-        .lening-toevoegen-form input[type=text], 
-        .lening-toevoegen-form input[type=date],
-        .lening-toevoegen-form select {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-        .submit-toevoegen input[type=submit] {
-            width: 100%;
-            background-color: #8ec63f;
-            margin: 8px 0;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            color: white;
-            font-weight: 700;
-            letter-spacing: 1px;
-            padding: 15px 32px;
-            font-size: 14px;
-        }
-    
-        .lening-toevoegen-form input[type=submit]:hover {
-            background-color: #7caf34;
-            transition: .2s;
-        }
-
-        .lening-toevoegen-form input[type=button]:hover {
-            background-color: #140f11e8;
-            transition: 0.2s;
-        }
-
-        /* ---------------- TABLE ---------------- */
-
-        table {
-            overflow-x:auto;
-            border-collapse: collapse;
-            border: transparent;
-            width: 100%;
-            margin-bottom: 50px;
-        }
-
-        th, td {
-            padding: 10px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #8ec63f;
-            color: white;
-        }
-
-        tr:nth-child(even) {background-color: #cce5a844;}
-
-        tr:hover {
-            background-color: #a5d266af;
-            transition: .2s;
-        }
-
-        /* ---------------- COLUMNS ---------------- */
-
-        .hide-column {display: none;}
-
-        .titel,
-        .auteur,
-        .categorie {width: 20%;}
-
-        .isbn {width: 16%;}
-
-        .bewerk-verwijder,
-        .status {width: 8%;}
-
-        /* ---------------- ZOEKBALK ---------------- */
-
-        .zoeken {
-            margin-bottom: 40px;
-        }
-
-        .zoekbalk {
-            border: 1px solid #140f1157;
-            padding: 4px;
-            font-size: 110%;
-        }
-
-    </style>
-
-    <div class="top-buttons">
-        <button class="float-right">Log out</button>
-        <button class="float-right" onclick="document.location = 'uitleen-overzicht-admin.html'">Overzicht</button>
-        <button class="float-right" onclick="document.location = 'index.html'">Home</button>
-    </div>
+    <button class="float-right button-green" onclick="document.location = 'uitleen-overzicht-admin.html'">Overzicht</button>
 
     <div class="page-content_lening-overzicht">
         <div class="lening-toevoegen-form">
-        <h2>Lening toevoegen</h2>    
+            <h2>Lening toevoegen</h2>    
             <form onsubmit="return leningToevoegen()">
                 <label for="accountid">Naam: </label>
                 <input type="text" id="accountnaam" disabled>
@@ -176,13 +37,14 @@
                         <input type="submit" value="Toevoegen"></input>
                 </div>
             </form>
+        </div>
     </div>
 
     <div class="lening-toevoegen-account-tabel">
-        <table>
+        <table class="met-hover">
             <!--                Zoekbalk-->
             <div class="zoeken">
-                <input class="zoekbalk" type="search" id="accountInput" oninput="accountZoekenOverzicht()" placeholder="Zoeken..."><br>
+                <input class="zoekbalk" type="search" id="accountInput" oninput="accountZoekenOverzicht()" placeholder="Zoeken...">
                 <select id="accountZoekOpties" onchange="accountZoekenOverzicht()">
                     <option value="naam">Naam</option>
                     <option value="email">E-mail</option>
@@ -190,8 +52,8 @@
             </div>
             <thead>
                 <tr>
-                    <th>Naam</th>
-                    <th>E-mail</th>
+                    <th class="naam_uitlening-toevoegen">Naam</th>
+                    <th class="email_uitlening-toevoegen">E-mail</th>
                 </tr>
             </thead>
             <tbody id="accountOverzicht">
@@ -201,7 +63,7 @@
     </div>
 
     <div class="lening-toevoegen-boek-tabel">
-        <table>
+        <table class="met-hover">
             <!--                Zoekbalk-->
             <div class="zoeken">
                 <input class="zoekbalk" type="search" id="boekInput" oninput="boekZoekenOverzicht()" placeholder="Zoeken...">
@@ -213,23 +75,24 @@
             </div>
             <thead>
                 <tr>
-                    <th>Titel</th>
-                    <th>Auteur</th>
-                    <th>ISBN</th>
-                    <th>Categorie</th>
+                    <th class="titel_uitlening-toevoegen">Titel</th>
+                    <th class="auteur_uitlening-toevoegen">Auteur</th>
+                    <th class="isbn_uitlening-toevoegen">ISBN</th>
+                    <th class="categorie_uitlening-toevoegen">Categorie</th>
                     <!-- <th>Omschrijving</th>
                     <th>Omslag</th> -->
-                    <th>Status</th>
+                    <th class="status_uitlening-toevoegen">Status</th>
                     <!-- <th>Exemplaar</th> -->
                 </tr>
             </thead>
             <tbody id="boekenOverzicht">
-            <!--                    javascript-->
+                <!--                    javascript-->
             </tbody>
         </table>
         
         <form onsubmit="return leningToevoegen()">
         </form>
     </div>
+    
 </body>
 </html>
