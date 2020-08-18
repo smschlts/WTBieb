@@ -49,19 +49,35 @@
     }
 
     .page-content_info,
-    .page-content_bewerken,
     .page-content_toevoegen {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
+    
+    .page-content_tables,
+    .page-content_bewerken {
+        display: flex;
+        align-items: top;
+        justify-content: space-evenly;
+    }
 
+
+    
     .page-content_lening-overzicht {
         box-sizing: content-box;
         display: flow-root;
         inline-size: 100%;
         top: 25%;
     }
+
+    .bewerken-formulier_boek,
+    .bewerken-formulier_exemplaar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
 
 
 
@@ -191,6 +207,10 @@
         float: right;
         margin: 30px;
     }
+    .float-left.button-green {
+        float: left;
+        margin: 30px;
+    }
 
         /* Knoppen onder tabellen */
     .bottom-buttons_boek {
@@ -241,7 +261,10 @@
     }
 
     .tabel_boek-info {
-        width: 80%;
+        width: 50%;
+    }
+    .tabel_exemplaar_boek-info {
+        width: 40%;
     }
 
     .tabel_account-info {
@@ -253,6 +276,15 @@
         background-color: transparent;
         color: #140F11;
     }
+
+    .zoeken.account_geschiedenis {
+        margin-top: 50px;
+    }
+
+    table.account_geschiedenis {
+        width: 80%;
+    }
+
 
     /* BUTTONS */
 
@@ -310,6 +342,23 @@
         .naam_uitlening-toevoegen {width: 40%;}
 
         .email_uitlening-toevoegen {width: 60%;}
+
+
+            /* account-geschiedenis */
+        .WTid_account-geschiedenis {
+            width: 5%;
+        }
+        .titel_account-geschiedenis {
+            width: 40%;
+        }
+        .auteur_account-geschiedenis {
+            width: 25%;
+        }
+        .datum_account-geschiedenis {
+            width: 15%;
+        }
+
+
     
     /* ---------------- FORM ---------------- */
 

@@ -23,42 +23,45 @@
         <!-- <div class="flex-item">
             <img src="https://vignette.wikia.nocookie.net/harrypotter/images/3/3e/Harry_Potter_and_the_Sorcerer's_Stone_cover.jpg/">
         </div> -->
-        <h2>Boek bewerken</h2>
-        <div class="formulieren">
-            <form onsubmit="return boekAanpassen()">
-                <label for="boektitel">Titel: </label>
-                <input type="text" id="boektitel"><br>
-                <label for="boekauteur">Auteur: </label>
-                <input type="text" id="boekauteur"><br>
-                <label for="boekisbn">ISBN: </label>
-                <input type="text" id="boekisbn"><br>
-                <label for="boekcategorie">Categorie: </label>
-                <input type="text" id="boekcategorie"><br>
-                <label for="boekomschrijving">Omschrijving: </label>
-                <input type="text" id="boekomschrijving"><br>
-                <label for="boekworkingtalentid">Working Talent ID: </label>
-                <input type="text" id="boekworkingtalentid"><br>
-                <label for="aantalExemplaren">Aantal exemplaren: </label>
-                <input type="number" id="aantalExemplaren"><br><br>
-                <input type="button" value="Verwijderen" onclick="boekVerwijderen();document.location = 'boeken-overzicht-admin.html'">
-                <input type="submit" value="Opslaan"></input>
-            </form>
+        <div class="bewerken-formulier_boek">
+            <h2>Boek bewerken</h2>
+            <div class="formulieren">
+                <form onsubmit="return boekAanpassen()">
+                    <label for="boektitel">Titel: </label>
+                    <input type="text" id="boektitel"><br>
+                    <label for="boekauteur">Auteur: </label>
+                    <input type="text" id="boekauteur"><br>
+                    <label for="boekisbn">ISBN: </label>
+                    <input type="text" id="boekisbn"><br>
+                    <label for="boekcategorie">Categorie: </label>
+                    <input type="text" id="boekcategorie"><br>
+                    <label for="boekomschrijving">Omschrijving: </label>
+                    <input type="text" id="boekomschrijving"><br>
+                    <label for="boekworkingtalentid">Working Talent ID: </label>
+                    <input type="text" id="boekworkingtalentid"><br>
+                    <label for="aantalExemplaren">Aantal exemplaren: </label>
+                    <input type="number" id="aantalExemplaren"><br><br>
+                    <input type="button" value="Verwijderen" onclick="boekVerwijderen();document.location = 'boeken-overzicht-admin.html'">
+                    <input type="submit" value="Opslaan"></input>
+                </form>
+            </div>
         </div>
 
-        <h2>Exemplaren bewerken</h2>
-        <table class="met-hover page-content_40">
-            <thead>
-            <tr>
-                <th>WTid</th>
-                <th>Status</th>
-                <th class="bewerk-verwijder">Weg?</th>
-            </tr>
-            </thead>
-            <tbody id="exemplaarOverzicht">
-            <!--                    javascript-->
-            </tbody>
-        </table>
-
+        <div class="bewerken-formulier_exemplaar">
+            <h2>Exemplaren bewerken</h2>
+            <table class="met-hover">
+                <thead>
+                <tr>
+                    <th>WTid</th>
+                    <th>Status</th>
+                    <th class="bewerk-verwijder">Weg?</th>
+                </tr>
+                </thead>
+                <tbody id="exemplaarOverzicht">
+                <!--                    javascript-->
+                </tbody>
+            </table>
+        </div>
     </div>
 </body>
 </html>
