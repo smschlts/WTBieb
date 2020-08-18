@@ -544,7 +544,7 @@ function formulierInvullenVoorLening() {
     const urlParams = new URLSearchParams(queryString);
     const accountID = urlParams.get('accountid');
     const exemplaarID = urlParams.get('exemplaarid');
-    if (accountID != null) {
+    if (accountID) {
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
@@ -552,7 +552,7 @@ function formulierInvullenVoorLening() {
                 var naamAccount = account.naam;
                 // document.getElementById("emailadres").value = account.email;
                 // document.getElementById("avatar").value = account.avatar;
-                accountVeldInvullen(accountID,naamAccount);
+                accountVeldInvullen(accountID, naamAccount);
                 document.getElementById("accountTabel").style.display = "none";
             }
         }
@@ -560,15 +560,27 @@ function formulierInvullenVoorLening() {
         xhr.send();
         
     }
-// to-do als je via een exemplaar toevoegen hier komt dan wordt het in het formulier ingevuld: maak de connectie nog af
-    if (exemplaarID != null) {
-
-        document.getElementById("boekTabel").style.display = "none";
+// to-do als je via een exemplaar toevoegen hier komt dan wordt het in het formulier ingevuld: maak het selecteren van exemplaar nog af
+    if (exemplaarID) {
+        var xhr2 = new XMLHttpRequest();
+        xhr2.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var exemplaar = JSON.parse(this.responseText);
+                var titelBoek = exemplaar.boek.titel;
+                var boekid = exemplaar.boek.id;
+                var wtExemplaarId = exemplaar.workingTalentExemplaarId;
+                boekVeldInvullen(boekid, titelBoek);
+                document.getElementById("boekenTabel").style.display = "none";
+                //console.log(document.getElementById("exemplaarid").options[1].selected);
+            }
+        }
+        xhr2.open("GET", "http://localhost:8082/exemplaren/" + exemplaarID, true);
+        xhr2.send();
+        document.getElementById("boekenTabel").style.display = "none";
     }
-    accountOverzichtLening();boekenOverzichtLening();
+    accountOverzichtLening();
+    boekenOverzichtLening();
 }
-
-
 
 function leningToevoegen() {
     var xhr = new XMLHttpRequest();
@@ -659,13 +671,13 @@ function boekZoekenOverzicht() {
         case "titel":
             zoekIndex = 1;
             break;
-       case "auteur":
-           zoekIndex = 2;
-           break;
-       case "isbn":
-           zoekIndex = 3;
-           break;
-       default:
+        case "auteur":
+            zoekIndex = 2;
+            break;
+        case "isbn":
+            zoekIndex = 3;
+            break;
+        default:
             zoekIndex = 0;
             break;
     }
@@ -904,11 +916,11 @@ function haalAantalExemplarenOp(boekid) {
 
               if (antwoord.exemplaren[x].status == "UITGELEEND") {
                 $(exemplaarid).append(
-                    "<option disabled>" + boekworkingtalentid  + "." + exemplaarworkingtalentid +"</option>"
+                    "<option value=\"" + exemplaarworkingtalentid + "\"disabled>" + boekworkingtalentid  + "." + exemplaarworkingtalentid +"</option>"
                             )
               } else if (antwoord.exemplaren[x].status == "BESCHIKBAAR") {
                 $(exemplaarid).append(
-                            "<option>" + boekworkingtalentid + "." + exemplaarworkingtalentid +"</option>"
+                            "<option value=\"" + exemplaarworkingtalentid + "\">" + boekworkingtalentid + "." + exemplaarworkingtalentid +"</option>"
                                     )
               }
               
