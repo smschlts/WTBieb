@@ -17,6 +17,10 @@ public class Account {
     @NotNull
     private String wachtwoord;
 
+    @Column(name="active")
+    private Boolean active;
+
+
     public Account() {
     }
 
@@ -24,6 +28,7 @@ public class Account {
         this.naam = naam;
         this.email = email;
         this.wachtwoord = wachtwoord;
+        this.active = true;
     }
 
     public long getId() {
