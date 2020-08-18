@@ -208,14 +208,14 @@ function accountOverzichtAdmin(){
                 var naamOverzicht = antwoord[x].naam;
                 var emailOverzicht = antwoord[x].email;
                 var wachtwoordOverzicht = antwoord[x].wachtwoord;
-                var urlString = " onclick=\"window.location='account.html?id=" + idOverzicht + "';\">"
+                var urlString = " onclick=\"window.location='account.html?accountid=" + idOverzicht + "';\">"
   
                 $(accountOverzicht).append(
                       "<tr id='" + idOverzicht + "'>" +
                       "<td" + urlString + naamOverzicht + "</td>" +
                       "<td" + urlString + emailOverzicht + "</td>" +
 //                      "<td" + urlString + wachtwoordOverzicht + "</td>" +
-                      "<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"document.location = 'account-aanpassen.html?id=" + idOverzicht + "'\">&#9998</button>" + "</td>" +
+                      "<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"document.location = 'account-aanpassen.html?accountid=" + idOverzicht + "'\">&#9998</button>" + "</td>" +
                       "<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"accountVerwijderenOverzicht(" + idOverzicht + ");window.location.reload()\">&#10006</button>" + "</td>" +
                       "</tr>"
                       )
@@ -248,7 +248,7 @@ function accountToevoegen() {
 function accountOphalen() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    const accountID = urlParams.get('id');
+    const accountID = urlParams.get('accountid');
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -320,7 +320,7 @@ function accountGeschiedenisOphalen(accountId){
 function accountOphalenVoorFormulier() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    const accountID = urlParams.get('id');
+    const accountID = urlParams.get('accountid');
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -337,7 +337,7 @@ function accountOphalenVoorFormulier() {
 function accountAanpassen() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    const accountID = urlParams.get('id');
+    const accountID = urlParams.get('accountid');
     var xhr = new XMLHttpRequest();
 
     xhr.onreadystatechange = function(){
@@ -371,7 +371,7 @@ function accountVerwijderenOverzicht(accountID) {
 function accountVerwijderen() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    const accountID = urlParams.get('id');
+    const accountID = urlParams.get('accountid');
     bevestiging = confirmVerwijderen();
     if (bevestiging == true) {
         var xhr = new XMLHttpRequest();
@@ -478,6 +478,37 @@ function uitleningVerwijderen() {
     }
 
 //lening-toevoegen.html
+function formulierInvullenVoorLening() {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const accountID = urlParams.get('accountid');
+    const exemplaarID = urlParams.get('exemplaarid');
+    if (accountID != null) {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var account = JSON.parse(this.responseText);
+                var naamAccount = account.naam;
+                // document.getElementById("emailadres").value = account.email;
+                // document.getElementById("avatar").value = account.avatar;
+                accountVeldInvullen(accountID,naamAccount);
+                document.getElementById("accountTabel").style.display = "none";
+            }
+        }
+        xhr.open("GET", "http://localhost:8082/accounts/" + accountID, true);
+        xhr.send();
+        
+    }
+// to-do als je via een exemplaar toevoegen hier komt dan wordt het in het formulier ingevuld: maak de connectie nog af
+    if (exemplaarID != null) {
+
+        document.getElementById("boekTabel").style.display = "none";
+    }
+    accountOverzichtLening();boekenOverzichtLening();
+}
+
+
+
 function leningToevoegen() {
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
