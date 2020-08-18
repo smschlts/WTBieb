@@ -338,12 +338,12 @@ function uitleenOverzichtAdmin(){
                  }
             );
             for(var x = 0 ; x < antwoord.length; x++){
-              var titelOverzicht = antwoord[x].boek.titel;
-              var auteurOverzicht = antwoord[x].boek.auteur;
-              var isbnOverzicht = antwoord[x].boek.isbn;
               var boekidOverzicht = antwoord[x].boek.wtId;
               var exemplaarOverzicht = antwoord[x].exemplaarId;
               var wtidOverzicht = boekidOverzicht + "." + exemplaarOverzicht;
+              var titelOverzicht = antwoord[x].boek.titel;
+              var auteurOverzicht = antwoord[x].boek.auteur;
+              var isbnOverzicht = antwoord[x].boek.isbn;
               var accountNaamOverzicht = antwoord[x].account.naam;
               var uitleningID = antwoord[x].id;
               var uitleningsDatumOverzicht = antwoord[x].uitleenDatum;
@@ -361,19 +361,17 @@ function uitleenOverzichtAdmin(){
             }
 
                 $(uitleenOverzicht).append(
-
                     "<tr>" +
+                    "<td class=\"uitleen-exemplaar-id\"" + urlString + wtidOverzicht + "</td>" +
                     "<td class=\"uitleen-titel\"" + urlString + titelOverzicht + "</td>" +
                     "<td class=\"uitleen-auteur\"" + urlString + auteurOverzicht + "</td>" +
-                    "<td class=\"uitleen-isbn\"" + urlString + isbnOverzicht + "</td>" +
-                    "<td class=\"uitleen-exemplaar-id\"" + urlString + wtidOverzicht + "</td>" +
+                    // "<td class=\"uitleen-isbn\"" + urlString + isbnOverzicht + "</td>" +
                     "<td class=\"uitleen-lener\"" + urlString + accountNaamOverzicht + "</td>" +
                     "<td class=\"uitleen-datum\"" + urlString + uitleningsDatumOverzicht + "</td>" +
                     "<td class=\"uitleen-datum\"" + urlString + inleverDatumOverzicht + "</td>" +
                     "<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"document.location = 'lening-aanpassen.html?id=" + uitleningID + "'\">&#9998</button>" + "</td>" +
                     inleverButtonString
                     )
-                
                 
             }
         }
@@ -586,23 +584,23 @@ function uitleningZoekenOverzicht() {
 
     var zoekIndex = 0;
     switch(document.getElementById("uitleningZoekOpties").value) {
-        case "titel":
+        case "wtid":
             zoekIndex = 0;
             break;
-        case "auteur":
+        case "titel":
             zoekIndex = 1;
             break;
-        case "isbn":
+        case "auteur":
             zoekIndex = 2;
             break;
         case "lener":
-            zoekIndex = 4;
+            zoekIndex = 3;
             break;
         case "uitleendatum":
-            zoekIndex = 5;
+            zoekIndex = 4;
             break;
         case "inleverdatum":
-            zoekIndex = 6;
+            zoekIndex = 5;
             break;
         default:
             zoekIndex = 0;

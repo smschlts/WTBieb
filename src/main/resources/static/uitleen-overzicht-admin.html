@@ -23,9 +23,9 @@
             <div class="zoeken">
                 <input class="zoekbalk" type="search" id="uitleningInput" oninput="uitleningZoekenOverzicht()" placeholder="Zoeken...">
                 <select id="uitleningZoekOpties" onchange="uitleningZoekenOverzicht()">
+                    <option value="wtid">WTid</option>
                     <option value="titel">Titel</option>
                     <option value="auteur">Auteur</option>
-                    <option value="isbn">ISBN</option>
                     <option value="lener">Lener</option>
                     <option value="uitleendatum">Uitleendatum</option>
                     <option value="inleverdatum">Inleverdatum</option>
@@ -33,10 +33,9 @@
             </div>
             <thead>
             <tr>
+                <th class="uitleen-exemplaar-id">WTid</th>
                 <th class="uitleen-titel">Titel</th>
                 <th class="uitleen-auteur">Auteur</th>
-                <th class="uitleen-isbn">ISBN</th>
-                <th class="uitleen-exemplaar-id">WTid</th>
                 <th class="uitleen-lener">Lener</th>
                 <th class="uitleen-datum">Uitleendatum</th>
                 <th class="uitleen-datum">Inleverdatum</th>
