@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 </head>
 
-<body onload="boekenOverzichtLening();accountOverzichtLening()">
+<body onload="formulierInvullenVoorLening()">
     <header>
         <img onclick="document.location = 'index.html'" src="working-talent-logo-Large.png" alt="Working Talent Logo" id="logo">
         <h1>Uitleningen</h1>
@@ -40,8 +40,8 @@
         </div>
     </div>
 
-    <div class="lening-toevoegen-account-tabel">
-        <table class="met-hover">
+    <div class="lening-toevoegen-account-tabel" id="accountTabel">
+        <table class="met-hover" >
             <!--                Zoekbalk-->
             <div class="zoeken">
                 <input class="zoekbalk" type="search" id="accountInput" oninput="accountZoekenOverzicht()" placeholder="Zoeken...">
@@ -62,8 +62,8 @@
         </table>
     </div>
 
-    <div class="lening-toevoegen-boek-tabel">
-        <table class="met-hover">
+    <div class="lening-toevoegen-boek-tabel" id=" boekenTabel">
+        <table class="met-hover" >
             <!--                Zoekbalk-->
             <div class="zoeken">
                 <input class="zoekbalk" type="search" id="boekInput" oninput="boekZoekenOverzicht()" placeholder="Zoeken...">
