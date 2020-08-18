@@ -9,6 +9,11 @@ function confirmInleveren() {
     return bevestiging;
 }
 
+function confirmWeg() {
+    var bevestiging = confirm("Is dit item niet meer uitleenbaar?");
+    return bevestiging;
+}
+
 
 function berekenBeschikbaarheid(exemplaren) {
     var aantal = 0;
@@ -95,6 +100,10 @@ function boekVerwijderen() {
     }
 }
 
+function exemplaarVerwijderenOverzicht(exemplaarId) {
+
+}
+
 // boek.html
 function boekOphalen() {
     const queryString = window.location.search;
@@ -112,6 +121,24 @@ function boekOphalen() {
             document.getElementById("boekstatus").innerHTML = berekenBeschikbaarheid(boek.exemplaren);
             document.getElementById("boekworkingtalentid").innerHTML = boek.wtId;
             // document.getElementById("boekomslag").value = boek.omslag;
+
+
+            var exemplaren = boek.exemplaren
+            for(var x = 0 ; x < exemplaren.length; x++){
+                var idOverzicht = exemplaren[x].id;
+                var wtidOverzicht = exemplaren[x].workingTalentExemplaarId;
+                var statusOverzicht = exemplaren[x].status;
+
+                var urlString = " onclick=\"window.location='#.html?id=" + idOverzicht + "';\">"
+
+                $(exemplaarOverzicht).append(
+                    "<tr id='" + idOverzicht + "'>" +
+                    "<td" + urlString + boek.wtId + "." + wtidOverzicht + "</td>" +
+                    "<td" + urlString + statusOverzicht + "</td>" +
+                    "<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"document.location = 'lening-toevoegen.html?exemplaarid=" + idOverzicht + "'\">&#9755</button>" + "</td>" +
+                    "</tr>"
+                )
+            }
         }
     }
     xhr.open("GET", "http://localhost:8082/boeken/" + boekID, true);
@@ -142,6 +169,23 @@ function boekToevoegen() {
     return false;
 }
 
+
+function exemplaarVerwijderenOverzicht(exemplaarId) {
+    bevestiging = confirmWeg();
+    if (bevestiging == true) {
+        var xhr = new XMLHttpRequest();
+    xhr.open("PATCH", "http://localhost:8082/exemplaren/" + exemplaarId +"?status=WEG", true);
+    xhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            window.location.reload()
+        }
+    }
+    xhr.send();
+    } else {
+        // pass
+    }
+}
+
 // boek-aanpassen.html
 function boekOphalenVoorFormulier() {
     const queryString = window.location.search;
@@ -159,6 +203,23 @@ function boekOphalenVoorFormulier() {
             document.getElementById("boekworkingtalentid").value = boek.wtId;
             document.getElementById("aantalExemplaren").value = boek.aantal;
             // document.getElementById("boekomslag").value = boek.omslag;
+
+            var exemplaren = boek.exemplaren
+            for(var x = 0 ; x < exemplaren.length; x++){
+                var idOverzicht = exemplaren[x].id;
+                var wtidOverzicht = exemplaren[x].workingTalentExemplaarId;
+                var statusOverzicht = exemplaren[x].status;
+
+                var urlString = " onclick=\"window.location='#.html?id=" + idOverzicht + "';\">"
+
+                $(exemplaarOverzicht).append(
+                    "<tr id='" + idOverzicht + "'>" +
+                    "<td" + urlString + boek.wtId + "." + wtidOverzicht + "</td>" +
+                    "<td" + urlString + statusOverzicht + "</td>" +
+                    "<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"exemplaarVerwijderenOverzicht(" + idOverzicht + ");\">&#10006</button>" + "</td>" +
+                    "</tr>"
+                )
+            }
         }
     }
     xhr.open("GET", "http://localhost:8082/boeken/" + boekID, true);

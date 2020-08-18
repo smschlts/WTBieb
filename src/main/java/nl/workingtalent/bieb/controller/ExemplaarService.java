@@ -61,4 +61,17 @@ public class ExemplaarService {
             return null;
         }
     }
+
+    public Exemplaar patchExemplaar(long id, BoekStatus nieuweStatus) {
+        System.out.println("Patch exemplaar " + id);
+        Exemplaar bestaandExemplaar = exemplaarRepository.findById(id).orElse(null);
+
+        if (bestaandExemplaar != null) {
+            bestaandExemplaar.setStatus(nieuweStatus);
+
+            return exemplaarRepository.save(bestaandExemplaar);
+        } else {
+            return null;
+        }
+    }
 }
