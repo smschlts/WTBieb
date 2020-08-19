@@ -208,6 +208,8 @@ function boekOphalenVoorFormulier() {
             document.getElementById("aantalExemplaren").value = boek.aantal;
             // document.getElementById("boekomslag").value = boek.omslag;
 
+            document.getElementById("aantalExemplaren").setAttribute("min", boek.aantal);
+
             var exemplaren = boek.exemplaren
             for(var x = 0 ; x < exemplaren.length; x++){
                 var idOverzicht = exemplaren[x].id;
@@ -939,4 +941,12 @@ function haalAantalExemplarenOp(boekid, wtexemplaarnummer = null) {
     xhr.open("GET","http://localhost:8082/boeken/"+ boekid,true);
     xhr.send();
 
+}
+
+function veranderExemplaarAantal(verandering) {
+    var nummerVeld = document.getElementById("aantalExemplaren");
+    var minimum = parseInt(nummerVeld.getAttribute("min"));
+
+    // Zorg dat value niet kleiner wordt dan minumum
+    nummerVeld.value = Math.max(parseInt(nummerVeld.value) + parseInt(verandering), minimum);
 }
