@@ -676,9 +676,6 @@ function boekZoekenOverzicht() {
         case "auteur":
             zoekIndex = 2;
             break;
-        case "isbn":
-            zoekIndex = 3;
-            break;
         default:
             zoekIndex = 0;
             break;
@@ -850,8 +847,8 @@ function boekenOverzichtLening(){
                     "<td>" + boekidOverzicht + "</td>" +
                     "<td id='titel'>" + titelOverzicht + "</td>" +
                     "<td>" + auteurOverzicht + "</td>" +
-                    "<td>" + isbnOverzicht + "</td>" +
-                    "<td>" + categorieOverzicht + "</td>" +
+                    // "<td>" + isbnOverzicht + "</td>" +
+                    // "<td>" + categorieOverzicht + "</td>" +
                     // "<td>" + omschrijvingOverzicht + "</td>" +
                     // "<td>" + omslagOverzicht + "</td>" +
                     "<td>" + statusOverzicht + "</td>" +
