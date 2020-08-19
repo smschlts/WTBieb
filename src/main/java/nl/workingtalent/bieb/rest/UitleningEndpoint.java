@@ -20,11 +20,13 @@ public class UitleningEndpoint {
 //    uitleningen?accountId=6
 
     @GetMapping("/uitleningen")
-    public List<Uitlening> uitleningenAlles(@RequestParam(required = false) String accountId) {
-        if (accountId == null) {
-            return uitleningService.ophalenAlleUitleningen();
-        } else {
+    public List<Uitlening> uitleningenAlles(@RequestParam(required = false) String accountId, @RequestParam(required = false) String exemplaarId) { ;
+        if (accountId != null) {
             return uitleningService.ophalenAlleUitleningenMetAccountId(Long.parseLong(accountId));
+        } else if (exemplaarId != null){
+            return uitleningService.ophalenAlleUitleningenMetExemplaarId(Long.parseLong(exemplaarId));
+        } else {
+            return uitleningService.ophalenAlleUitleningen();
         }
     }
 
