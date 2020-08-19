@@ -130,12 +130,16 @@ function boekOphalen() {
                 var statusOverzicht = exemplaren[x].status;
 
                 var urlString = " onclick=\"window.location='#.html?id=" + idOverzicht + "';\">"
+                var toewijsButtonString = "<td class=\"btn bewerk-verwijder\"> </td>";
+                if (exemplaren[x].status == "BESCHIKBAAR") {
+                    toewijsButtonString = "<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"document.location = 'lening-toevoegen.html?exemplaarid=" + idOverzicht + "'\">&#9755</button>" + "</td>";
+                }
 
                 $(exemplaarOverzicht).append(
                     "<tr id='" + idOverzicht + "'>" +
                     "<td" + urlString + boek.wtId + "." + wtidOverzicht + "</td>" +
                     "<td" + urlString + statusOverzicht + "</td>" +
-                    "<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"document.location = 'lening-toevoegen.html?exemplaarid=" + idOverzicht + "'\">&#9755</button>" + "</td>" +
+                    toewijsButtonString +
                     "</tr>"
                 )
             }
