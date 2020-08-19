@@ -48,7 +48,7 @@ public class BoekService {
           Boek bestaandBoek = boekRepository.findById(id).orElse(null);
 
           if (bestaandBoek != null) {
-               bestaandBoek.voegAantalExemplarenToe(nieuwBoek.getAantal()-bestaandBoek.getAantal());
+               bestaandBoek.voegAantalExemplarenToe(nieuwBoek.getAantal());
 
                bestaandBoek.setWtId(nieuwBoek.getWtId());
                bestaandBoek.setIsbn(nieuwBoek.getIsbn());
@@ -58,7 +58,7 @@ public class BoekService {
                bestaandBoek.setCategorie(nieuwBoek.getCategorie());
                bestaandBoek.setOmslag(nieuwBoek.getOmslag());
                bestaandBoek.setOmschrijving(nieuwBoek.getOmschrijving());
-               bestaandBoek.setAantal(nieuwBoek.getAantal());
+               bestaandBoek.setAantal(nieuwBoek.getAantal()+bestaandBoek.getAantal());
 
 
                return boekRepository.save(bestaandBoek);

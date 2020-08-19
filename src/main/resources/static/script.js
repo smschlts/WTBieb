@@ -129,7 +129,7 @@ function boekOphalen() {
                 var wtidOverzicht = exemplaren[x].workingTalentExemplaarId;
                 var statusOverzicht = exemplaren[x].status;
 
-                var urlString = " onclick=\"window.location='#.html?id=" + idOverzicht + "';\">"
+                var urlString = " onclick=\"window.location='exemplaar-geschiedenis.html?id=" + idOverzicht + "';\">"
                 var toewijsButtonString = "<td class=\"btn bewerk-verwijder\"> </td>";
                 if (exemplaren[x].status == "BESCHIKBAAR") {
                     toewijsButtonString = "<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"document.location = 'lening-toevoegen.html?exemplaarid=" + idOverzicht + "'\">&#9755</button>" + "</td>";
@@ -205,10 +205,10 @@ function boekOphalenVoorFormulier() {
             document.getElementById("boekcategorie").value =  boek.categorie;
             document.getElementById("boekomschrijving").value = boek.omschrijving;
             document.getElementById("boekworkingtalentid").value = boek.wtId;
-            document.getElementById("aantalExemplaren").value = boek.aantal;
+            document.getElementById("aantalExemplaren").value = 0;
             // document.getElementById("boekomslag").value = boek.omslag;
 
-            document.getElementById("aantalExemplaren").setAttribute("min", boek.aantal);
+            document.getElementById("aantalExemplaren").setAttribute("min", 0);
 
             var exemplaren = boek.exemplaren
             for(var x = 0 ; x < exemplaren.length; x++){
@@ -948,3 +948,63 @@ function veranderExemplaarAantal(verandering) {
     // Zorg dat value niet kleiner wordt dan minumum
     nummerVeld.value = Math.max(parseInt(nummerVeld.value) + parseInt(verandering), minimum);
 }
+
+// exemplaar-geschiedenis.html
+function exemplaarGeschiedenis(){
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const exemplaarId = urlParams.get('id');
+    
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            var antwoord = JSON.parse(this.responseText,
+                function (key, value) {
+                    return (value == null) ? "" : value
+                 }
+            );
+            for(var x = 0 ; x < antwoord.length; x++){
+              var boekidOverzicht = antwoord[x].boek.wtId;
+              var exemplaarOverzicht = antwoord[x].exemplaarId;
+              var wtidOverzicht = boekidOverzicht + "." + exemplaarOverzicht;
+              var titelOverzicht = antwoord[x].boek.titel;
+              var auteurOverzicht = antwoord[x].boek.auteur;
+              var isbnOverzicht = antwoord[x].boek.isbn;
+              var accountNaamOverzicht = antwoord[x].account.naam;
+              var uitleningID = antwoord[x].id;
+              var uitleningsDatumOverzicht = antwoord[x].uitleenDatum;
+              var inleverDatumOverzicht = antwoord[x].inleverDatum;
+          //   var urlString = " onclick=\"window.location='lening-aanpassen.html?id=" + uitleningID + "';\">"
+              var urlString = ">"
+              var inleverButtonString
+
+
+              if(inleverDatumOverzicht=="") {
+                inleverButtonString = "<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"uitleningInleverOverzicht(" + uitleningID + ");\">&#10004</button>" + "</td>" +
+              "</tr>"
+                } else {
+                    inleverButtonString = "<td class=\"btn bewerk-verwijder\">" + "</td>" + "</tr>"
+                }
+
+                $(ExemplaarGeschiedenis).append(
+                    "<tr>" +
+                    "<td class=\"uitleen-exemplaar-id\"" + urlString + wtidOverzicht + "</td>" +
+                    "<td class=\"uitleen-titel\"" + urlString + titelOverzicht + "</td>" +
+                    "<td class=\"uitleen-auteur\"" + urlString + auteurOverzicht + "</td>" +
+                    // "<td class=\"uitleen-isbn\"" + urlString + isbnOverzicht + "</td>" +
+                    "<td class=\"uitleen-lener\"" + urlString + accountNaamOverzicht + "</td>" +
+                    "<td class=\"uitleen-datum\"" + urlString + uitleningsDatumOverzicht + "</td>" +
+                    "<td class=\"uitleen-datum\"" + urlString + inleverDatumOverzicht + "</td>" +
+                    "<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"document.location = 'lening-aanpassen.html?id=" + uitleningID + "'\">&#9998</button>" + "</td>" +
+                    inleverButtonString
+                    )
+            }
+        }
+                
+            
+    }
+    xhr.open("GET","http://localhost:8082/uitleningen?exemplaarId=" + exemplaarId,true);
+    xhr.send();
+}
+
+
