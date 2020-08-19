@@ -130,12 +130,16 @@ function boekOphalen() {
                 var statusOverzicht = exemplaren[x].status;
 
                 var urlString = " onclick=\"window.location='#.html?id=" + idOverzicht + "';\">"
+                var toewijsButtonString = "<td class=\"btn bewerk-verwijder\"> </td>";
+                if (exemplaren[x].status == "BESCHIKBAAR") {
+                    toewijsButtonString = "<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"document.location = 'lening-toevoegen.html?exemplaarid=" + idOverzicht + "'\">&#9755</button>" + "</td>";
+                }
 
                 $(exemplaarOverzicht).append(
                     "<tr id='" + idOverzicht + "'>" +
                     "<td" + urlString + boek.wtId + "." + wtidOverzicht + "</td>" +
                     "<td" + urlString + statusOverzicht + "</td>" +
-                    "<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"document.location = 'lening-toevoegen.html?exemplaarid=" + idOverzicht + "'\">&#9755</button>" + "</td>" +
+                    toewijsButtonString +
                     "</tr>"
                 )
             }
@@ -203,6 +207,8 @@ function boekOphalenVoorFormulier() {
             document.getElementById("boekworkingtalentid").value = boek.wtId;
             document.getElementById("aantalExemplaren").value = boek.aantal;
             // document.getElementById("boekomslag").value = boek.omslag;
+
+            document.getElementById("aantalExemplaren").setAttribute("min", boek.aantal);
 
             var exemplaren = boek.exemplaren
             for(var x = 0 ; x < exemplaren.length; x++){
@@ -610,9 +616,10 @@ function leningOphalenVoorFormulier() {
     xhr.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var lening = JSON.parse(this.responseText);
+            var wtid = lening.boek.wtId + "." + lening.exemplaarId;
             document.getElementById("boektitel").value = lening.boek.titel;
             document.getElementById("boekauteur").value = lening.boek.auteur;
-            document.getElementById("boekisbn").value = lening.boek.isbn;
+            document.getElementById("boekwtid").value = wtid;
             document.getElementById("AccountNaam").value =  lening.account.naam;
             document.getElementById("UitleenDatum").value = lening.uitleenDatum;
             document.getElementById("InleverDatum").value = lening.inleverDatum;
@@ -671,9 +678,6 @@ function boekZoekenOverzicht() {
             break;
         case "auteur":
             zoekIndex = 2;
-            break;
-        case "isbn":
-            zoekIndex = 3;
             break;
         default:
             zoekIndex = 0;
@@ -846,8 +850,8 @@ function boekenOverzichtLening(){
                     "<td>" + boekidOverzicht + "</td>" +
                     "<td id='titel'>" + titelOverzicht + "</td>" +
                     "<td>" + auteurOverzicht + "</td>" +
-                    "<td>" + isbnOverzicht + "</td>" +
-                    "<td>" + categorieOverzicht + "</td>" +
+                    // "<td>" + isbnOverzicht + "</td>" +
+                    // "<td>" + categorieOverzicht + "</td>" +
                     // "<td>" + omschrijvingOverzicht + "</td>" +
                     // "<td>" + omslagOverzicht + "</td>" +
                     "<td>" + statusOverzicht + "</td>" +
@@ -935,4 +939,12 @@ function haalAantalExemplarenOp(boekid, wtexemplaarnummer = null) {
     xhr.open("GET","http://localhost:8082/boeken/"+ boekid,true);
     xhr.send();
 
+}
+
+function veranderExemplaarAantal(verandering) {
+    var nummerVeld = document.getElementById("aantalExemplaren");
+    var minimum = parseInt(nummerVeld.getAttribute("min"));
+
+    // Zorg dat value niet kleiner wordt dan minumum
+    nummerVeld.value = Math.max(parseInt(nummerVeld.value) + parseInt(verandering), minimum);
 }
