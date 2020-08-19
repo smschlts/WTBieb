@@ -616,9 +616,10 @@ function leningOphalenVoorFormulier() {
     xhr.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var lening = JSON.parse(this.responseText);
+            var wtid = lening.boek.wtId + "." + lening.exemplaarId;
             document.getElementById("boektitel").value = lening.boek.titel;
             document.getElementById("boekauteur").value = lening.boek.auteur;
-            document.getElementById("boekisbn").value = lening.boek.isbn;
+            document.getElementById("boekwtid").value = wtid;
             document.getElementById("AccountNaam").value =  lening.account.naam;
             document.getElementById("UitleenDatum").value = lening.uitleenDatum;
             document.getElementById("InleverDatum").value = lening.inleverDatum;
