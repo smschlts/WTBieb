@@ -25,8 +25,13 @@ public class UitleningService {
     }
 
     public List<Uitlening> ophalenAlleUitleningenMetAccountId(long accountid) {
-        System.out.println("Alle uitleningen ophalen met account id");
+        System.out.println("Alle uitleningen ophalen met account id " + accountid);
         return (List<Uitlening>) uitleningRepository.findByAccountId(accountid);
+    }
+
+    public List<Uitlening> ophalenAlleUitleningenMetExemplaarId(long exemplaarid) {
+        System.out.println("Alle uitleningen ophalen met exemplaar id " + exemplaarid);
+        return (List<Uitlening>) uitleningRepository.findByExemplarenId(exemplaarid);
     }
 
     public Uitlening ophalenUitlening(long id) {
