@@ -2,9 +2,10 @@ package nl.workingtalent.bieb;
 
 import nl.workingtalent.bieb.controller.AccountRepository;
 import nl.workingtalent.bieb.controller.BoekRepository;
-import nl.workingtalent.bieb.controller.ExemplaarRepository;
 import nl.workingtalent.bieb.controller.UitleningRepository;
-import nl.workingtalent.bieb.domein.*;
+import nl.workingtalent.bieb.domein.Account;
+import nl.workingtalent.bieb.domein.Boek;
+import nl.workingtalent.bieb.domein.Uitlening;
 import nl.workingtalent.bieb.rest.UitleningEndpoint;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -28,7 +29,7 @@ public class BiebApplication {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/**")
-						.allowedMethods("GET", "POST", "PUT", "DELETE", "HEAD");
+						.allowedMethods("GET", "POST", "PUT", "DELETE", "HEAD", "PATCH");
 			}
 		};
 	}
