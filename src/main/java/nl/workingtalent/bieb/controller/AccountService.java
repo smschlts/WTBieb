@@ -16,6 +16,7 @@ public class AccountService {
 
     public Account opslaan(Account nieuwAccount) {
         System.out.println("Account opslaan");
+        nieuwAccount.setActive(true);
         return accountRepository.save(nieuwAccount);
     }
 

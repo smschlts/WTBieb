@@ -62,4 +62,12 @@ public class Account {
     public void setWachtwoord(String wachtwoord) {
         this.wachtwoord = wachtwoord;
     }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
 }
