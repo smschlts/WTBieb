@@ -76,8 +76,10 @@ public class ExemplaarService {
 
             if (nieuweStatus == BoekStatus.WEG) {
                 Uitlening u = uitleningRepository.findLaatsteOningeleverdeExemplaarUitlening(id);
-                u.setInleverDatum(LocalDate.now());
-                uitleningRepository.save(u);
+                if (u.getInleverDatum() == null) {
+                    u.setInleverDatum(LocalDate.now());
+                    uitleningRepository.save(u);
+                }
             }
 
             return exemplaarRepository.save(bestaandExemplaar);
