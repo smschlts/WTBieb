@@ -4,10 +4,12 @@ package nl.workingtalent.bieb.controller;
 import nl.workingtalent.bieb.domein.Account;
 import nl.workingtalent.bieb.domein.BoekStatus;
 import nl.workingtalent.bieb.domein.Exemplaar;
+import nl.workingtalent.bieb.domein.Uitlening;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -15,6 +17,9 @@ import java.util.List;
 public class ExemplaarService {
     @Autowired
     ExemplaarRepository exemplaarRepository;
+
+    @Autowired
+    UitleningRepository uitleningRepository;
 
     public Exemplaar opslaan(Exemplaar nieuwExemplaar) {
         System.out.println("Exemplaar opslaan");
@@ -68,6 +73,15 @@ public class ExemplaarService {
 
         if (bestaandExemplaar != null) {
             bestaandExemplaar.setStatus(nieuweStatus);
+
+            if (nieuweStatus == BoekStatus.WEG) {
+                Uitlening u = uitleningRepository.findLaatsteOningeleverdeExemplaarUitlening(id);
+                if (u.getInleverDatum() == null) {
+                    u.setInleverDatum(LocalDate.now());
+                    uitleningRepository.save(u);
+                }
+
+            }
 
             return exemplaarRepository.save(bestaandExemplaar);
         } else {
