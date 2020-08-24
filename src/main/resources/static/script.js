@@ -519,7 +519,13 @@ function accountVerwijderen() {
     bevestiging = confirmVerwijderen();
     if (bevestiging == true) {
         var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function(){
+            if(this.readyState == 4 && this.status == 200){
+                document.location = 'account-overzicht.html';
+            }
+        }
         xhr.open("DELETE", "http://localhost:8082/accounts/" + accountID, true);
+
         xhr.send();
     } else {
         // pass
