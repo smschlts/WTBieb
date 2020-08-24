@@ -788,6 +788,11 @@ function leningOphalenVoorFormulier() {
             document.getElementById("AccountId").value = lening.account.id;
 
         }
+        if(document.getElementById("InleverDatum").value==""){
+            document.getElementById("InleverDatum").disabled = true;
+        }else{
+            document.getElementById("InleverDatum").disabled = false;
+        }
     }
     xhr.open("GET", "http://localhost:8082/uitleningen/" + leningID, true);
     xhr.send();
