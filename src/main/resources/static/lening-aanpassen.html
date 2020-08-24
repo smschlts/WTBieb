@@ -16,9 +16,10 @@
         <button class="btn-logout">Uitloggen</button>
     </header>
 
-    <button class="float-right button-green" onclick="document.location = 'uitleen-overzicht-admin.html'">Overzicht</button>
+    <!-- <button class="float-right button-green" onclick="document.location = 'uitleen-overzicht-admin.html'">Overzicht</button> -->
+    <button class="float-right button-green" onclick="history.back()">Terug</button>
 
-    <div class="page-content page-content_80 page-content_bewerken">
+    <div class="page-content page-content_80 page-content_uitlening-bewerken">
         <h2>Uitlening bewerken</h2>
         <div class="formulieren">
             <form onsubmit="return leningAanpassen()">

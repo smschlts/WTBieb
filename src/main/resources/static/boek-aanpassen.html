@@ -17,8 +17,9 @@
         <button class="btn-logout">Uitloggen</button>
     </header>
 
-    <button class="float-right button-green" onclick="document.location = 'boeken-overzicht-admin.html'">Overzicht</button>
-
+    <!-- <button class="float-right button-green" onclick="document.location = 'boeken-overzicht-admin.html'">Overzicht</button> -->
+    <button class="float-right button-green" onclick="history.back()">Terug</button>
+    
     <div class="page-content page-content_80 page-content_bewerken">
         <!-- <div class="flex-item">
             <img src="https://vignette.wikia.nocookie.net/harrypotter/images/3/3e/Harry_Potter_and_the_Sorcerer's_Stone_cover.jpg/">
@@ -46,17 +47,19 @@
                         <span class="exemplaren_plus" onclick="veranderExemplaarAantal(1)">+</span>
                     </div>
 
-                    <br><br><br>
+                    <br><br>
 
-                    <input type="button" value="Verwijderen" onclick="boekVerwijderen();document.location = 'boeken-overzicht-admin.html'">
-                    <input type="submit" value="Opslaan"></input>
+                    <!-- <input type="button" value="Verwijderen" onclick="boekVerwijderen();document.location = 'boeken-overzicht-admin.html'"> -->
+                    <div class="brede-opslaan-knop">
+                        <input type="submit" value="Opslaan"></input>
+                    </div>
                 </form>
             </div>
         </div>
 
         <div class="bewerken-formulier_exemplaar">
             <h2>Exemplaren bewerken</h2>
-            <table class="met-hover">
+            <table>
                 <thead>
                 <tr>
                     <th>WTid</th>
