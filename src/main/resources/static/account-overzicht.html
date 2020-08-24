@@ -16,7 +16,8 @@
         <h1>Accountbeheer</h1>
         <button class="btn-logout" onclick="document.location = 'logout'">Uitloggen</button>
     </header>
-
+    <button class="float-left button-green" onclick="document.location = 'account-toevoegen.html'">Toevoegen</button>
+    <button class="float-right button-green" onclick="history.back()">Terug</button>
     <div class="page-content page-content_40">
         <table class="met-hover">
             <!--                Zoekbalk-->
@@ -33,7 +34,7 @@
                     <th>Email</th>
                     <!---<th>Wachtwoord</th>-->
                     <th class="bewerk-verwijder">Bewerken</th>
-                    <th class="bewerk-verwijder">Verwijderen</th>
+                    <th class="bewerk-verwijder">Toewijzen</th>
                 </tr>
             </thead>
             <tbody id="accountOverzicht">
@@ -41,7 +42,6 @@
             </tbody>
         </table>
 
-        <button class="button-green" onclick="document.location = 'account-toevoegen.html'">Toevoegen</button>
         
     </div>
 </body>

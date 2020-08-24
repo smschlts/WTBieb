@@ -42,6 +42,20 @@ function veranderExemplaarAantal(verandering) {
     nummerVeld.value = Math.max(parseInt(nummerVeld.value) + parseInt(verandering), minimum);
 }
 
+function veranderExemplaarAantalBoekToevoegen(verandering) {
+    
+    var nummerVeld2 = document.getElementById("boekaantal");
+    var minimum = parseInt(nummerVeld2.getAttribute("min"));
+    
+    if (nummerVeld2.value == "") {
+        nummerVeld2.value = 0;
+    }
+
+    // Zorg dat value niet kleiner wordt dan minumum
+    nummerVeld2.value = Math.max(parseInt(nummerVeld2.value) + parseInt(verandering), minimum);
+
+}
+
 
 /* ---------------- BOEKEN ---------------- */
 
@@ -349,8 +363,8 @@ function accountOverzichtAdmin(){
                     "<td" + urlString + naamOverzicht + "</td>" +
                     "<td" + urlString + emailOverzicht + "</td>" +
                     // "<td" + urlString + wachtwoordOverzicht + "</td>" +
-                    "<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"document.location = 'account-aanpassen.html?accountid=" + idOverzicht + "'\">&#9998</button>" + "</td>" +
-                    "<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"accountVerwijderenOverzicht(" + idOverzicht + ");window.location.reload()\">&#10006</button>" + "</td>" +
+                    "<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"document.location = 'account-aanpassen.html?accountid=" + idOverzicht + "'\">&#9998;</button>" + "</td>" +
+                    "<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"document.location = 'lening-toevoegen.html?accountid=" + idOverzicht + "'\">&#9755;</button>" + "</td>" +
                     "</tr>"
                 )
             }
