@@ -1,5 +1,6 @@
 package nl.workingtalent.bieb.domein;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
@@ -54,6 +55,7 @@ public class Uitlening {
         this.id = id;
     }
 
+    @JsonFormat(pattern="dd-MM-yyyy")
     public LocalDate getUitleenDatum() {
         return uitleenDatum;
     }
@@ -62,6 +64,7 @@ public class Uitlening {
         this.uitleenDatum = uitleenDatum;
     }
 
+    @JsonFormat(pattern="dd-MM-yyyy")
     public LocalDate getInleverDatum() {
         return inleverDatum;
     }
