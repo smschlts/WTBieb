@@ -60,6 +60,7 @@ public class Uitlening {
         return uitleenDatum;
     }
 
+    @JsonFormat(pattern="yyyy-MM-dd")
     public void setUitleenDatum(LocalDate uitleenDatum) {
         this.uitleenDatum = uitleenDatum;
     }
@@ -69,6 +70,7 @@ public class Uitlening {
         return inleverDatum;
     }
 
+    @JsonFormat(pattern="yyyy-MM-dd")
     public void setInleverDatum(LocalDate inleverDatum) {
         this.inleverDatum = inleverDatum;
     }
