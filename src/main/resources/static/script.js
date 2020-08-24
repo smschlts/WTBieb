@@ -850,8 +850,13 @@ function uitleningVerwijderen() {
     bevestiging = confirmVerwijderen();
     if (bevestiging == true) {
         var xhr = new XMLHttpRequest();
-    xhr.open("DELETE", "http://localhost:8082/uitleningen/" + uitleningID, true);
-    xhr.send();
+        xhr.onreadystatechange = function(){
+            if(this.readyState == 4) {
+                window.location=document.referrer;
+            }
+        }
+        xhr.open("DELETE", "http://localhost:8082/uitleningen/" + uitleningID, true);
+        xhr.send();
     } else {
         // pass
     }
