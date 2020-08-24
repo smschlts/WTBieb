@@ -80,7 +80,6 @@ public class ExemplaarService {
                     u.setInleverDatum(LocalDate.now());
                     uitleningRepository.save(u);
                 }
-
             }
 
             return exemplaarRepository.save(bestaandExemplaar);
