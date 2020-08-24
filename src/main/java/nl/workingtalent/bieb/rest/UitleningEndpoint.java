@@ -49,6 +49,11 @@ public class UitleningEndpoint {
 
     @DeleteMapping("/uitleningen/{id}")
     public void uitleningWeg(@PathVariable Long id) {
+        Uitlening bestaandeUitlening = uitleningService.ophalenUitlening(id);
+        if (bestaandeUitlening != null && bestaandeUitlening.getInleverDatum() == null) {
+            exemplaarService.patchExemplaar(bestaandeUitlening.getBoek().getId(), bestaandeUitlening.getExemplaarId(), BoekStatus.BESCHIKBAAR);
+        }
+
         uitleningService.verwijderUitlening(id);
     }
 
