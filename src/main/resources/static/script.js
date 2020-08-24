@@ -555,14 +555,14 @@ function uitleenOverzichtAdmin(){
                     // "<td class=\"uitleen-isbn\"" + urlString + isbnOverzicht + "</td>" +
                     "<td class=\"uitleen-lener\"" + urlString + accountNaamOverzicht + "</td>" +
                     "<td class=\"uitleen-datum\"" + urlString + uitleningsDatumOverzicht + "</td>" +
-                    "<td class=\"uitleen-datum\"" + urlString + inleverDatumOverzicht + "</td>" +
-                    "<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"document.location = 'lening-aanpassen.html?id=" + uitleningID + "'\">&#9998</button>" + "</td>" +
+                    // "<td class=\"uitleen-datum\"" + urlString + inleverDatumOverzicht + "</td>" +
+                    // "<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"document.location = 'lening-aanpassen.html?id=" + uitleningID + "'\">&#9998</button>" + "</td>" +
                     inleverButtonString
                 )
             }
         }
     }
-    xhr.open("GET","http://localhost:8082/uitleningen",true);
+    xhr.open("GET","http://localhost:8082/uitleningen/actief",true);
     xhr.send();
 }
 
