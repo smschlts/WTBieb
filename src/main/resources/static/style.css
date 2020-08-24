@@ -321,6 +321,8 @@
 
 
             /* uitleenoverzicht */
+        .uitleen-exemplaar-id {width: 5%;}
+        
         .uitleen-titel,
         .uitleen-lener,
         .uitleen-datum {width: 15%;}

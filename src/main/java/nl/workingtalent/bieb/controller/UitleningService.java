@@ -71,4 +71,8 @@ public class UitleningService {
             return null;
         }
     }
+
+    public List<Uitlening> ophalenActieveUitleningen() {
+        return (List<Uitlening>) uitleningRepository.findActieveUitleningen();
+    }
 }
