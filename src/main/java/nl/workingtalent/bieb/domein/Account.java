@@ -1,8 +1,13 @@
 package nl.workingtalent.bieb.domein;
 
 import com.sun.istack.NotNull;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name = "accounts")
@@ -19,6 +24,13 @@ public class Account {
 
     @Column(name="active")
     private Boolean active;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            name="account_role",
+            joinColumns={@JoinColumn(name="USER_ID", referencedColumnName="ID")},
+            inverseJoinColumns={@JoinColumn(name="ROLE_ID", referencedColumnName="ID")})
+    private Collection<Role> roles = new ArrayList<>();
 
 
     public Account() {
@@ -61,5 +73,17 @@ public class Account {
 
     public void setWachtwoord(String wachtwoord) {
         this.wachtwoord = wachtwoord;
+    }
+
+    public Collection<Role> getRoles() {
+        return roles;
+    }
+
+//    public void setRoles(Collection<Role> roles) {
+//        this.roles = roles;
+//    }
+
+    public void voegRolToe(Role rol) {
+        roles.add(rol);
     }
 }

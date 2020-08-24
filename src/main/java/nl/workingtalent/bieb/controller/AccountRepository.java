@@ -7,6 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public interface AccountRepository extends CrudRepository <Account, Long> {
@@ -27,4 +28,5 @@ public interface AccountRepository extends CrudRepository <Account, Long> {
     @Modifying
     public void softDelete(Long id);
 
+    public Account findByEmail(String email);
 }
