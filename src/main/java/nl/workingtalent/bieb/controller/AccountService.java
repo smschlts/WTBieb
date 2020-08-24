@@ -29,7 +29,12 @@ public class AccountService implements UserDetailsService {
 
     public Account opslaan(Account nieuwAccount) {
         System.out.println("Account opslaan");
-        nieuwAccount.setWachtwoord(passwordEncoder.encode(nieuwAccount.getWachtwoord()));
+        if (nieuwAccount.getWachtwoord() == null) {
+            nieuwAccount.setWachtwoord(passwordEncoder.encode("ww"));
+        } else {
+            nieuwAccount.setWachtwoord(passwordEncoder.encode(nieuwAccount.getWachtwoord()));
+        }
+
         nieuwAccount.setActive(true);
 //        nieuwAccount.setRoles(Arrays.asList(new Role("ROLE_USER")));
         nieuwAccount.voegRolToe(new Role("ROLE_USER"));

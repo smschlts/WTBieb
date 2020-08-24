@@ -4,6 +4,7 @@ import nl.workingtalent.bieb.controller.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -46,6 +47,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     "/js/**",
                     "/css/**",
                     "/img/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/**").permitAll()
+                .antMatchers(HttpMethod.DELETE, "/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -59,6 +62,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .logoutSuccessUrl("/login?logout")
                 .logoutSuccessUrl("/login")
                 .permitAll();
+        http.csrf().disable();
     }
 
     @Bean
