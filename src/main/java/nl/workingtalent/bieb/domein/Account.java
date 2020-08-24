@@ -86,4 +86,12 @@ public class Account {
     public void voegRolToe(Role rol) {
         roles.add(rol);
     }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
 }
