@@ -321,6 +321,8 @@
 
 
             /* uitleenoverzicht */
+        .uitleen-exemplaar-id {width: 5%;}
+        
         .uitleen-titel,
         .uitleen-lener,
         .uitleen-datum {width: 15%;}
@@ -454,6 +456,28 @@
         background-color: #cce5a844;
         padding: 20px;
     }
+
+
+
+        /* boek bewerken - exemplaren toevoegen */
+
+
+    .exemplaren_toevoegen {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    #aantalExemplaren {
+        width: 30%;
+    }
+    .exemplaren_plus,
+    .exemplaren_min {
+        font-size: 25px;
+        cursor: pointer;
+        color: #8ec63f;
+        padding: 0 20px;
+    }
+
 
     /* ---------------- ZOEKBALK ---------------- */
 

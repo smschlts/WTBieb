@@ -13,4 +13,7 @@ public interface UitleningRepository extends CrudRepository<Uitlening, Long> {
     List<Uitlening> findByAccountId(long accountId);
     @Query("SELECT u FROM Uitlening u JOIN Exemplaar e ON (u.boek.id = e.boek.id AND u.exemplaarId = e.workingTalentExemplaarId) WHERE e.id = ?1")
     List<Uitlening> findByExemplarenId(long exemplarenId);
+
+    @Query("SELECT u FROM Uitlening u WHERE u.inleverDatum = NULL")
+    List<Uitlening> findActieveUitleningen();
 }
