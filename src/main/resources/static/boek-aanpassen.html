@@ -40,10 +40,10 @@
                     <label for="boekworkingtalentid">Working Talent ID: </label>
                     <input type="text" id="boekworkingtalentid"><br>
                     <label for="aantalExemplaren">Exemplaren toevoegen: </label>
-                    <div style="display: flex;  flex-direction: row;">
-                        <span onclick="veranderExemplaarAantal(-1)">-</span>
-                        <input type="number" id="aantalExemplaren" >
-                        <span onclick="veranderExemplaarAantal(1)">+</span>
+                    <div class="exemplaren_toevoegen">
+                        <span class="exemplaren_min" onclick="veranderExemplaarAantal(-1)">–</span>
+                        <input type="number" id="aantalExemplaren">
+                        <span class="exemplaren_plus" onclick="veranderExemplaarAantal(1)">+</span>
                     </div>
 
                     <br><br><br>
