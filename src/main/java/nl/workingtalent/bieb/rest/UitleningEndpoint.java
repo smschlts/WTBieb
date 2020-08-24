@@ -35,6 +35,12 @@ public class UitleningEndpoint {
         return uitleningService.ophalenUitlening(id);
     }
 
+    @GetMapping("/uitleningen/actief")
+    public List<Uitlening> uitleningenActiefAlles() {
+        return uitleningService.ophalenActieveUitleningen();
+    }
+
+
     @PostMapping("/uitleningen")
     public Uitlening nieuweUitlening(@RequestBody Uitlening nieuweUitlening) {
         exemplaarService.patchExemplaar(nieuweUitlening.getBoek().getId(), nieuweUitlening.getExemplaarId(), BoekStatus.UITGELEEND);
