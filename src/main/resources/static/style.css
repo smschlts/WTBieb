@@ -40,6 +40,10 @@
         width: 80%;
     }
 
+    .page-content_70 {
+        width: 70%;
+    }
+
     .page-content_60 {
         width: 60%;
     }
@@ -60,6 +64,13 @@
         display: flex;
         align-items: top;
         justify-content: space-evenly;
+    }
+
+    .page-content_account-bewerken,
+    .page-content_uitlening-bewerken {
+        width: 30%;
+        display: flex;
+        flex-direction: column;
     }
 
 
@@ -321,15 +332,15 @@
 
 
             /* uitleenoverzicht */
-        .uitleen-exemplaar-id {width: 5%;}
+        .uitleen-exemplaar-id,
+        .bewerk-inlever {width: 8%;}
         
-        .uitleen-titel,
-        .uitleen-lener,
+        .uitleen-titel {width: 33%;}
+
         .uitleen-datum {width: 15%;}
 
-        .uitleen-auteur,
-        .uitleen-isbn {width: 12%;}
-
+        .uitleen-lener,
+        .uitleen-auteur{width: 18%;}
 
             /* lening-toevoegen */
 
@@ -399,6 +410,16 @@
         font-size: 14px;
     }
 
+    input[type=number]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
+
+      input[type=number] { 
+        -moz-appearance: textfield;
+        appearance: textfield;
+        margin: 0; 
+      }
+
     .formulieren input[type=button] { background-color: #140f11;}
 
     .formulieren input[type=submit]:hover,
@@ -413,7 +434,8 @@
         transition: .2s;
     }
 
-    .submit-toevoegen input[type=submit] {
+    .submit-toevoegen input[type=submit],
+    .brede-opslaan-knop input[type=submit] {
         width: 100%;
         background-color: #8ec63f;
         margin: 8px 0;
@@ -467,7 +489,8 @@
         justify-content: flex-start;
         align-items: center;
     }
-    #aantalExemplaren {
+    #aantalExemplaren,
+    #boekaantal {
         width: 30%;
     }
     .exemplaren_plus,
