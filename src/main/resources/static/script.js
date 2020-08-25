@@ -221,13 +221,19 @@ function boekOphalenVoorFormulier() {
                 var wtidOverzicht = exemplaren[x].workingTalentExemplaarId;
                 var statusOverzicht = exemplaren[x].status;
 
-                var urlString = " onclick=\"window.location='#.html?id=" + idOverzicht + "';\">"
+                // var urlString = " onclick=\"window.location='#.html?id=" + idOverzicht + "';\">"
+                var verwijderString
+                if (statusOverzicht == "WEG") {
+                    verwijderString = "\"<td class=\"btn bewerk-verwijder\">" + "</td>\""
+                } else {
+                    verwijderString = "\"<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"exemplaarVerwijderenOverzicht(" + idOverzicht + ");\">&#10006</button>" + "</td>\""
+                }
 
                 $(exemplaarOverzicht).append(
                     "<tr id='" + idOverzicht + "'>" +
-                    "<td" + urlString + boek.wtId + "." + wtidOverzicht + "</td>" +
-                    "<td" + urlString + statusOverzicht + "</td>" +
-                    "<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"exemplaarVerwijderenOverzicht(" + idOverzicht + ");\">&#10006</button>" + "</td>" +
+                    "<td>" + boek.wtId + "." + wtidOverzicht + "</td>" +
+                    "<td>" + statusOverzicht + "</td>" +
+                    verwijderString +
                     "</tr>"
                 )
             }
