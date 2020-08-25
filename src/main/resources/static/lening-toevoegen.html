@@ -25,19 +25,19 @@
     <div class="page-content_lening-overzicht">
         <div class="flex-item_lening-toevoegen lening-toevoegen-form">
             <h2>Lening toevoegen</h2>    
-            <form onsubmit="return leningToevoegen()">
+            <form id="leningToevoegenFormulier" onsubmit="return leningToevoegen()">
                 <label for="accountid">Naam*: </label>
-                <input type="text" id="accountnaam" disabled>
+                <input type="text" id="accountnaam" disabled required>
                 <input type="hidden" id="accountid">
                 <label for="boektitel">Boektitel*: </label>
-                <input type="text" id="boektitel" disabled>
+                <input type="text" id="boektitel" disabled required>
                 <input type="hidden" id="boekid">
                 <label for="exemplaarid">Kies exemplaar*: </label>
                 <select id="exemplaarid" required></select>
                 <label for="uitleendatum">Uitleendatum*: </label>
                 <input type="date" id="uitleendatum" required>
                 <div class="submit-toevoegen">
-                        <input type="submit" value="Toevoegen"></input>
+                        <input type="submit" value="Toevoegen" onclick="leningToevoegenInputControleren()"></input>
                 </div>
             </form>
         </div>
