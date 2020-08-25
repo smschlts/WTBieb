@@ -655,9 +655,9 @@ function formulierInvullenVoorLening() {
 function leningToevoegenInputControleren() {
     accountNaam = document.getElementById("accountnaam");
     boekTitel = document.getElementById("boektitel");
-    accountNaam.disabled = false;
-    boekTitel.disabled = false;
     if (accountNaam.value == "" || boekTitel.value == "") {
+        accountNaam.disabled = false;
+        boekTitel.disabled = false;
         setTimeout(function () {
             accountNaam.disabled = true;
             boekTitel.disabled = true;
