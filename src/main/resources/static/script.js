@@ -789,6 +789,13 @@ function haalAantalExemplarenOp(boekid, wtexemplaarnummer = null) {
 }
 
 // lening-aanpassen.html
+function formateerDatum(datum) {
+    if (datum == "" || datum == null) {
+        return "";
+    }
+    return datum.substr(6, 4)+"-"+datum.substr(3, 2)+"-"+datum.substr(0, 2);
+}
+
 function leningOphalenVoorFormulier() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
@@ -802,8 +809,8 @@ function leningOphalenVoorFormulier() {
             document.getElementById("boekauteur").value = lening.boek.auteur;
             document.getElementById("boekwtid").value = wtid;
             document.getElementById("AccountNaam").value =  lening.account.naam;
-            document.getElementById("UitleenDatum").value = lening.uitleenDatum;
-            document.getElementById("InleverDatum").value = lening.inleverDatum;
+            document.getElementById("UitleenDatum").value = formateerDatum(lening.uitleenDatum);
+            document.getElementById("InleverDatum").value = formateerDatum(lening.inleverDatum);
             document.getElementById("BoekId").value = lening.boek.id;
             document.getElementById("AccountId").value = lening.account.id;
 
