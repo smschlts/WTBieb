@@ -1,13 +1,10 @@
 package nl.workingtalent.bieb.domein;
 
 import com.sun.istack.NotNull;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 @Entity
 @Table(name = "accounts")
