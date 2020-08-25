@@ -14,6 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -25,7 +26,7 @@ public class AccountService implements UserDetailsService {
     @Autowired
     AccountRepository accountRepository;
 
-    final private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    final private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10, new SecureRandom());
 
     public Account opslaan(Account nieuwAccount) {
         System.out.println("Account opslaan");
