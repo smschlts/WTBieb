@@ -1,6 +1,6 @@
 package nl.workingtalent.bieb;
 
-import nl.workingtalent.bieb.controller.AccountRepository;
+import nl.workingtalent.bieb.controller.AccountService;
 import nl.workingtalent.bieb.controller.BoekRepository;
 import nl.workingtalent.bieb.controller.UitleningRepository;
 import nl.workingtalent.bieb.domein.Account;
@@ -35,7 +35,7 @@ public class BiebApplication {
 	}
 
 	@Bean
-	public CommandLineRunner demo(BoekRepository boekRepository, AccountRepository accountRepository,
+	public CommandLineRunner demo(BoekRepository boekRepository, AccountService accountService,
 								  UitleningRepository uitleningRepository, UitleningEndpoint uitleningEndpoint) {
 		return (args) -> {
 			Boek b1 = new Boek(1001, "9789045353197", "Programmeren met Java voor dummies", "Barry Burd", "Java", "niet beschikbaar", "Java is een van de populairste programmeertalen ter wereld en wordt gebruikt bij het ontwikkelen van websites.", 2);
@@ -47,14 +47,14 @@ public class BiebApplication {
 			boekRepository.save(b3);
 			boekRepository.save(b4);
 
-			Account ac1 = new Account("Stefan Wilmink", "swilmink@testemail.nl", "cGxhY2Vob2xkZXIgdG9kbyA7KQ==");
-			Account ac2 = new Account("Donald Hermens", "dhermens@testemail.nl", "cGxhY2Vob2xkZXIgdG9kbyA7KQ==");
-			Account ac3 = new Account("Mariana Huizinga", "mhuizinga@testemail.nl", "cGxhY2Vob2xkZXIgdG9kbyA7KQ==");
-			Account ac4 = new Account("Merlijn van Rumpt", "mvrumpt@testemail.nl", "cGxhY2Vob2xkZXIgdG9kbyA7KQ==");
-			accountRepository.save(ac1);
-			accountRepository.save(ac2);
-			accountRepository.save(ac3);
-			accountRepository.save(ac4);
+			Account ac1 = new Account("Stefan Wilmink", "swilmink@testemail.nl", "meloen1");
+			Account ac2 = new Account("Donald Hermens", "dhermens@testemail.nl", "meloen1");
+			Account ac3 = new Account("Mariana Huizinga", "mhuizinga@testemail.nl", "meloen1");
+			Account ac4 = new Account("Merlijn van Rumpt", "mvrumpt@testemail.nl", "meloen1");
+			accountService.opslaan(ac1);
+			accountService.opslaan(ac2);
+			accountService.opslaan(ac3);
+			accountService.opslaan(ac4);
 
 			Uitlening ul1 = new Uitlening(LocalDate.of(2020, 5, 19), LocalDate.of(2020, 7, 8), b2, ac2, 1);
 			Uitlening ul2 = new Uitlening(LocalDate.of(2020, 3, 5), LocalDate.of(2020, 7, 8), b4, ac2, 1);
