@@ -5,6 +5,7 @@ import nl.workingtalent.bieb.domein.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -23,7 +24,7 @@ public class AccountEndpoint {
     }
 
     @PostMapping("/accounts")
-    public Account nieuwAccount(@RequestBody Account nieuwAccount) {
+    public Account nieuwAccount(@Valid  @RequestBody Account nieuwAccount) {
         return accountService.opslaan(nieuwAccount);
     }
 
@@ -33,7 +34,7 @@ public class AccountEndpoint {
     }
 
     @PutMapping("/accounts/{id}")
-    public Account updateAccount(@PathVariable Long id, @RequestBody Account nieuwAccount) {
+    public Account updateAccount(@PathVariable Long id, @Valid @RequestBody Account nieuwAccount) {
         return accountService.updateAccount(id, nieuwAccount);
     }
 

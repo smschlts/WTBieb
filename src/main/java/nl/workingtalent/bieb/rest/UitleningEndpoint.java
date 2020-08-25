@@ -7,6 +7,7 @@ import nl.workingtalent.bieb.domein.Uitlening;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -42,7 +43,7 @@ public class UitleningEndpoint {
 
 
     @PostMapping("/uitleningen")
-    public Uitlening nieuweUitlening(@RequestBody Uitlening nieuweUitlening) {
+    public Uitlening nieuweUitlening(@Valid @RequestBody Uitlening nieuweUitlening) {
         exemplaarService.patchExemplaar(nieuweUitlening.getBoek().getId(), nieuweUitlening.getExemplaarId(), BoekStatus.UITGELEEND);
         return uitleningService.opslaan(nieuweUitlening);
     }
@@ -58,7 +59,7 @@ public class UitleningEndpoint {
     }
 
     @PutMapping("/uitleningen/{id}")
-    public Uitlening updateUitlening(@PathVariable Long id, @RequestBody Uitlening nieuweUitlening) {
+    public Uitlening updateUitlening(@PathVariable Long id, @Valid @RequestBody Uitlening nieuweUitlening) {
         return uitleningService.updateUitlening(id, nieuweUitlening);
     }
 
