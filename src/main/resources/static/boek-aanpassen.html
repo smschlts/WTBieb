@@ -28,22 +28,22 @@
             <h2>Boek bewerken</h2>
             <div class="formulieren">
                 <form onsubmit="return boekAanpassen()">
-                    <label for="boektitel">Titel: </label>
-                    <input type="text" id="boektitel"><br>
-                    <label for="boekauteur">Auteur: </label>
-                    <input type="text" id="boekauteur"><br>
-                    <label for="boekisbn">ISBN: </label>
-                    <input type="text" id="boekisbn"><br>
+                    <label for="boektitel">Titel*: </label>
+                    <input type="text" id="boektitel" required><br>
+                    <label for="boekauteur">Auteur*: </label>
+                    <input type="text" id="boekauteur" required><br>
+                    <label for="boekisbn">ISBN*: </label>
+                    <input type="text" id="boekisbn" required><br>
                     <label for="boekcategorie">Categorie: </label>
                     <input type="text" id="boekcategorie"><br>
                     <label for="boekomschrijving">Omschrijving: </label>
                     <input type="text" id="boekomschrijving"><br>
-                    <label for="boekworkingtalentid">Working Talent ID: </label>
-                    <input type="text" id="boekworkingtalentid"><br>
+                    <label for="boekworkingtalentid">Working Talent ID*: </label>
+                    <input type="text" id="boekworkingtalentid" required><br>
                     <label for="aantalExemplaren">Exemplaren toevoegen: </label>
                     <div class="exemplaren_toevoegen">
                         <span class="exemplaren_min" onclick="veranderExemplaarAantal(-1)">–</span>
-                        <input type="number" id="aantalExemplaren">
+                        <input type="number" id="aantalExemplaren" value="0" required>
                         <span class="exemplaren_plus" onclick="veranderExemplaarAantal(1)">+</span>
                     </div>
 

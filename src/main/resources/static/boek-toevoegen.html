@@ -23,22 +23,22 @@
         <h2>Boek toevoegen</h2>    
         <div class="formulieren">   
             <form onsubmit="return boekToevoegen()">
-                <label for="boektitel">Titel: </label>
-                <input type="text" id="boektitel"><br>
-                <label for="boekauteur">Auteur: </label>
-                <input type="text" id="boekauteur"><br>
-                <label for="boekisbn">ISBN: </label>
-                <input type="text" id="boekisbn"><br>
+                <label for="boektitel">Titel*: </label>
+                <input type="text" id="boektitel" required><br>
+                <label for="boekauteur">Auteur*: </label>
+                <input type="text" id="boekauteur" required><br>
+                <label for="boekisbn">ISBN*: </label>
+                <input type="text" id="boekisbn" required><br>
                 <!--<label for="boekcategorie">Categorie: </label>
                 <input type="text" id="boekcategorie"><br>
                 <label for="boekomschrijving">Omschrijving: </label>
                 <input type="text" id="boekomschrijving"><br>-->
-                <label for="boekwtid">WorkingTalent ID: </label>
-                <input type="text" id="boekwtid"><br>
+                <label for="boekwtid">WorkingTalent ID*: </label>
+                <input type="text" id="boekwtid" required><br>
                 <label for="boekaantal">Aantal exemplaren: </label>
                 <div class="exemplaren_toevoegen">
                     <span class="exemplaren_min" onclick="veranderExemplaarAantalBoekToevoegen(-1)">–</span>
-                    <input type="number" id="boekaantal" min="0">
+                    <input type="number" id="boekaantal" min="0" value="1" required>
                     <span class="exemplaren_plus" onclick="veranderExemplaarAantalBoekToevoegen(1)">+</span>
                 </div>
                 <br><br>
