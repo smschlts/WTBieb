@@ -46,10 +46,6 @@ function veranderExemplaarAantalBoekToevoegen(verandering) {
     
     var nummerVeld2 = document.getElementById("boekaantal");
     var minimum = parseInt(nummerVeld2.getAttribute("min"));
-    
-    if (nummerVeld2.value == "") {
-        nummerVeld2.value = 0;
-    }
 
     // Zorg dat value niet kleiner wordt dan minumum
     nummerVeld2.value = Math.max(parseInt(nummerVeld2.value) + parseInt(verandering), minimum);
@@ -660,7 +656,18 @@ function leningToevoegen() {
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
         if (this.readyState == 4) {
-            document.location = 'uitleen-overzicht-admin.html';
+            if (this.status == 200) {
+                document.location = 'uitleen-overzicht-admin.html';
+            } else {
+            if( document.getElementById("accountid").value == ""){
+            alert("Kies een naam");
+            }
+            if( document.getElementById("boekid").value == ""){
+            alert("Kies een boek");
+            }
+
+            }
+
         }
     }
 

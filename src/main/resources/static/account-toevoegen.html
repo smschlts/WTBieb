@@ -23,10 +23,10 @@
         <h2>Account toevoegen</h2>
         <div class="formulieren">
             <form onsubmit="return accountToevoegen()">
-                <label for="naam">Naam: </label>
-                <input type="text" id="naam"><br>
-                <label for="emailadres">E-mailadres: </label>
-                <input type="text" id="emailadres"><br>
+                <label for="naam">Naam*: </label>
+                <input type="text" id="naam" required><br>
+                <label for="emailadres">E-mailadres*: </label>
+                <input type="text" id="emailadres" required><br>
                 <input type="radio" id="trainee" name="type-gebruiker" value="trainee">
                 <label for="trainee">Trainee</label><br>
                 <input type="radio" id="medewerker" name="type-gebruiker" value="medewerker">
