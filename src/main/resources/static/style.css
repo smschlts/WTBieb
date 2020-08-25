@@ -76,11 +76,24 @@
 
     
     .page-content_lening-overzicht {
+        display: flex;
+        justify-content: center;
+        box-sizing: content-box;
+        inline-size: 100%;
+        top: 25%;
+        margin-bottom: 200px;
+    }
+
+    .flex-item_lening-toevoegen {
+        margin: 0 30px;
+    }
+
+    /* .page-content_lening-overzicht {
         box-sizing: content-box;
         display: flow-root;
         inline-size: 100%;
         top: 25%;
-    }
+    } */
 
     .bewerken-formulier_boek,
     .bewerken-formulier_exemplaar {
@@ -454,23 +467,26 @@
         box-sizing: content-box;
         padding: 5px; 
         inline-size: 400px;
-        margin: 20px auto;
+        /* margin: 20px auto; */
+        max-width: 50%;
     }
 
     .lening-toevoegen-account-tabel {
         box-sizing: border-box;
         inline-size: 28%;
-        margin: 40px 0 50px 5%;
+        /* margin: 40px 0 50px 5%; */
         padding: 0;
-        float: left;
+        /* float: left; */
+        max-width: 50%;
     }
 
     .lening-toevoegen-boek-tabel {
         box-sizing: border-box;
         inline-size: 60%;
-        margin: 40px 5% 50px 0;
+        /* margin: 40px 5% 50px 0; */
         padding: 0;
-        float: right;
+        /* float: right; */
+        max-width: 50%;
     }
 
     .lening-toevoegen-form form {
