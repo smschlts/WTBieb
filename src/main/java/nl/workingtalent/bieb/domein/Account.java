@@ -16,7 +16,6 @@ public class Account {
     private String naam;
     @NotNull
     private String email;
-    @NotNull
     private String wachtwoord;
 
     @Column(name="active")

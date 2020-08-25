@@ -771,15 +771,17 @@ function haalAantalExemplarenOp(boekid, wtexemplaarnummer = null) {
                 }
             );
         document.getElementById("exemplaarid").innerHTML="";
+        var aantalBeschikbaar = 0;
             for(var x = 0 ; x < antwoord.exemplaren.length; x++){
                 var boekworkingtalentid = antwoord.wtId;
                 var exemplaarworkingtalentid = antwoord.exemplaren[x].workingTalentExemplaarId;
 
-                if (antwoord.exemplaren[x].status == "UITGELEEND") {
-                    $(exemplaarid).append(
-                        "<option value=\"" + exemplaarworkingtalentid + "\" disabled>" + boekworkingtalentid  + "." + exemplaarworkingtalentid +"</option>"
-                    )
-                } else if (antwoord.exemplaren[x].status == "BESCHIKBAAR") {
+//                if (antwoord.exemplaren[x].status == "UITGELEEND") {
+//                    $(exemplaarid).append(
+//                        "<option value=\"" + exemplaarworkingtalentid + "\" disabled>" + boekworkingtalentid  + "." + exemplaarworkingtalentid +"</option>"
+//                    )
+//                } else
+                if (antwoord.exemplaren[x].status == "BESCHIKBAAR") {
                     if (wtexemplaarnummer == exemplaarworkingtalentid) {
                         $(exemplaarid).append(
                             "<option value=\"" + exemplaarworkingtalentid + "\" selected>" + boekworkingtalentid + "." + exemplaarworkingtalentid +"</option>"
