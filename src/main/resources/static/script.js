@@ -652,22 +652,24 @@ function formulierInvullenVoorLening() {
     boekenOverzichtLening();
 }
 
+function leningToevoegenInputControleren() {
+    accountNaam = document.getElementById("accountnaam");
+    boekTitel = document.getElementById("boektitel");
+    accountNaam.disabled = false;
+    boekTitel.disabled = false;
+    if (accountNaam.value == "" || boekTitel.value == "") {
+        setTimeout(function () {
+            accountNaam.disabled = true;
+            boekTitel.disabled = true;
+        }, 4000);
+    }
+}
+
 function leningToevoegen() {
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
-        if (this.readyState == 4) {
-            if (this.status == 200) {
-                document.location = 'uitleen-overzicht-admin.html';
-            } else {
-            if( document.getElementById("accountid").value == ""){
-            alert("Kies een naam");
-            }
-            if( document.getElementById("boekid").value == ""){
-            alert("Kies een boek");
-            }
-
-            }
-
+        if (this.readyState == 4 && this.status == 200) {
+            document.location = 'uitleen-overzicht-admin.html';
         }
     }
 
