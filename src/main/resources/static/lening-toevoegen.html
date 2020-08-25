@@ -20,8 +20,10 @@
     <!-- <button class="float-right button-green" onclick="document.location = 'uitleen-overzicht-admin.html'">Overzicht</button> -->
     <button class="float-right button-green" onclick="history.back()">Terug</button>
 
+
+<!-- formulier uitlening toevoegen --> 
     <div class="page-content_lening-overzicht">
-        <div class="lening-toevoegen-form">
+        <div class="flex-item_lening-toevoegen lening-toevoegen-form">
             <h2>Lening toevoegen</h2>    
             <form onsubmit="return leningToevoegen()">
                 <label for="accountid">Naam: </label>
@@ -39,63 +41,69 @@
                 </div>
             </form>
         </div>
-    </div>
 
-    <div class="lening-toevoegen-account-tabel" id="accountTabel">
-        <table class="met-hover">
-            <!--                Zoekbalk-->
-            <div class="zoeken">
-                <input class="zoekbalk" type="search" id="accountInput" oninput="accountZoekenOverzicht()" placeholder="Zoeken...">
-                <select id="accountZoekOpties" onchange="accountZoekenOverzicht()">
-                    <option value="naam">Naam</option>
-                    <option value="email">E-mail</option>
-                </select>   
-            </div>
-            <thead>
-                <tr>
-                    <th class="naam_uitlening-toevoegen">Naam</th>
-                    <th class="email_uitlening-toevoegen">E-mail</th>
-                </tr>
-            </thead>
-            <tbody id="accountOverzicht">
-            <!--                    javascript-->
-            </tbody>
-        </table>
-    </div>
 
-    <div class="lening-toevoegen-boek-tabel" id="boekenTabel">
-        <table class="met-hover">
-            <!--                Zoekbalk-->
-            <div class="zoeken">
-                <input class="zoekbalk" type="search" id="boekInput" oninput="boekZoekenOverzicht()" placeholder="Zoeken...">
-                <select id="boekZoekOpties" onchange="boekZoekenOverzicht()">
-                    <option value="wtid">WTid</option>
-                    <option value="titel">Titel</option>
-                    <option value="auteur">Auteur</option>
-                    <!-- <option value="isbn">ISBN</option> -->
-                </select>
-            </div>
-            <thead>
-                <tr>
-                    <th class="status_uitlening-toevoegen">WTid</th>
-                    <th class="titel_uitlening-toevoegen">Titel</th>
-                    <th class="auteur_uitlening-toevoegen">Auteur</th>
-                    <!-- <th class="isbn_uitlening-toevoegen">ISBN</th>
-                    <th class="categorie_uitlening-toevoegen">Categorie</th>
-                    <th>Omschrijving</th>
-                    <th>Omslag</th> -->
-                    <th class="status_uitlening-toevoegen">Status</th>
-                    <!-- <th>Exemplaar</th> -->
-                </tr>
-            </thead>
-            <tbody id="boekenOverzicht">
+
+
+    <!-- account kiezen -->
+        <div class="flex-item_lening-toevoegen lening-toevoegen-account-tabel" id="accountTabel">
+            <table class="met-hover">
+                <!--                Zoekbalk-->
+                <div class="zoeken">
+                    <input class="zoekbalk" type="search" id="accountInput" oninput="accountZoekenOverzicht()" placeholder="Zoeken...">
+                    <select id="accountZoekOpties" onchange="accountZoekenOverzicht()">
+                        <option value="naam">Naam</option>
+                        <option value="email">E-mail</option>
+                    </select>   
+                </div>
+                <thead>
+                    <tr>
+                        <th class="naam_uitlening-toevoegen">Naam</th>
+                        <th class="email_uitlening-toevoegen">E-mail</th>
+                    </tr>
+                </thead>
+                <tbody id="accountOverzicht">
                 <!--                    javascript-->
-            </tbody>
-        </table>
-        
-        <form onsubmit="return leningToevoegen()">
-        </form>
+                </tbody>
+            </table>
+        </div>
+
+
+
+        <!-- boek kiezen -->
+        <div class="flex-item_lening-toevoegen lening-toevoegen-boek-tabel" id="boekenTabel">
+            <table class="met-hover">
+                <!--                Zoekbalk-->
+                <div class="zoeken">
+                    <input class="zoekbalk" type="search" id="boekInput" oninput="boekZoekenOverzicht()" placeholder="Zoeken...">
+                    <select id="boekZoekOpties" onchange="boekZoekenOverzicht()">
+                        <option value="wtid">WTid</option>
+                        <option value="titel">Titel</option>
+                        <option value="auteur">Auteur</option>
+                        <!-- <option value="isbn">ISBN</option> -->
+                    </select>
+                </div>
+                <thead>
+                    <tr>
+                        <th class="status_uitlening-toevoegen">WTid</th>
+                        <th class="titel_uitlening-toevoegen">Titel</th>
+                        <th class="auteur_uitlening-toevoegen">Auteur</th>
+                        <!-- <th class="isbn_uitlening-toevoegen">ISBN</th>
+                        <th class="categorie_uitlening-toevoegen">Categorie</th>
+                        <th>Omschrijving</th>
+                        <th>Omslag</th> -->
+                        <th class="status_uitlening-toevoegen">Status</th>
+                        <!-- <th>Exemplaar</th> -->
+                    </tr>
+                </thead>
+                <tbody id="boekenOverzicht">
+                    <!--                    javascript-->
+                </tbody>
+            </table>
+            
+            <form onsubmit="return leningToevoegen()">
+            </form>
+        </div>
     </div>
-    
 </body>
 </html>
