@@ -1,10 +1,10 @@
 package nl.workingtalent.bieb.domein;
 
-import com.sun.istack.NotNull;
-
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.Collection;
+
 
 @Entity
 @Table(name = "accounts")
