@@ -7,6 +7,7 @@ import nl.workingtalent.bieb.domein.Account;
 import nl.workingtalent.bieb.domein.Boek;
 import nl.workingtalent.bieb.domein.Uitlening;
 import nl.workingtalent.bieb.rest.UitleningEndpoint;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -22,6 +23,15 @@ public class BiebApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(BiebApplication.class, args);
 	}
+
+	@Value("${admin.naam}")
+	private String adminNaam;
+	@Value("${admin.wachtwoord}")
+	private String adminWachtwoord;
+	@Value("${admin.email}")
+	private String adminEmail;
+	@Value("${user.wachtwoord}")
+	private String userWachtwoord;
 
 	@Bean
 	public WebMvcConfigurer corsConfigurer() {
@@ -47,18 +57,20 @@ public class BiebApplication {
 			boekRepository.save(b3);
 			boekRepository.save(b4);
 
-			Account ac1 = new Account("Stefan Wilmink", "swilmink@testemail.nl", "meloen1");
-			Account ac2 = new Account("Donald Hermens", "dhermens@testemail.nl", "meloen1");
-			Account ac3 = new Account("Mariana Huizinga", "mhuizinga@testemail.nl", "meloen1");
-			Account ac4 = new Account("Merlijn van Rumpt", "mvrumpt@testemail.nl", "meloen1");
+			Account ac1 = new Account(adminNaam, adminEmail, adminWachtwoord);
+			Account ac2 = new Account("Stefan Wilmink", "swilmink@testemail.nl", userWachtwoord);
+			Account ac3 = new Account("Donald Hermens", "dhermens@testemail.nl", userWachtwoord);
+			Account ac4 = new Account("Mariana Huizinga", "mhuizinga@testemail.nl", userWachtwoord);
+			Account ac5 = new Account("Merlijn van Rumpt", "mvrumpt@testemail.nl", userWachtwoord);
 			accountService.opslaan(ac1);
 			accountService.opslaan(ac2);
 			accountService.opslaan(ac3);
 			accountService.opslaan(ac4);
+			accountService.opslaan(ac5);
 
-			Uitlening ul1 = new Uitlening(LocalDate.of(2020, 5, 19), LocalDate.of(2020, 7, 8), b2, ac2, 1);
-			Uitlening ul2 = new Uitlening(LocalDate.of(2020, 3, 5), LocalDate.of(2020, 7, 8), b4, ac2, 1);
-			Uitlening ul3 = new Uitlening(LocalDate.of(2020, 1, 2), LocalDate.of(2020, 3, 12), b2, ac1, 1);
+			Uitlening ul1 = new Uitlening(LocalDate.of(2020, 5, 19), LocalDate.of(2020, 7, 8), b2, ac3, 1);
+			Uitlening ul2 = new Uitlening(LocalDate.of(2020, 3, 5), LocalDate.of(2020, 7, 8), b4, ac3, 1);
+			Uitlening ul3 = new Uitlening(LocalDate.of(2020, 1, 2), LocalDate.of(2020, 3, 12), b2, ac2, 1);
 			Uitlening ul4 = new Uitlening(LocalDate.of(2020, 2, 21), null, b1, ac2, 1);
 			Uitlening ul5 = new Uitlening(LocalDate.of(2020, 3, 25), null, b1, ac4, 2);
 			Uitlening ul6 = new Uitlening(LocalDate.of(2020, 7, 28), null, b2, ac3, 2);
