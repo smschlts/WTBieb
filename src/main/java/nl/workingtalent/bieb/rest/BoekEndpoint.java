@@ -6,6 +6,7 @@ import nl.workingtalent.bieb.domein.Exemplaar;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -52,7 +53,7 @@ public class BoekEndpoint {
     }
 
     @PostMapping("/boeken")
-    public Boek nieuwBoek(@RequestBody Boek nieuwBoek) {
+    public Boek nieuwBoek(@Valid @RequestBody Boek nieuwBoek) {
         return boekService.opslaan(nieuwBoek);
     }
 
@@ -62,7 +63,7 @@ public class BoekEndpoint {
     }
 
     @PutMapping("/boeken/{id}")
-    public Boek updateBoek(@PathVariable Long id, @RequestBody Boek nieuwBoek) {
+    public Boek updateBoek(@PathVariable Long id, @Valid @RequestBody Boek nieuwBoek) {
         return boekService.updateBoek(id, nieuwBoek);
     }
 }
