@@ -1,7 +1,7 @@
 package nl.workingtalent.bieb.domein;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.sun.istack.NotNull;
+import javax.validation.constraints.NotNull;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -21,6 +21,7 @@ public class Uitlening {
     private Boek boek;
 
     @NotNull
+
     private long exemplaarId;
 
     @NotNull
