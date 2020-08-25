@@ -16,6 +16,7 @@ public class Boek {
     @Column(unique=true)
     private long wtId;
     @NotNull
+    @Column(unique=true)
     private String isbn;
     @NotNull
     private String titel;
