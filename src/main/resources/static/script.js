@@ -171,8 +171,16 @@ function boekToevoegenVoorFormulier() {
 function boekToevoegen() {
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            document.location = 'boeken-overzicht-admin.html';
+        if (this.readyState == 4) {
+            if (this.status == 200) {
+                document.location = 'boeken-overzicht-admin.html';
+            } else if (this.status == 500) {
+                /* ISBN wordt in de backend gecheckt op uniekheid.
+                   Als hij niet uniek is, geeft hij status 500 terug.
+                   Het kan zijn dat er iets anders fout gaat.
+                */
+                alert("ISBN bestaat al.")
+            }
         }
     };
 
