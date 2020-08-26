@@ -16,6 +16,11 @@ function confirmWeg() {
     return bevestiging;
 }
 
+function confirmBeschikbaar() {
+    var bevestiging = confirm("Is dit item weer beschikbaar?");
+    return bevestiging;
+}
+
 // beschikbaarheid van exemplaren berekenen
 function berekenBeschikbaarheid(exemplaren) {
     var aantal = 0;
@@ -216,6 +221,24 @@ function exemplaarVerwijderenOverzicht(exemplaarId) {
     }
 }
 
+function exemplaarBeschikbaarStellenOverzicht(exemplaarId) {
+    bevestiging = confirmBeschikbaar();
+        if (bevestiging == true) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("PATCH", "http://localhost:8082/exemplaren/" + exemplaarId +"?status=BESCHIKBAAR", true);
+            xhr.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    window.location.reload()
+                }
+            }
+        xhr.send();
+        } else {
+            // pass
+        }
+}
+
+
+
 // boek-aanpassen.html
 function boekOphalenVoorFormulier() {
     const queryString = window.location.search;
@@ -245,7 +268,7 @@ function boekOphalenVoorFormulier() {
                 // var urlString = " onclick=\"window.location='#.html?id=" + idOverzicht + "';\">"
                 var verwijderString
                 if (statusOverzicht == "WEG") {
-                    verwijderString = "\"<td class=\"btn bewerk-verwijder\">" + "</td>\""
+                    verwijderString = "\"<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"exemplaarBeschikbaarStellenOverzicht(" + idOverzicht + ");\">&#10004</button>" + "</td>\""
                 } else {
                     verwijderString = "\"<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"exemplaarVerwijderenOverzicht(" + idOverzicht + ");\">&#10006</button>" + "</td>\""
                 }
