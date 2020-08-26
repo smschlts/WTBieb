@@ -23,6 +23,11 @@ public class BoekEndpoint {
         }
     }
 
+    @GetMapping("/boeken/aantal")
+    public int boekenAantal() {
+        return boekService.ophalenAlleBoeken().size();
+    }
+
     @GetMapping("/boeken/beschikbaar")
     public List<Boek> boekenBeschikbaar() {
         return boekService.ophalenAlleBoekenMetStatus(true);
