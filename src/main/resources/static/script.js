@@ -158,7 +158,7 @@ function boekOphalen() {
 function boekToevoegen() {
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
-        if (this.readyState == 4) {
+        if (this.readyState == 4 && this.status == 200) {
             document.location = 'boeken-overzicht-admin.html';
         }
     }
@@ -220,13 +220,19 @@ function boekOphalenVoorFormulier() {
                 var wtidOverzicht = exemplaren[x].workingTalentExemplaarId;
                 var statusOverzicht = exemplaren[x].status;
 
-                var urlString = " onclick=\"window.location='#.html?id=" + idOverzicht + "';\">"
+                // var urlString = " onclick=\"window.location='#.html?id=" + idOverzicht + "';\">"
+                var verwijderString
+                if (statusOverzicht == "WEG") {
+                    verwijderString = "\"<td class=\"btn bewerk-verwijder\">" + "</td>\""
+                } else {
+                    verwijderString = "\"<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"exemplaarVerwijderenOverzicht(" + idOverzicht + ");\">&#10006</button>" + "</td>\""
+                }
 
                 $(exemplaarOverzicht).append(
                     "<tr id='" + idOverzicht + "'>" +
-                    "<td" + urlString + boek.wtId + "." + wtidOverzicht + "</td>" +
-                    "<td" + urlString + statusOverzicht + "</td>" +
-                    "<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"exemplaarVerwijderenOverzicht(" + idOverzicht + ");\">&#10006</button>" + "</td>" +
+                    "<td>" + boek.wtId + "." + wtidOverzicht + "</td>" +
+                    "<td>" + statusOverzicht + "</td>" +
+                    verwijderString +
                     "</tr>"
                 )
             }
@@ -654,9 +660,9 @@ function formulierInvullenVoorLening() {
 function leningToevoegenInputControleren() {
     accountNaam = document.getElementById("accountnaam");
     boekTitel = document.getElementById("boektitel");
-    accountNaam.disabled = false;
-    boekTitel.disabled = false;
     if (accountNaam.value == "" || boekTitel.value == "") {
+        accountNaam.disabled = false;
+        boekTitel.disabled = false;
         setTimeout(function () {
             accountNaam.disabled = true;
             boekTitel.disabled = true;
