@@ -161,7 +161,7 @@ function boekToevoegen() {
         if (this.readyState == 4) {
             document.location = 'boeken-overzicht-admin.html';
         }
-    };
+    }
 
     var boek = {};
     boek.titel = document.getElementById("boektitel").value;
@@ -177,7 +177,6 @@ function boekToevoegen() {
     xhr.send(boekJSON);
     return false;
 }
-
 
 function exemplaarVerwijderenOverzicht(exemplaarId) {
     bevestiging = confirmWeg();
