@@ -480,7 +480,11 @@ function accountToevoegen() {
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
         if (this.readyState == 4) {
-            document.location = 'account-overzicht.html';
+            if (this.status == 200) {
+                document.location = 'account-overzicht.html';
+            } else if (this.status == 500) {
+                alert("Email bestaat al")
+            }
         }
     }
 

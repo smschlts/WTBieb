@@ -1,6 +1,7 @@
 package nl.workingtalent.bieb.domein;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -15,6 +16,7 @@ public class Account {
     @NotNull
     private String naam;
     @NotNull
+    @Column(unique = true)
     private String email;
     private String wachtwoord;
 
