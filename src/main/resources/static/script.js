@@ -524,7 +524,12 @@ function accountAanpassen() {
 
     xhr.onreadystatechange = function() {
         if(this.readyState == 4) {
-            document.location = 'account-overzicht.html';
+            if (this.status == 200) {
+                document.location = 'account-overzicht.html';
+            } else if (this.status == 500) {
+                alert("Email bestaat al.")
+            }
+
         }
     }
 
@@ -873,7 +878,7 @@ function leningAanpassen() {
     const leningID = urlParams.get('id');
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function(){
-        if(this.readyState == 4) {
+        if(this.readyState == 4 && this.status == 200) {
             document.location = 'uitleen-overzicht-admin.html';
         }
     }
@@ -900,7 +905,7 @@ function uitleningVerwijderen() {
     if (bevestiging == true) {
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function(){
-            if(this.readyState == 4) {
+            if(this.readyState == 4 && this.status == 200) {
                 window.location=document.referrer;
             }
         }
