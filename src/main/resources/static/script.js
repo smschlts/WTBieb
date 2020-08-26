@@ -622,6 +622,14 @@ function formulierInvullenVoorLening() {
     const urlParams = new URLSearchParams(queryString);
     const accountID = urlParams.get('accountid');
     const exemplaarID = urlParams.get('exemplaarid');
+
+    Date.prototype.toDateInputValue = (function() {
+        var local = new Date(this);
+        local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+        return local.toJSON().slice(0,10);
+    });
+    document.getElementById('uitleendatum').value = new Date().toDateInputValue();
+    
     if (accountID) {
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function() {
