@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body onload="boekToevoegenVoorFormulier()">
     <header>
         <img onclick="document.location = 'index.html'" src="working-talent-logo-Large.png" alt="Working Talent Logo" id="logo">
         <h1>Boekbeheer</h1>
@@ -34,7 +34,7 @@
                 <label for="boekomschrijving">Omschrijving: </label>
                 <input type="text" id="boekomschrijving"><br>-->
                 <label for="boekwtid">WorkingTalent ID*: </label>
-                <input type="text" id="boekwtid" required><br>
+                <input type="text" id="boekwtid" required disabled><br>
                 <label for="boekaantal">Aantal exemplaren: </label>
                 <div class="exemplaren_toevoegen">
                     <span class="exemplaren_min" onclick="veranderExemplaarAantalBoekToevoegen(-1)">–</span>

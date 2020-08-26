@@ -155,6 +155,19 @@ function boekOphalen() {
 }
 
 // boek-toevoegen.html
+function boekToevoegenVoorFormulier() {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var aantal = this.responseText;
+            document.getElementById("boekwtid").value = parseInt(aantal) + 1;
+        }
+    };
+    xhr.open("GET", "http://localhost:8082/boeken/aantal", true);
+    xhr.send();
+}
+
+
 function boekToevoegen() {
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
