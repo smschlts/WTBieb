@@ -719,14 +719,19 @@ function formulierInvullenVoorLening() {
     boekenOverzichtLening();
 }
 
+// Input elementen worden niet gevalideerd als ze disabled zijn. Hiermee wordt de validatie alsnog uitgevoerd.
 function leningToevoegenInputControleren() {
     accountNaam = document.getElementById("accountnaam");
     boekTitel = document.getElementById("boektitel");
-    if (accountNaam.value == "" || boekTitel.value == "") {
+    if (accountNaam.value == "") {
         accountNaam.disabled = false;
-        boekTitel.disabled = false;
         setTimeout(function () {
             accountNaam.disabled = true;
+        }, 4000);
+    }
+    if (boekTitel.value == "") {
+        boekTitel.disabled = false;
+        setTimeout(function () {
             boekTitel.disabled = true;
         }, 4000);
     }

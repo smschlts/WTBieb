@@ -495,7 +495,10 @@
         padding: 20px;
     }
 
-
+    .lening-toevoegen-form input[id=accountnaam], input[id=boektitel] {
+        pointer-events: none;
+        caret-color: transparent;
+    }
 
         /* boek bewerken - exemplaren toevoegen */
 
