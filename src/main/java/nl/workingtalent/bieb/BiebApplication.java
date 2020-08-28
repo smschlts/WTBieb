@@ -48,10 +48,10 @@ public class BiebApplication {
 	public CommandLineRunner demo(BoekRepository boekRepository, AccountService accountService,
 								  UitleningRepository uitleningRepository, UitleningEndpoint uitleningEndpoint) {
 		return (args) -> {
-			Boek b1 = new Boek(1001, "9789045353197", "Programmeren met Java voor dummies", "Barry Burd", "Java", "niet beschikbaar", "Java is een van de populairste programmeertalen ter wereld en wordt gebruikt bij het ontwikkelen van websites.", 2);
-			Boek b2 = new Boek(1002, "9789045355450", "Programmeren voor Dummies", "Wallace Wang", "Programmeren algemeen", "niet beschikbaar", "Met de volledig bijgewerkte nieuwe editie van Programmeren voor Dummies leer je op een vlotte manier programma's schrijven die probleemloos werken onder Windows, macOS en Linux. Maak kennis met de verschillende programmeertalen", 2);
-			Boek b3 = new Boek(1003, "9789045354866", "Programmeren met C voor Dummies", "Dan Gookin", "C", "niet beschikbaar", "C is een van de oudste en meest gebruikte programmeertalen. De invloed van C is zo groot dat verschillende andere talen (zoals C++, Java en JavaScript) grotendeels de syntaxis van C gebruiken.", 2);
-			Boek b4 = new Boek(1004, "9789045353524", "Programmeren met Python voor Dummies", "John Paul Mueller", "Python", "niet beschikbaar", "Python is een van de snelst groeiende programmeertalen ter wereld. En dat is niet zo gek: Python is zeer geschikt om verschillende soorten programmeerconcepten mee te ontdekken en het is de ideale taal voor data-analyses.", 2);
+			Boek b1 = new Boek(1, "9789045353197", "Programmeren met Java voor dummies", "Barry Burd", "Java", "niet beschikbaar", "Java is een van de populairste programmeertalen ter wereld en wordt gebruikt bij het ontwikkelen van websites.", 2);
+			Boek b2 = new Boek(2, "9789045355450", "Programmeren voor Dummies", "Wallace Wang", "Programmeren algemeen", "niet beschikbaar", "Met de volledig bijgewerkte nieuwe editie van Programmeren voor Dummies leer je op een vlotte manier programma's schrijven die probleemloos werken onder Windows, macOS en Linux. Maak kennis met de verschillende programmeertalen", 2);
+			Boek b3 = new Boek(3, "9789045354866", "Programmeren met C voor Dummies", "Dan Gookin", "C", "niet beschikbaar", "C is een van de oudste en meest gebruikte programmeertalen. De invloed van C is zo groot dat verschillende andere talen (zoals C++, Java en JavaScript) grotendeels de syntaxis van C gebruiken.", 2);
+			Boek b4 = new Boek(4, "9789045353524", "Programmeren met Python voor Dummies", "John Paul Mueller", "Python", "niet beschikbaar", "Python is een van de snelst groeiende programmeertalen ter wereld. En dat is niet zo gek: Python is zeer geschikt om verschillende soorten programmeerconcepten mee te ontdekken en het is de ideale taal voor data-analyses.", 2);
 			boekRepository.save(b1);
 			boekRepository.save(b2);
 			boekRepository.save(b3);

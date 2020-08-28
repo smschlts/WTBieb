@@ -16,6 +16,11 @@ function confirmWeg() {
     return bevestiging;
 }
 
+function confirmBeschikbaar() {
+    var bevestiging = confirm("Is dit item weer beschikbaar?");
+    return bevestiging;
+}
+
 // beschikbaarheid van exemplaren berekenen
 function berekenBeschikbaarheid(exemplaren) {
     var aantal = 0;
@@ -155,11 +160,32 @@ function boekOphalen() {
 }
 
 // boek-toevoegen.html
-function boekToevoegen() {
+function boekToevoegenVoorFormulier() {
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            document.location = 'boeken-overzicht-admin.html';
+            var aantal = this.responseText;
+            document.getElementById("boekwtid").value = parseInt(aantal) + 1;
+        }
+    };
+    xhr.open("GET", "http://localhost:8082/boeken/aantal", true);
+    xhr.send();
+}
+
+
+function boekToevoegen() {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (this.readyState == 4) {
+            if (this.status == 200) {
+                document.location = 'boeken-overzicht-admin.html';
+            } else if (this.status == 500) {
+                /* ISBN wordt in de backend gecheckt op uniekheid.
+                   Als hij niet uniek is, geeft hij status 500 terug.
+                   Het kan zijn dat er iets anders fout gaat.
+                */
+                alert("ISBN bestaat al.")
+            }
         }
     }
 
@@ -194,6 +220,24 @@ function exemplaarVerwijderenOverzicht(exemplaarId) {
     }
 }
 
+function exemplaarBeschikbaarStellenOverzicht(exemplaarId) {
+    bevestiging = confirmBeschikbaar();
+        if (bevestiging == true) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("PATCH", "http://localhost:8082/exemplaren/" + exemplaarId +"?status=BESCHIKBAAR", true);
+            xhr.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    window.location.reload()
+                }
+            }
+        xhr.send();
+        } else {
+            // pass
+        }
+}
+
+
+
 // boek-aanpassen.html
 function boekOphalenVoorFormulier() {
     const queryString = window.location.search;
@@ -223,7 +267,7 @@ function boekOphalenVoorFormulier() {
                 // var urlString = " onclick=\"window.location='#.html?id=" + idOverzicht + "';\">"
                 var verwijderString
                 if (statusOverzicht == "WEG") {
-                    verwijderString = "\"<td class=\"btn bewerk-verwijder\">" + "</td>\""
+                    verwijderString = "\"<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"exemplaarBeschikbaarStellenOverzicht(" + idOverzicht + ");\">&#10004</button>" + "</td>\""
                 } else {
                     verwijderString = "\"<td class=\"btn bewerk-verwijder\">" + "<button onclick=\"exemplaarVerwijderenOverzicht(" + idOverzicht + ");\">&#10006</button>" + "</td>\""
                 }
@@ -458,7 +502,11 @@ function accountToevoegen() {
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
         if (this.readyState == 4) {
-            document.location = 'account-overzicht.html';
+            if (this.status == 200) {
+                document.location = 'account-overzicht.html';
+            } else if (this.status == 500) {
+                alert("Email bestaat al")
+            }
         }
     }
 
@@ -498,7 +546,12 @@ function accountAanpassen() {
 
     xhr.onreadystatechange = function() {
         if(this.readyState == 4) {
-            document.location = 'account-overzicht.html';
+            if (this.status == 200) {
+                document.location = 'account-overzicht.html';
+            } else if (this.status == 500) {
+                alert("Email bestaat al.")
+            }
+
         }
     }
 
@@ -665,14 +718,19 @@ function formulierInvullenVoorLening() {
     boekenOverzichtLening();
 }
 
+// Input elementen worden niet gevalideerd als ze disabled zijn. Hiermee wordt de validatie alsnog uitgevoerd.
 function leningToevoegenInputControleren() {
     accountNaam = document.getElementById("accountnaam");
     boekTitel = document.getElementById("boektitel");
-    if (accountNaam.value == "" || boekTitel.value == "") {
+    if (accountNaam.value == "") {
         accountNaam.disabled = false;
-        boekTitel.disabled = false;
         setTimeout(function () {
             accountNaam.disabled = true;
+        }, 4000);
+    }
+    if (boekTitel.value == "") {
+        boekTitel.disabled = false;
+        setTimeout(function () {
             boekTitel.disabled = true;
         }, 4000);
     }
@@ -855,7 +913,7 @@ function leningAanpassen() {
     const leningID = urlParams.get('id');
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function(){
-        if(this.readyState == 4) {
+        if(this.readyState == 4 && this.status == 200) {
             document.location = 'uitleen-overzicht-admin.html';
         }
     }
@@ -882,7 +940,7 @@ function uitleningVerwijderen() {
     if (bevestiging == true) {
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function(){
-            if(this.readyState == 4) {
+            if(this.readyState == 4 && this.status == 200) {
                 window.location=document.referrer;
             }
         }
