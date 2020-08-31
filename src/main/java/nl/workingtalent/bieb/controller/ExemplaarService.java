@@ -1,7 +1,6 @@
 package nl.workingtalent.bieb.controller;
 
 
-import nl.workingtalent.bieb.domein.Account;
 import nl.workingtalent.bieb.domein.BoekStatus;
 import nl.workingtalent.bieb.domein.Exemplaar;
 import nl.workingtalent.bieb.domein.Uitlening;
@@ -74,6 +73,9 @@ public class ExemplaarService {
         if (bestaandExemplaar != null) {
             bestaandExemplaar.setStatus(nieuweStatus);
 
+            //Als een exemplaar WEG is wordt eerst de huidige lening ingeleverd
+            //Anders is het nog mogelijk om de lening in te leveren
+            //Waardoor de status weer veranderd naar BESCHIKBAAR
             if (nieuweStatus == BoekStatus.WEG) {
                 Uitlening u = uitleningRepository.findLaatsteOningeleverdeExemplaarUitlening(id);
                 if (u != null && u.getInleverDatum() == null) {

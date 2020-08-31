@@ -2,10 +2,8 @@ package nl.workingtalent.bieb.domein;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.Objects;
 
 @Entity
 @Table(name = "exemplaren")
@@ -19,6 +17,7 @@ public class Exemplaar {
     private long workingTalentExemplaarId;
 
     @ManyToOne( fetch = FetchType.EAGER)
+    //Dit voorkomt een oneindige loop omdat exemplaar en boek naar elkaar verwijzen.
     @JsonIgnoreProperties("exemplaren")
     private Boek boek;
 
@@ -67,19 +66,6 @@ public class Exemplaar {
         this.boek = boek;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Exemplaar exemplaar = (Exemplaar) o;
-        return id == exemplaar.id &&
-                workingTalentExemplaarId == exemplaar.workingTalentExemplaarId;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
 }
 
 

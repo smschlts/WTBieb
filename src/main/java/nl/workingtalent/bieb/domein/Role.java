@@ -9,8 +9,6 @@ public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-//    @Column(nullable = false, unique = true)
-//    @NotNull
     private String name;
 
     public Role() {

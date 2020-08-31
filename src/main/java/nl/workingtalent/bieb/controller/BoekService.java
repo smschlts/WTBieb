@@ -29,10 +29,6 @@ public class BoekService {
           return (List<Boek>) boekRepository.findByTitelContaining(titel);
      }
 
-     public List<Boek> ophalenAlleBoekenMetStatus(boolean status) {
-          return (List<Boek>) boekRepository.findByStatus(status);
-     }
-
      public Boek ophalenBoek(long id) {
           System.out.println("Haal boek " + id + " op");
           return boekRepository.findById(id).orElse(null);
@@ -54,7 +50,6 @@ public class BoekService {
                bestaandBoek.setIsbn(nieuwBoek.getIsbn());
                bestaandBoek.setTitel(nieuwBoek.getTitel());
                bestaandBoek.setAuteur(nieuwBoek.getAuteur());
-               bestaandBoek.setStatus(nieuwBoek.isStatus());
                bestaandBoek.setCategorie(nieuwBoek.getCategorie());
                bestaandBoek.setOmslag(nieuwBoek.getOmslag());
                bestaandBoek.setOmschrijving(nieuwBoek.getOmschrijving());
