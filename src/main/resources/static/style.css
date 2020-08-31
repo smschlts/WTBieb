@@ -80,20 +80,12 @@
         justify-content: center;
         box-sizing: content-box;
         inline-size: 100%;
-        top: 25%;
         margin-bottom: 200px;
     }
 
     .flex-item_lening-toevoegen {
         margin: 0 30px;
     }
-
-    /* .page-content_lening-overzicht {
-        box-sizing: content-box;
-        display: flow-root;
-        inline-size: 100%;
-        top: 25%;
-    } */
 
     .bewerken-formulier_boek,
     .bewerken-formulier_exemplaar {
@@ -117,17 +109,19 @@
         cursor: pointer;
         width: 100px;
         height: auto;
-        margin: 20px;
+        margin: 45px 20px;
     }
 
     .btn-logout {
         position: absolute;
-        right: 5%;
-        align-self: center;
-        font-size: 100%;
+        right: 2%;
+        top: 2%;
         background-color: transparent;
         color: #97bf0d;
         padding: 10px;
+        font-weight: 600;
+        font-size: 18px;
+        letter-spacing: 1px;
     }
     
     .btn-logout:hover {
@@ -135,26 +129,72 @@
         transition: .2s;
     }
 
-nav{
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%);
-    top: 10%;
-
-}
+    .main-nav{
+        position: absolute;
+        right: 5%;
+        align-self: flex-end;
+        padding-bottom: 20px;
+    }
     ul li {
         list-style: none;
         margin: 0 20px;
+        padding-bottom: 3px;
     }
 
-    a{
+    .main-nav a{
         text-decoration: none;
-        color: #fff;
+        color: #97bf0d;
+        font-weight: 600;
+        font-size: 18px;
+        letter-spacing: 1px;
     }
 
     li {
         display: inline;
       }
+
+      .main-nav ul li:hover,
+      .main-nav ul li:active {
+        border-bottom: 3px solid #97bf0d;
+      }
+      
+      a:hover,
+      a:active {
+        color: #97bf0d;
+        transition: .2s;
+      }
+
+    .tweede-nav {
+        position: absolute;
+        left: 2%;
+        top: 22%;
+        border-bottom: 2px solid #97bf0d;
+        padding-bottom: 20px;
+    }
+
+    .tweede-nav button{
+        background-color: transparent;
+        text-decoration: none;
+        color: #140F11;
+        font-weight: 700;
+        font-size: 16px;
+        letter-spacing: 1px;
+    }
+
+    .terug button {
+        color: #97bf0d;
+    }
+
+    .terug button:hover,
+    .terug button:active {
+        color: #69952b;
+        transition: .2s;
+    }
+    .tweede-nav_zwart:hover,
+    .tweede-nav_zwart:active {
+        color: #140f11b4;
+        transition: .2s;
+    }
 
 
 
@@ -495,7 +535,6 @@ nav{
         box-sizing: content-box;
         padding: 5px; 
         inline-size: 400px;
-        /* margin: 20px auto; */
         max-width: 50%;
     }
 
