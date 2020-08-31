@@ -135,6 +135,26 @@
         transition: .2s;
     }
 
+nav{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    top: 10%;
+
+}
+    ul li {
+        list-style: none;
+        margin: 0 20px;
+    }
+
+    a{
+        text-decoration: none;
+        color: #fff;
+    }
+
+    li {
+        display: inline;
+      }
 
 
 
@@ -503,7 +523,7 @@
         padding: 20px;
     }
 
-    .lening-toevoegen-form input[id=accountnaam], .lening-toevoegen-form input[id=boektitel] {
+    .lening-toevoegen-form input[id=accountnaam], input[id=boektitel] {
         pointer-events: none;
         caret-color: transparent;
     }

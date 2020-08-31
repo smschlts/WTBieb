@@ -294,7 +294,7 @@ function boekAanpassen() {
 
     xhr.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200) {
-            document.location = 'boeken-overzicht-admin.html';
+            document.location = document.referrer;
         }
     }
 
@@ -547,7 +547,7 @@ function accountAanpassen() {
     xhr.onreadystatechange = function() {
         if(this.readyState == 4) {
             if (this.status == 200) {
-                document.location = 'account-overzicht.html';
+                document.location = document.referrer;
             } else if (this.status == 500) {
                 alert("Email bestaat al.")
             }
@@ -914,7 +914,7 @@ function leningAanpassen() {
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200) {
-            document.location = 'uitleen-overzicht-admin.html';
+            document.location = document.referrer;
         }
     }
 
