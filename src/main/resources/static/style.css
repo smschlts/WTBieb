@@ -503,7 +503,7 @@
         padding: 20px;
     }
 
-    .lening-toevoegen-form input[id=accountnaam], input[id=boektitel] {
+    .lening-toevoegen-form input[id=accountnaam], .lening-toevoegen-form input[id=boektitel] {
         pointer-events: none;
         caret-color: transparent;
     }
