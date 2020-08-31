@@ -13,16 +13,17 @@ public class Boek {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
     @Column(unique=true)
     private long wtId;
+
     @NotNull
     @Column(unique=true)
     private String isbn;
+
     @NotNull
     private String titel;
     private String auteur;
-    @NotNull
-    private boolean status;
     private String categorie;
     private String omslag;
     private String omschrijving;
@@ -34,6 +35,7 @@ public class Boek {
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
+    //Dit voorkomt een oneindige loop omdat exemplaar en boek naar elkaar verwijzen.
     @JsonIgnoreProperties("boek")
     private List<Exemplaar> exemplaren = new ArrayList<>();
 
@@ -45,7 +47,6 @@ public class Boek {
         this.isbn = isbn;
         this.titel = titel;
         this.auteur = auteur;
-        this.status = true;
         this.categorie = categorie;
         this.omslag = omslag;
         this.omschrijving = omschrijving;
@@ -87,13 +88,6 @@ public class Boek {
     }
     public void setAuteur(String auteur) {
         this.auteur = auteur;
-    }
-
-    public boolean isStatus() {
-        return status;
-    }
-    public void setStatus(boolean status) {
-        this.status = status;
     }
 
     public String getCategorie() {

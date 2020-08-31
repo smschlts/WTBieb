@@ -33,6 +33,7 @@ public class BiebApplication {
 	@Value("${user.wachtwoord}")
 	private String userWachtwoord;
 
+	//Dit is toegevoegd om problemen met CORS te voorkomen in de front-end.
 	@Bean
 	public WebMvcConfigurer corsConfigurer() {
 		return new WebMvcConfigurer() {
@@ -57,6 +58,8 @@ public class BiebApplication {
 			boekRepository.save(b3);
 			boekRepository.save(b4);
 
+			//Voeg admin account toe om in te kunnen loggen
+			//zet het in application.properties om het niet te sharen in GitHub
 			Account ac1 = new Account(adminNaam, adminEmail, adminWachtwoord);
 			Account ac2 = new Account("Stefan Wilmink", "swilmink@testemail.nl", userWachtwoord);
 			Account ac3 = new Account("Donald Hermens", "dhermens@testemail.nl", userWachtwoord);

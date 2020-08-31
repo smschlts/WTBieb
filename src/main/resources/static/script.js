@@ -187,7 +187,7 @@ function boekToevoegen() {
                 alert("ISBN bestaat al.")
             }
         }
-    };
+    }
 
     var boek = {};
     boek.titel = document.getElementById("boektitel").value;
@@ -203,7 +203,6 @@ function boekToevoegen() {
     xhr.send(boekJSON);
     return false;
 }
-
 
 function exemplaarVerwijderenOverzicht(exemplaarId) {
     bevestiging = confirmWeg();
