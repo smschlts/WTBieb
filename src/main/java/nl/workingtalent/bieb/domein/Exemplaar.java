@@ -66,19 +66,6 @@ public class Exemplaar {
         this.boek = boek;
     }
 
-   /* @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Exemplaar exemplaar = (Exemplaar) o;
-        return id == exemplaar.id &&
-                workingTalentExemplaarId == exemplaar.workingTalentExemplaarId;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }*/
 }
 
 
