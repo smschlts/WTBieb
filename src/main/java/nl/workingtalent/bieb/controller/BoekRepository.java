@@ -9,5 +9,4 @@ import java.util.List;
 @Component
 public interface BoekRepository extends CrudRepository<Boek, Long> {
     List<Boek> findByTitelContaining(String titel);
-    List<Boek> findByStatus(boolean status);
 }

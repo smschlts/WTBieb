@@ -5,7 +5,6 @@ import nl.workingtalent.bieb.domein.Account;
 import nl.workingtalent.bieb.domein.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -15,7 +14,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.security.SecureRandom;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,16 +26,17 @@ public class AccountService implements UserDetailsService {
 
     final private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10, new SecureRandom());
 
+
     public Account opslaan(Account nieuwAccount) {
         System.out.println("Account opslaan");
         if (nieuwAccount.getWachtwoord() == null) {
+            //I.p.v default password null is het nu "ww"
             nieuwAccount.setWachtwoord(passwordEncoder.encode("ww"));
         } else {
             nieuwAccount.setWachtwoord(passwordEncoder.encode(nieuwAccount.getWachtwoord()));
         }
 
         nieuwAccount.setActive(true);
-//        nieuwAccount.setRoles(Arrays.asList(new Role("ROLE_USER")));
         nieuwAccount.voegRolToe(new Role("ROLE_USER"));
 
         return accountRepository.save(nieuwAccount);
@@ -87,6 +86,8 @@ public class AccountService implements UserDetailsService {
         }
     }
 
+    // functies voor inloggen
+    //
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
         Account account = accountRepository.findByEmail(username);

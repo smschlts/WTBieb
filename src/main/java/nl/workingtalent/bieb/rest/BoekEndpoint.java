@@ -28,11 +28,6 @@ public class BoekEndpoint {
         return boekService.ophalenAlleBoeken().size();
     }
 
-    @GetMapping("/boeken/beschikbaar")
-    public List<Boek> boekenBeschikbaar() {
-        return boekService.ophalenAlleBoekenMetStatus(true);
-    }
-
     @GetMapping("/boeken/{id}")
     public Boek boekenEen(@PathVariable Long id) {
         return boekService.ophalenBoek(id);
@@ -41,20 +36,6 @@ public class BoekEndpoint {
     @GetMapping("/boeken/{id}/exemplaren")
     public List<Exemplaar> boekExemplaren(@PathVariable Long id) {
         return boekService.ophalenBoek(id).getExemplaren();
-    }
-
-    @GetMapping("/boeken/{id}/exemplaren/{idx}")
-    public Exemplaar boekExemplarenEen(@PathVariable Long id, @PathVariable int idx) {
-        List<Exemplaar> exemplaren = boekService.ophalenBoek(id).getExemplaren();
-        if (exemplaren == null) {
-            return null;
-        } else {
-            if (idx < exemplaren.size() && idx >= 0) {
-                return exemplaren.get(idx);
-            } else {
-                return null;
-            }
-        }
     }
 
     @PostMapping("/boeken")

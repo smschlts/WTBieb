@@ -17,9 +17,6 @@ public class UitleningEndpoint {
     @Autowired
     ExemplaarService exemplaarService;
 
-
-//    uitleningen?accountId=6
-
     @GetMapping("/uitleningen")
     public List<Uitlening> uitleningenAlles(@RequestParam(required = false) String accountId, @RequestParam(required = false) String exemplaarId) { ;
         if (accountId != null) {
