@@ -1,7 +1,6 @@
 package nl.workingtalent.bieb.domein;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -13,13 +12,17 @@ public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
     @NotNull
     private String naam;
+
     @NotNull
     @Column(unique = true)
     private String email;
     private String wachtwoord;
 
+    //Active is de boolean voor een de soft-delete van accounts
+    //Als accounts helemaal zouden worden verwijderd dan gaat dit niet goed in leningen.
     @Column(name="active")
     private Boolean active;
 

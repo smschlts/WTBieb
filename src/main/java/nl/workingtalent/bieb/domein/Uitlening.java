@@ -12,6 +12,7 @@ public class Uitlening {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
     @NotNull
     private LocalDate uitleenDatum;
     private LocalDate inleverDatum;
@@ -21,7 +22,6 @@ public class Uitlening {
     private Boek boek;
 
     @NotNull
-
     private long exemplaarId;
 
     @NotNull

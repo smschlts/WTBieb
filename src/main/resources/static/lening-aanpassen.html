@@ -13,12 +13,23 @@
     <header>
         <img onclick="document.location = 'index.html'" src="working-talent-logo-Large.png" alt="Working Talent Logo" id="logo">
         <h1>Uitleningen</h1>
-        <button class="btn-logout" onclick="document.location = 'logout'">Uitloggen</button>
+        <nav class="main-nav">
+            
+            <ul>
+                <li><a href="boeken-overzicht-admin.html">Boeken</a></li>
+                <li><a href="account-overzicht.html">Medewerkers</a></li>
+                <li><a href="uitleen-overzicht-admin.html">Uitleningen</a></li>
+            </ul>
+        </nav>
+        <button class="btn-logout" onclick="document.location = 'logout'">Log uit</button>
     </header>
-
-    <!-- <button class="float-right button-green" onclick="document.location = 'uitleen-overzicht-admin.html'">Overzicht</button> -->
-    <button class="float-right button-green" onclick="history.back()">Terug</button>
-
+    
+    <nav class="tweede-nav">
+        <ul>
+            <li class="terug"><button onclick="history.back()">Terug</button></li>
+        </ul>
+    </nav>
+    
     <div class="page-content page-content_80 page-content_uitlening-bewerken">
         <h2>Uitlening bewerken</h2>
         <div class="formulieren">
@@ -43,4 +54,7 @@
         </div>
     </div>
 </body>
+
+
+
 </html>
