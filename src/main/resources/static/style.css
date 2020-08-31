@@ -431,6 +431,10 @@
         font-size: 14px;
     }
 
+    input[disabled] {
+        background: rgba(239, 239, 239, 0.3);
+    }
+
     input[type=number]::-webkit-inner-spin-button {
         -webkit-appearance: none;
       }
@@ -503,7 +507,9 @@
         padding: 20px;
     }
 
-    .lening-toevoegen-form input[id=accountnaam], .lening-toevoegen-form input[id=boektitel] {
+    .lening-toevoegen-form input[id=accountnaam], 
+    .lening-toevoegen-form input[id=boektitel] {
+        background: rgba(239, 239, 239, 0.3);
         pointer-events: none;
         caret-color: transparent;
     }
