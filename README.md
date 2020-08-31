@@ -2,7 +2,7 @@
 Dit is een bibliotheek applicatie voor WorkingTalent.
 
 ## Vereisten
-* Java SDK 11
+* Java JDK 11
 * Webserver
 * Databaseserver
 
