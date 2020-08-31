@@ -12,12 +12,23 @@
 <body onload="boekToevoegenVoorFormulier()">
     <header>
         <img onclick="document.location = 'index.html'" src="working-talent-logo-Large.png" alt="Working Talent Logo" id="logo">
-        <h1>Boekbeheer</h1>
-        <button class="btn-logout" onclick="document.location = 'logout'">Uitloggen</button>
+        <h1>Boeken</h1>
+        <nav class="main-nav">
+            
+            <ul>
+                <li><a href="boeken-overzicht-admin.html">Boeken</a></li>
+                <li><a href="account-overzicht.html">Medewerkers</a></li>
+                <li><a href="uitleen-overzicht-admin.html">Uitleningen</a></li>
+            </ul>
+        </nav>
+        <button class="btn-logout" onclick="document.location = 'logout'">Log uit</button>
     </header>
 
-    <button class="float-right button-green button-green_overzicht" onclick="document.location = 'boeken-overzicht-admin.html'">Boeken<br>Overzicht</button>
-    <button class="float-right button-green" onclick="history.back()">Terug</button>
+    <nav class="tweede-nav">
+        <ul>
+            <li class="terug"><button onclick="history.back()">Terug</button></li>
+        </ul>
+    </nav>
     
     <div class="page-content page-content_40 page-content_toevoegen">
         <h2>Boek toevoegen</h2>    
