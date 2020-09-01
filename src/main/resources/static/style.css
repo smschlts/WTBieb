@@ -31,9 +31,9 @@
     .page-content {
         position: absolute;
         left: 50%;
-        top: 25%;
+        /* top: 25%; */
         transform: translate(-50%, 0%);
-        margin: 50px 0 200px 0;
+        margin: 120px 0 200px 0;
     }
 
     .page-content_80 {
@@ -56,7 +56,7 @@
     .page-content_toevoegen {
         display: flex;
         flex-direction: column;
-        align-items: space-around;
+        /* align-items: space-around; */
     }
     
     .page-content_tables,
@@ -165,9 +165,6 @@
       }
 
     .tweede-nav {
-        /* position: absolute;
-        left: 2%;
-        top: 22%; */
         float: left;
         margin: 20px 0 0 20px;
         border-bottom: 2px solid #97bf0d;
@@ -347,11 +344,7 @@
         transition: .2s;
         cursor: pointer;
     }
-/* 
-    .tabel_boek-info,
-    .tabel_account-info {
-        column-width: 50%;
-    } */
+
 
     .tabel_boek-info {
         width: 60%;
@@ -362,7 +355,7 @@
 
     .tabel_account-info {
         width: 50%;
-        margin: 50px auto 80px auto;
+        margin: 0 auto 50px auto;
     }
 
     .th_info {
